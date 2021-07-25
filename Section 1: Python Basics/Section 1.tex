@@ -1,0 +1,133 @@
+% Created 2021-07-24 Sat 20:28
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Mohammed Asir Shahid}
+\date{\today}
+\title{Section 1}
+\hypersetup{
+ pdfauthor={Mohammed Asir Shahid},
+ pdftitle={Section 1},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Basic Terminology}
+\label{sec:org10396ca}
+
+
+\begin{verbatim}
+print(2+2)
+\end{verbatim}
+
+\begin{verbatim}
+4
+\end{verbatim}
+
+
+The above is an expression consisting of operators (such as the +) and values (such as the 2). Expressions always evaluate down to a single value.
+
+\begin{verbatim}
+print(2)
+print(5-3)
+print(3*7)
+print(22/7)
+\end{verbatim}
+
+\begin{verbatim}
+2
+2
+21
+3.142857142857143
+\end{verbatim}
+
+
+The order of operations follow PEMDAS, so we can use parentheses in order to show what we really want.
+
+
+\begin{verbatim}
+print(2+3*6)
+print((2+3)*6)
+\end{verbatim}
+
+\begin{verbatim}
+20
+30
+\end{verbatim}
+
+
+We can get errors when we mess things up
+
+\begin{verbatim}
+print(5+)
+\end{verbatim}
+
+We can have strings and they can also be concatenated or replicated.
+
+\begin{verbatim}
+print("Hello World")
+print("Alice" + "Bob")
+print("Alice"*3)
+print("Hello" + "!"*10)
+\end{verbatim}
+
+\begin{verbatim}
+Hello World
+AliceBob
+AliceAliceAlice
+Hello!!!!!!!!!!
+\end{verbatim}
+
+
+Python can store values inside of variables. Usually it is smart to name variables that describe the values that they contain. Variables can also be overwritten easily.
+
+\begin{verbatim}
+spam=42
+print(spam)
+spam="Hello"
+print(spam)
+print(spam + " World")
+\end{verbatim}
+
+\begin{verbatim}
+42
+Hello
+Hello World
+\end{verbatim}
+
+
+Variables can also be set to different expressions. The expression will be evaluated and then that value will be set to the variable.
+
+\begin{verbatim}
+spam=2+2
+print(spam)
+spam=10
+print(spam)
+spam=spam+1
+print(spam)
+\end{verbatim}
+
+\begin{verbatim}
+4
+10
+11
+\end{verbatim}
+\end{document}
