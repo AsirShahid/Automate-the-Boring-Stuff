@@ -1,12 +1,12 @@
 
 # Table of Contents
 
-1.  [Basic Terminology](#org1566930)
-2.  [Writing our First program](#orgcd4348e)
+1.  [Basic Terminology](#orgafd3179)
+2.  [Writing our First program](#orge040ef6)
 
 
 
-<a id="org1566930"></a>
+<a id="orgafd3179"></a>
 
 # Basic Terminology
 
@@ -76,7 +76,7 @@ Variables can also be set to different expressions. The expression will be evalu
     11
 
 
-<a id="orgcd4348e"></a>
+<a id="orge040ef6"></a>
 
 # Writing our First program
 

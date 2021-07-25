@@ -1,4 +1,8 @@
 #+TITLE: Section 1
+#+SUBTITLE: Python Basics
+#+AUTHOR: Mohammed Asir Shahid
+#+EMAIL: MohammedShahid@protonmail.com
+#+DATE: 2021-07-23
 
 * Basic Terminology
 
