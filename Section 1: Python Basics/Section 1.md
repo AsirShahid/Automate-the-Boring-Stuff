@@ -1,11 +1,12 @@
 
 # Table of Contents
 
-1.  [Basic Terminology](#org5ced50f)
+1.  [Basic Terminology](#org1566930)
+2.  [Writing our First program](#orgcd4348e)
 
 
 
-<a id="org5ced50f"></a>
+<a id="org1566930"></a>
 
 # Basic Terminology
 
@@ -73,4 +74,29 @@ Variables can also be set to different expressions. The expression will be evalu
     4
     10
     11
+
+
+<a id="orgcd4348e"></a>
+
+# Writing our First program
+
+    # When using Python outside of org mode, we use a different way to get inputs
+    # name=input()
+    
+    print("Hello World")
+    
+    print("What is your name?")
+    
+    print("It is good to meet you, {}".format(name))
+    # Alternatively, we could concatenate
+    # print("It is good to meet you, " + name)
+    print("The length of your name is: {}".format(str(len(name))))
+    
+    print("You will be {} in a year".format(str(int(age)+1)))
+
+    Hello World
+    What is your name?
+    It is good to meet you, Asir
+    The length of your name is: 4
+    You will be 23 in a year
 

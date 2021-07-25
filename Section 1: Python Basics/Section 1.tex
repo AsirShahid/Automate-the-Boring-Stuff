@@ -1,4 +1,4 @@
-% Created 2021-07-24 Sat 20:28
+% Created 2021-07-25 Sun 18:42
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -31,7 +31,7 @@
 
 
 \section{Basic Terminology}
-\label{sec:org10396ca}
+\label{sec:orgfbbe51e}
 
 
 \begin{verbatim}
@@ -129,5 +129,32 @@ print(spam)
 4
 10
 11
+\end{verbatim}
+
+\section{Writing our First program}
+\label{sec:org2f94eda}
+
+\begin{verbatim}
+# When using Python outside of org mode, we use a different way to get inputs
+# name=input()
+
+print("Hello World")
+
+print("What is your name?")
+
+print("It is good to meet you, {}".format(name))
+# Alternatively, we could concatenate
+# print("It is good to meet you, " + name)
+print("The length of your name is: {}".format(str(len(name))))
+
+print("You will be {} in a year".format(str(int(age)+1)))
+\end{verbatim}
+
+\begin{verbatim}
+Hello World
+What is your name?
+It is good to meet you, Asir
+The length of your name is: 4
+You will be 24 in a year
 \end{verbatim}
 \end{document}
