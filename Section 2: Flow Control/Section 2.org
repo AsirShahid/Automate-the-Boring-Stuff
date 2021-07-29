@@ -1,4 +1,66 @@
 #+TITLE: Section 2
+#+TITLE: Flow Control
 #+AUTHOR: Mohammed Asir Shahid
 #+EMAIL: MohammedShahid@protonmail.com
 #+DATE: 2021-07-24
+
+
+* Flow Charts and Basic Flow Control concepts
+
+A flowchart is a series of instructions saying what to do in certain situations, generally revolving around boolean values.
+
+** Comparison Operators
+ ==
+!=
+ <
+ >
+ <=
+ >=
+
+ We can use these for comparisons.
+
+#+begin_src python :results output :exports both
+print(42==42)
+print(42=="Hello")
+print(42==41)
+print(2!=3)
+print(42<100)
+print(42>=100)
+print(42<=42)
+myAge=22
+print("My age is {}".format(myAge))
+print(myAge==22)
+ #+end_src
+
+ #+RESULTS:
+ : True
+ : False
+ : False
+ : True
+ : True
+ : False
+ : True
+ : My age is 22
+ : True
+
+*** Boolean Operators
+and
+or
+not
+
+The and operator only evaluates to true if all are true.
+
+The or operator only evaluates to true if at least one is true.
+
+The not operator evaluates to the opposite boolean value.
+
+#+begin_src python :results output :exports both
+
+myAge=26
+myPet="cat"
+print(myAge>20 and myPet=="cat")
+
+#+end_src
+
+#+RESULTS:
+: True

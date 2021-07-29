@@ -1,4 +1,4 @@
-% Created 2021-07-26 Mon 14:53
+% Created 2021-07-28 Wed 21:45
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,24 +32,67 @@
 
 
 \section{Flow Charts and Basic Flow Control concepts}
-\label{sec:orgfa76c8b}
+\label{sec:org28f27a3}
 
 A flowchart is a series of instructions saying what to do in certain situations, generally revolving around boolean values.
 
 \subsection{Comparison Operators}
-\label{sec:org2736ebd}
-\subsubsection{==}
-\label{sec:org7061454}
-\subsubsection{!=}
-\label{sec:org09433cb}
-\subsubsection{<}
-\label{sec:orgb4d0b7f}
-\subsubsection{>}
-\label{sec:orgbb3f44b}
-\subsubsection{<=}
-\label{sec:org62f6643}
-\subsubsection{>=}
-\label{sec:orgea32a54}
-\subsection{}
-\label{sec:org327b71e}
+\label{sec:orgb64b3b4}
+\texttt{=
+!}
+<
+>
+<=
+>=
+
+We can use these for comparisons.
+
+\begin{verbatim}
+print(42==42)
+print(42=="Hello")
+print(42==41)
+print(2!=3)
+print(42<100)
+print(42>=100)
+print(42<=42)
+myAge=22
+print("My age is {}".format(myAge))
+print(myAge==22)
+\end{verbatim}
+
+\begin{verbatim}
+True
+False
+False
+True
+True
+False
+True
+My age is 22
+True
+\end{verbatim}
+
+\subsubsection{Boolean Operators}
+\label{sec:orga6267ac}
+and
+or
+not
+
+The and operator only evaluates to true if all are true.
+
+The or operator only evaluates to true if at least one is true.
+
+The not operator evaluates to the opposite boolean value.
+
+\begin{verbatim}
+
+myAge=26
+myPet="cat"
+print(myAge>20 and myPet=="cat")
+
+\end{verbatim}
+
+\begin{verbatim}
+True
+\end{verbatim}
 \end{document}
