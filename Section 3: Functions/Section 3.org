@@ -3,3 +3,20 @@
 #+AUTHOR: Mohammed Asir Shahid
 #+EMAIL: MohammedShahid@protonmail.com
 #+DATE: 2021-07-30
+
+* Pythons Built-In Functions
+
+Python comes with many built in functions such as print, input, and len which we have already used. Python also comes with Modules known as the Standard Library. For example, we have the Math module containing mathematics functions, the random module containing random number functions, etc. In order to use functions from these modules, we need to import them as follows:
+
+#+begin_src python :results output :exports both
+
+import random
+
+print(random.randint(1,10))
+
+#+end_src
+
+#+RESULTS:
+: 10
+
+The above randint function gives us a random number between the given integers.
