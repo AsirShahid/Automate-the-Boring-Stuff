@@ -1,0 +1,5 @@
+#+TITLE: Section 3
+#+SUBTITLE: Functions
+#+AUTHOR: Mohammed Asir Shahid
+#+EMAIL: MohammedShahid@protonmail.com
+#+DATE: 2021-07-30
