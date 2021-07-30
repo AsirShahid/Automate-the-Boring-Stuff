@@ -1,4 +1,4 @@
-% Created 2021-07-30 Fri 13:09
+% Created 2021-07-30 Fri 13:20
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,12 +32,12 @@
 
 
 \section{Flow Charts and Basic Flow Control concepts}
-\label{sec:org0bca62c}
+\label{sec:org385e513}
 
 A flowchart is a series of instructions saying what to do in certain situations, generally revolving around boolean values.
 
 \subsection{Comparison Operators}
-\label{sec:orgfb302c0}
+\label{sec:org3aaefb4}
 \texttt{=
 !}
 <
@@ -73,7 +73,7 @@ True
 \end{verbatim}
 
 \subsubsection{Boolean Operators}
-\label{sec:org2165e4f}
+\label{sec:orged04b11}
 and
 or
 not
@@ -97,7 +97,7 @@ True
 \end{verbatim}
 
 \section{If, Else, and Elif Statements}
-\label{sec:org3966279}
+\label{sec:org7d61a55}
 
 The most important portion flow control statements are the statements themselves.
 
@@ -203,7 +203,7 @@ True
 \end{verbatim}
 
 \section{While Loops}
-\label{sec:orgf72386b}
+\label{sec:org36d7140}
 
 While loops can let you execute code blocks over and over again given that the while loops conditions are true.
 
@@ -305,4 +305,143 @@ Spam is 5
 
 
 Above we can see that when spam is 3, the string is not printed. When spam is 3, the program goes into the if block and continues.
+
+\section{For Loops}
+\label{sec:orge727d62}
+
+\begin{verbatim}
+
+print("My name is")
+
+for i in range(5):
+    print("Jimmy Five Times " + str(i))
+
+\end{verbatim}
+
+\begin{verbatim}
+My name is
+Jimmy Five Times 0
+Jimmy Five Times 1
+Jimmy Five Times 2
+Jimmy Five Times 3
+Jimmy Five Times 4
+\end{verbatim}
+
+
+The code in the for loop is run 5 times. The first time it runs, i is 0, then it goes to 1, then 2, then 3, then 4.
+
+We can write this as a while loop as well, but we would need to add some extra lines.
+
+
+\begin{verbatim}
+
+print("My name is")
+
+i=0
+while i<5:
+    print("Jimmy Five Times " + str(i))
+    i+=1
+
+\end{verbatim}
+
+\begin{verbatim}
+My name is
+Jimmy Five Times 0
+Jimmy Five Times 1
+Jimmy Five Times 2
+Jimmy Five Times 3
+Jimmy Five Times 4
+\end{verbatim}
+
+
+We can use for loops to do addition as follows:
+
+\begin{verbatim}
+
+total=0
+for num in range(101):
+    total+=num
+print(total)
+
+\end{verbatim}
+
+\begin{verbatim}
+5050
+\end{verbatim}
+
+This for loop iterates 100 times and sums up all the numbers between 0 and 101 exclusive.
+
+
+\begin{verbatim}
+
+print(range(10))
+
+\end{verbatim}
+
+\begin{verbatim}
+range(0, 10)
+\end{verbatim}
+
+
+The range function returns a data type that contains a sequence of integers between 2 values. If only one value is given, the first number is 0. However, we can change that.
+
+\begin{verbatim}
+
+print("My name is")
+
+for i in range(12,16):
+    print("Jimmy Five Times " + str(i))
+
+\end{verbatim}
+
+\begin{verbatim}
+My name is
+Jimmy Five Times 12
+Jimmy Five Times 13
+Jimmy Five Times 14
+Jimmy Five Times 15
+\end{verbatim}
+
+
+The second integer in the range function is the number that the sequence goes up to, but not included. So the above is from 12 to up to, but not including 16.
+
+We can also add a 3rd number in order to have the sequence increase or decrease by a different amount. This is the step argument.
+
+
+\begin{verbatim}
+
+print("My name is")
+
+for i in range(12,18,2):
+    print("Jimmy Five Times " + str(i))
+
+\end{verbatim}
+
+\begin{verbatim}
+My name is
+Jimmy Five Times 12
+Jimmy Five Times 14
+Jimmy Five Times 16
+\end{verbatim}
+
+
+This 3rd number can be negative if we are decreasing.
+
+
+\begin{verbatim}
+
+print("My name is")
+
+for i in range(16,12,-1):
+    print("Jimmy Five Times " + str(i))
+
+\end{verbatim}
+
+\begin{verbatim}
+My name is
+Jimmy Five Times 16
+Jimmy Five Times 15
+Jimmy Five Times 14
+Jimmy Five Times 13
+\end{verbatim}
 \end{document}

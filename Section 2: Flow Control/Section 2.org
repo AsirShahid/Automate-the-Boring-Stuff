@@ -260,3 +260,128 @@ while spam<5:
 
 
 Above we can see that when spam is 3, the string is not printed. When spam is 3, the program goes into the if block and continues.
+
+* For Loops
+
+#+begin_src python :results output :exports both
+
+print("My name is")
+
+for i in range(5):
+    print("Jimmy Five Times " + str(i))
+
+#+end_src
+
+#+RESULTS:
+: My name is
+: Jimmy Five Times 0
+: Jimmy Five Times 1
+: Jimmy Five Times 2
+: Jimmy Five Times 3
+: Jimmy Five Times 4
+
+The code in the for loop is run 5 times. The first time it runs, i is 0, then it goes to 1, then 2, then 3, then 4.
+
+We can write this as a while loop as well, but we would need to add some extra lines.
+
+
+#+begin_src python :results output :exports both
+
+print("My name is")
+
+i=0
+while i<5:
+    print("Jimmy Five Times " + str(i))
+    i+=1
+
+#+end_src
+
+#+RESULTS:
+: My name is
+: Jimmy Five Times 0
+: Jimmy Five Times 1
+: Jimmy Five Times 2
+: Jimmy Five Times 3
+: Jimmy Five Times 4
+
+We can use for loops to do addition as follows:
+
+#+begin_src python :results output :exports both
+
+total=0
+for num in range(101):
+    total+=num
+print(total)
+
+#+end_src
+
+#+RESULTS:
+: 5050
+This for loop iterates 100 times and sums up all the numbers between 0 and 101 exclusive.
+
+
+#+begin_src python :results output :exports both
+
+print(range(10))
+
+#+end_src
+
+#+RESULTS:
+: range(0, 10)
+
+The range function returns a data type that contains a sequence of integers between 2 values. If only one value is given, the first number is 0. However, we can change that.
+
+#+begin_src python :results output :exports both
+
+print("My name is")
+
+for i in range(12,16):
+    print("Jimmy Five Times " + str(i))
+
+#+end_src
+
+#+RESULTS:
+: My name is
+: Jimmy Five Times 12
+: Jimmy Five Times 13
+: Jimmy Five Times 14
+: Jimmy Five Times 15
+
+The second integer in the range function is the number that the sequence goes up to, but not included. So the above is from 12 to up to, but not including 16.
+
+We can also add a 3rd number in order to have the sequence increase or decrease by a different amount. This is the step argument.
+
+
+#+begin_src python :results output :exports both
+
+print("My name is")
+
+for i in range(12,18,2):
+    print("Jimmy Five Times " + str(i))
+
+#+end_src
+
+#+RESULTS:
+: My name is
+: Jimmy Five Times 12
+: Jimmy Five Times 14
+: Jimmy Five Times 16
+
+This 3rd number can be negative if we are decreasing.
+
+
+#+begin_src python :results output :exports both
+
+print("My name is")
+
+for i in range(16,12,-1):
+    print("Jimmy Five Times " + str(i))
+
+#+end_src
+
+#+RESULTS:
+: My name is
+: Jimmy Five Times 16
+: Jimmy Five Times 15
+: Jimmy Five Times 14
+: Jimmy Five Times 13
