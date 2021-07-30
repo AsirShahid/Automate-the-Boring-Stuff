@@ -64,3 +64,99 @@ print(myAge>20 and myPet=="cat")
 
 #+RESULTS:
 : True
+
+* If, Else, and Elif Statements
+
+The most important portion flow control statements are the statements themselves.
+
+#+begin_src python :results output :exports both
+
+name = "Alice"
+
+if name == "Alice":
+    print("Hi Alice")
+print("Done")
+#+end_src
+
+#+RESULTS:
+: Hi Alice
+: Done
+
+Let's break this down. We have the if statement "if name="Alice"". Here, it evaluates the name variable and checks if it is true that it is equivalent to "Alice". Since it is equivalent, the program moves to the print statement.
+
+We can look at indentation to see the differences in code blocks. Lines of code are grouped together in blocks which are dictated by indentations. We have 3 rules for code blocks: Blocks begin when the indentation increases. Blocks can contain other blocks. Blocks end when the indentation decreases to zero or to a containing block’s indentation.
+
+#+begin_src python :results output :exports both
+
+password="swordfish"
+
+if password=="swordfish":
+    print("Access granted")
+else:
+    print("Wrong password")
+
+#+end_src
+
+#+RESULTS:
+: Access granted
+
+Above we only print out "Access Granted" since our password variable is equivalent to "swordfish". If that was not the case, the first code block would be ignored and instead "Wrong password" would be printed out.
+
+
+#+begin_src python :results output :exports both
+name="Bob"
+age=3000
+if name == "Alice":
+    print("Hi Alice")
+elif age<12:
+    print("You are not Alice, kiddo.")
+elif age>2000:
+    print("Unlike you, Alice is not an undead, immortal vampire.")
+elif age>100:
+    print("You are not Alice, Granny")
+
+#+end_src
+
+#+RESULTS:
+: Unlike you, Alice is not an undead, immortal vampire.
+
+First the name and age variables are saved. Then the first if statement is found to be false, so it is skipped. Then the first elif block is found to be false, so it is also skipped. Then the second elif statement is found to be true, so it enters the block and prints out our statement. Then the rest of the conditions are skipped.
+
+We can also have an else statement which will be executed if all of the above code blocks are found to be false.
+
+
+#+begin_src python :results output :exports both :var name=(read-string "What is your name? ")
+
+print("Enter a name.")
+#name=input()
+if name:
+    print("Thank you for entering a name.")
+else:
+    print("You did not enter a name.")
+#+end_src
+
+#+RESULTS:
+: Enter a name.
+: You did not enter a name.
+
+Why does the statement "if name" evaluate when we do not input a name? This is due to the fact that the if condition can use "truthy" or "falsey" values for strings. For example, a blank string, as seen above, would be considered falsely and would return false in the if statement. However, inputting a name would result in the if statement evaluating as true. For integers the integer 0 is the falsey value and everything else is truthy. For floats, 0.0 is the falsey value while everything else is truthy. However, it is better to be explicit and say something such as "if name != """ instead.
+
+
+#+begin_src python :results output :exports both
+
+print(bool(""))
+print(bool(0))
+print(bool(0.0))
+print(bool("Alice"))
+print(bool(1))
+print(bool(1.0))
+
+#+end_src
+
+#+RESULTS:
+: False
+: False
+: False
+: True
+: True
+: True
