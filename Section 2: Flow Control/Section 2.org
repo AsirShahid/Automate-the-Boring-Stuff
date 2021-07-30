@@ -246,9 +246,17 @@ spam=0
 
 while spam<5:
     spam+=1
-
-        if spam ==3:
-            continues
-    print("Spam is"  )
+    if spam == 3:
+        continue
+    print("Spam is "  + str(spam))
 
 #+end_src
+
+#+RESULTS:
+: Spam is 1
+: Spam is 2
+: Spam is 4
+: Spam is 5
+
+
+Above we can see that when spam is 3, the string is not printed. When spam is 3, the program goes into the if block and continues.

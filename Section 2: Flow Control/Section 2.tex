@@ -1,4 +1,4 @@
-% Created 2021-07-29 Thu 22:20
+% Created 2021-07-30 Fri 13:09
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,12 +32,12 @@
 
 
 \section{Flow Charts and Basic Flow Control concepts}
-\label{sec:orgc0b0ef5}
+\label{sec:org0bca62c}
 
 A flowchart is a series of instructions saying what to do in certain situations, generally revolving around boolean values.
 
 \subsection{Comparison Operators}
-\label{sec:org3481943}
+\label{sec:orgfb302c0}
 \texttt{=
 !}
 <
@@ -73,7 +73,7 @@ True
 \end{verbatim}
 
 \subsubsection{Boolean Operators}
-\label{sec:org5d8eaa8}
+\label{sec:org2165e4f}
 and
 or
 not
@@ -97,7 +97,7 @@ True
 \end{verbatim}
 
 \section{If, Else, and Elif Statements}
-\label{sec:orgcd7ca64}
+\label{sec:org3966279}
 
 The most important portion flow control statements are the statements themselves.
 
@@ -201,4 +201,108 @@ True
 True
 True
 \end{verbatim}
+
+\section{While Loops}
+\label{sec:orgf72386b}
+
+While loops can let you execute code blocks over and over again given that the while loops conditions are true.
+
+
+\begin{verbatim}
+
+spam=0
+while spam<5:
+    print("Hello World!")
+    spam+=1
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello World!
+Hello World!
+Hello World!
+Hello World!
+Hello World!
+\end{verbatim}
+
+
+The above while loop iterates 5 times, until the value of spam is atleast 5.
+
+\begin{verbatim}
+
+spam=0
+while spam<5:
+    print("Hello World!")
+    spam+=1
+    print(spam)
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello World!
+1
+Hello World!
+2
+Hello World!
+3
+Hello World!
+4
+Hello World!
+5
+\end{verbatim}
+
+
+\begin{verbatim}
+
+spam=0
+if spam<5:
+    print("Hello World!")
+    spam+=1
+    print(spam)
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello World!
+1
+\end{verbatim}
+
+
+While statements look similar to if statements, however the difference is that at the end of a if block, the program execution continues on with the rest of the program. However, with a while block at the end, it loops back to the beginning to check and see if the initial condition is still true. If so, it executes the code block again, and if it is false then it continues on with the rest of the program.
+
+
+\begin{verbatim}
+
+name = ""
+while name!="your name":
+    print("Please type your name.")
+    name=input()
+print("Thank you")
+
+\end{verbatim}
+
+This would keep looping until you type out ``your name''.
+
+\begin{verbatim}
+
+spam=0
+
+while spam<5:
+    spam+=1
+    if spam == 3:
+        continue
+    print("Spam is "  + str(spam))
+
+\end{verbatim}
+
+\begin{verbatim}
+Spam is 1
+Spam is 2
+Spam is 4
+Spam is 5
+\end{verbatim}
+
+
+
+Above we can see that when spam is 3, the string is not printed. When spam is 3, the program goes into the if block and continues.
 \end{document}
