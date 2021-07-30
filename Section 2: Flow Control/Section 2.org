@@ -1,9 +1,8 @@
 #+TITLE: Section 2
-#+TITLE: Flow Control
+#+SUBTITLE: Flow Control
 #+AUTHOR: Mohammed Asir Shahid
 #+EMAIL: MohammedShahid@protonmail.com
 #+DATE: 2021-07-24
-
 
 * Flow Charts and Basic Flow Control concepts
 
