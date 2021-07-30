@@ -160,3 +160,95 @@ print(bool(1.0))
 : True
 : True
 : True
+
+* While Loops
+
+While loops can let you execute code blocks over and over again given that the while loops conditions are true.
+
+
+#+begin_src python :results output :exports both
+
+spam=0
+while spam<5:
+    print("Hello World!")
+    spam+=1
+
+#+end_src
+
+#+RESULTS:
+: Hello World!
+: Hello World!
+: Hello World!
+: Hello World!
+: Hello World!
+
+The above while loop iterates 5 times, until the value of spam is atleast 5.
+
+#+begin_src python :results output :exports both
+
+spam=0
+while spam<5:
+    print("Hello World!")
+    spam+=1
+    print(spam)
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Hello World!
+1
+Hello World!
+2
+Hello World!
+3
+Hello World!
+4
+Hello World!
+5
+#+end_example
+
+
+#+begin_src python :results output :exports both
+
+spam=0
+if spam<5:
+    print("Hello World!")
+    spam+=1
+    print(spam)
+
+#+end_src
+
+#+RESULTS:
+: Hello World!
+: 1
+
+While statements look similar to if statements, however the difference is that at the end of a if block, the program execution continues on with the rest of the program. However, with a while block at the end, it loops back to the beginning to check and see if the initial condition is still true. If so, it executes the code block again, and if it is false then it continues on with the rest of the program.
+
+
+#+begin_src python :results output :exports both
+
+name = ""
+while name!="your name":
+    print("Please type your name.")
+    name=input()
+print("Thank you")
+
+#+end_src
+
+#+RESULTS:
+
+This would keep looping until you type out "your name".
+
+#+begin_src python :results output :exports both
+
+spam=0
+
+while spam<5:
+    spam+=1
+
+        if spam ==3:
+            continues
+    print("Spam is"  )
+
+#+end_src
