@@ -205,3 +205,127 @@ print("cat", "dog", "mouse", sep="ABC")
 : HelloWorld
 : cat dog mouse
 : catABCdogABCmouse
+
+* Global and Local Scopes
+
+Variables inside of a function can have the same name as variables inside of a function. This is due to the fact that some variables and parameters have a local scope and others have a global scope. Variables that are assigned inside of a function exist inside of the function's local scope while variables that are assigned outside of functions exist in the program's global scope which means they can be accessed from anywhere in the program. Any given line in the program is either in the global scope or inside of a local scope.
+
+Scopes can be thought of containers for variables. All variables existing in the global scope are global variables while variables existing in a local scope are local variables.
+
+A global scope for global variables is created when the program starts and is destroyed when the program ends while a local scope for local variables is created when the function is called and ends when the function returns.
+
+There are a few reasons why local and global scopes matter.
+
+1. Code in a global scope can't use local variable.
+
+   Let's look at the following example:
+
+#+begin_src python :results output :exports both
+
+def spam():
+    eggs=99
+
+spam()
+print(eggs)
+
+#+end_src
+
+#+RESULTS:
+
+This looks like it should work, however it returns an error saying that eggs is not defined.
+
+When we call the spam function, it creates the local scope. However, the eggs variables does not print. This is because after the spam function runs and returns, the local scope is destroyed. Thus we can't use the local variable in our global scope.
+
+
+2. Code in a local scope can use global variables.
+
+
+#+begin_src python :results output :exports both
+
+def spam():
+    print(eggs)
+
+eggs=42
+    
+spam()
+
+#+end_src
+
+#+RESULTS:
+: 42
+
+As we can see above, first the spam function is assigned, then we define the eggs variable in the global scope, then the spam function is called. Now since Python does not see any local variables named eggs, it will check and see if there are any global variables named eggs, it will use that and print it out.
+
+This eggs variable here is a global variable that is being read from a local scope. Python distinguishes based on where the variable is assigned.
+
+
+#+begin_src python :results output :exports both
+
+def spam():
+    eggs="Hello"
+    print(eggs)
+
+eggs=42
+
+spam()
+
+#+end_src
+
+#+RESULTS:
+: Hello
+
+Above we can see that Python will prioritize local variables.
+
+What if we want to change the global variable from inside of the local scope? We can do the following:
+
+#+begin_src python :results output :exports both
+
+def spam():
+    global eggs
+    eggs="Hello"
+    print(eggs)
+
+eggs=42
+
+spam()
+print(eggs)
+
+#+end_src
+
+#+RESULTS:
+: Hello
+: Hello
+
+3. Code in one function's local scope can't use variables in another local scope.
+
+#+begin_src python :results output :exports both
+
+def spam():
+    eggs=99
+    bacon()
+    print(eggs)
+
+def bacon():
+    ham=101
+    eggs=0
+
+spam()
+
+#+end_src
+
+#+RESULTS:
+: 99
+
+The above code prints out 99, which is the value of the eggs variable inside of the spam function.
+
+When bacon is called in the spam function, we know that the eggs variable inside of the bacon function is different than the eggs variable inside of the spam function. When the bacon function runs, it creates the local scope, assigns values to the ham and eggs variables, and then returns which destroys the local scope. Then the spam function continues and prints out eggs with a value of 99.
+
+
+4. You can use the same name for variables given that they are in a different scope.
+
+   This is self explanatory.
+
+
+So why do we need to have local and global scopes in the first place? Why not just have everything as a global variables?
+
+The benefit that local variables provide is that they separate code from the rest of the program. This helps with debugging. If something is wrong in the global scope because of a bad variable, you only need to check the global scope for issues. If something is wrong in a function due to a bad variable, you only need to check the local scope of the function.

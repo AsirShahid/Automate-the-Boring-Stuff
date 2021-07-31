@@ -1,4 +1,4 @@
-% Created 2021-07-31 Sat 00:05
+% Created 2021-07-31 Sat 12:03
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{Pythons Built-In Functions}
-\label{sec:org9181d71}
+\label{sec:org82a9517}
 
 Python comes with many built in functions such as print, input, and len which we have already used. Python also comes with Modules known as the Standard Library. For example, we have the Math module containing mathematics functions, the random module containing random number functions, etc. In order to use functions from these modules, we need to import them as follows:
 
@@ -62,7 +62,7 @@ print(randint(1,10))
 \end{verbatim}
 
 \begin{verbatim}
-2
+5
 \end{verbatim}
 
 
@@ -113,7 +113,7 @@ Hello world!
 \end{verbatim}
 
 \section{Writing Your Own Functions}
-\label{sec:org7ef5d1c}
+\label{sec:org7305244}
 
 A function is like a mini program inside of a program containing code that runs when the function is called.
 
@@ -240,4 +240,20 @@ HelloWorld
 cat dog mouse
 catABCdogABCmouse
 \end{verbatim}
+
+\section{Global and Local Scopes}
+\label{sec:orgdb339ef}
+
+Variables inside of a function can have the same name as variables inside of a function. This is due to the fact that some variables and parameters have a local scope and others have a global scope. Variables that are assigned inside of a function exist inside of the function's local scope while variables that are assigned outside of functions exist in the program's global scope which means they can be accessed from anywhere in the program. Any given line in the program is either in the global scope or inside of a local scope.
+
+Scopes can be thought of containers for variables. All variables existing in the global scope are global variables while variables existing in a local scope are local variables.
+
+There are a few reasons why local and global scopes matter.
+
+\begin{enumerate}
+\item Code in a global scope can't use local variable.
+\item Code in a local scope can use global variables.
+\item Code in one function's local scope can't use variables in another local scope.
+\item You can use the same name for variables given that they are in a different scope.
+\end{enumerate}
 \end{document}
