@@ -86,3 +86,36 @@ print(pyperclip.paste())
 
 #+RESULTS:
 : Hello world!
+
+* Writing Your Own Functions
+
+A function is like a mini program inside of a program containing code that runs when the function is called.
+
+
+#+begin_src python :results output :exports both
+
+def hello():
+    print("Howdy!")
+    print("Howdy!!!")
+    print("Hello there.")
+
+hello()
+hello()
+hello()
+
+#+end_src
+
+#+RESULTS:
+: Howdy!
+: Howdy!!!
+: Hello there.
+: Howdy!
+: Howdy!!!
+: Hello there.
+: Howdy!
+: Howdy!!!
+: Hello there.
+
+When a function is defined using the "def" statement, the code inside of it is not executed. The code inside the function is only executed when the function is called.
+
+One of the benefits of functions is that it lets you avoid duplicating code. This can be an issue because when you find a bug in the code, you need to make sure you fix it everywhere.

@@ -1,11 +1,12 @@
 
 # Table of Contents
 
-1.  [Pythons Built-In Functions](#org77de8aa)
+1.  [Pythons Built-In Functions](#org3ff9c24)
+2.  [Writing Your Own Functions](#org63081fc)
 
 
 
-<a id="org77de8aa"></a>
+<a id="org3ff9c24"></a>
 
 # Pythons Built-In Functions
 
@@ -16,7 +17,7 @@ Python comes with many built in functions such as print, input, and len which we
     
     print(random.randint(1,10))
 
-    10
+    9
 
 The above randint function gives us a random number between the given integers. We need to preface the randint function by &ldquo;random&rdquo; since it is inside of the random module. It is not a built-in function, so Python will not find it without first calling the random module. Python&rsquo;s standard library has many such modules that can be imported via the import statement.
 
@@ -27,7 +28,7 @@ We can also import statements in a different way &ldquo;from random import \*&rd
     
     print(randint(1,10))
 
-    2
+    5
 
 Sometimes you want to terminate a program early. There is a function for this in the &ldquo;sys&rdquo; module. The &ldquo;sys.exit&rdquo; function.
 
@@ -57,4 +58,35 @@ The pyperclip module contains 2 functions, the copy and paste functions which ca
     print(pyperclip.paste())
 
     Hello world!
+
+
+<a id="org63081fc"></a>
+
+# Writing Your Own Functions
+
+A function is like a mini program inside of a program containing code that runs when the function is called.
+
+    
+    def hello():
+        print("Howdy!")
+        print("Howdy!!!")
+        print("Hello there.")
+    
+    hello()
+    hello()
+    hello()
+
+    Howdy!
+    Howdy!!!
+    Hello there.
+    Howdy!
+    Howdy!!!
+    Hello there.
+    Howdy!
+    Howdy!!!
+    Hello there.
+
+When a function is defined using the &ldquo;def&rdquo; statement, the code inside of it is not executed. The code inside the function is only executed when the function is called.
+
+One of the benefits of functions is that it lets you avoid duplicating code. This can be an issue because when you find a bug in the code, you need to make sure you fix it everywhere.
 
