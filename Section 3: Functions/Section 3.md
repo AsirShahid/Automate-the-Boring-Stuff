@@ -1,12 +1,12 @@
 
 # Table of Contents
 
-1.  [Pythons Built-In Functions](#org3ff9c24)
-2.  [Writing Your Own Functions](#org63081fc)
+1.  [Pythons Built-In Functions](#orge75e649)
+2.  [Writing Your Own Functions](#org434788c)
 
 
 
-<a id="org3ff9c24"></a>
+<a id="orge75e649"></a>
 
 # Pythons Built-In Functions
 
@@ -60,7 +60,7 @@ The pyperclip module contains 2 functions, the copy and paste functions which ca
     Hello world!
 
 
-<a id="org63081fc"></a>
+<a id="org434788c"></a>
 
 # Writing Your Own Functions
 
@@ -88,5 +88,66 @@ A function is like a mini program inside of a program containing code that runs 
 
 When a function is defined using the &ldquo;def&rdquo; statement, the code inside of it is not executed. The code inside the function is only executed when the function is called.
 
-One of the benefits of functions is that it lets you avoid duplicating code. This can be an issue because when you find a bug in the code, you need to make sure you fix it everywhere.
+One of the benefits of functions is that it lets you avoid duplicating code. Duplication can be an issue because when you find a bug in the code, you need to make sure you fix it everywhere. With functions, you can just fix the function itself.
+
+Our functions can also contain arguments that our function can use, for example the argument given in a &ldquo;print&rdquo; or &ldquo;len&rdquo; function.
+
+    
+    def hello(name):
+        print("Hello " + name)
+    
+    hello("Alice")
+    hello("Bob")
+
+    Hello Alice
+    Hello Bob
+
+Above when the &ldquo;hello&rdquo; function is called, the argument is passed into the function and used as the name variable.
+
+    
+    def plusOne(number):
+        return number+1
+    
+    
+    newNumber=plusOne(5)
+    
+    print(newNumber)
+
+    6
+
+What does the print function return?
+
+The function returns a special value of a data type &ldquo;None&rdquo;. It represents a lack of a data type.
+
+    
+    spam=print()
+    
+    print(type(spam))
+
+    
+    <class 'NoneType'>
+
+We can take away from this the fact that every function call has some sort of return value, including the print function. When a function does not have a return statement, the return value defaults to &ldquo;None&rdquo;, as in the print function.
+
+Some functions have keyword arguments. These can be optional arguments, for example the print function adds a new line after you call the function. However, this can be changed as seen below. We can also choose what separates the separating character between the arguments.
+
+    
+    print("Hello")
+    print("World")
+    
+    
+    print("Hello", end="")
+    print("World")
+    
+    
+    print("cat", "dog", "mouse")
+    
+    
+    print("cat", "dog", "mouse", sep="ABC")
+
+    Hello
+    World
+    HelloWorld
+    cat dog mouse
+    catABCdogABCmouse
 

@@ -1,4 +1,4 @@
-% Created 2021-07-30 Fri 23:08
+% Created 2021-07-31 Sat 00:05
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{Pythons Built-In Functions}
-\label{sec:org403f03b}
+\label{sec:org9181d71}
 
 Python comes with many built in functions such as print, input, and len which we have already used. Python also comes with Modules known as the Standard Library. For example, we have the Math module containing mathematics functions, the random module containing random number functions, etc. In order to use functions from these modules, we need to import them as follows:
 
@@ -45,7 +45,7 @@ print(random.randint(1,10))
 \end{verbatim}
 
 \begin{verbatim}
-6
+8
 \end{verbatim}
 
 
@@ -62,7 +62,7 @@ print(randint(1,10))
 \end{verbatim}
 
 \begin{verbatim}
-10
+2
 \end{verbatim}
 
 
@@ -113,7 +113,7 @@ Hello world!
 \end{verbatim}
 
 \section{Writing Your Own Functions}
-\label{sec:orgecfa281}
+\label{sec:org7ef5d1c}
 
 A function is like a mini program inside of a program containing code that runs when the function is called.
 
@@ -146,5 +146,98 @@ Hello there.
 
 When a function is defined using the ``def'' statement, the code inside of it is not executed. The code inside the function is only executed when the function is called.
 
-One of the benefits of functions is that it lets you avoid duplicating code. This can be an issue because when you find a bug in the code, you need to make sure you fix it everywhere.
+One of the benefits of functions is that it lets you avoid duplicating code. Duplication can be an issue because when you find a bug in the code, you need to make sure you fix it everywhere. With functions, you can just fix the function itself.
+
+Our functions can also contain arguments that our function can use, for example the argument given in a ``print'' or ``len'' function.
+
+
+
+
+\begin{verbatim}
+
+def hello(name):
+    print("Hello " + name)
+
+hello("Alice")
+hello("Bob")
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello Alice
+Hello Bob
+\end{verbatim}
+
+
+Above when the ``hello'' function is called, the argument is passed into the function and used as the name variable.
+
+
+\begin{verbatim}
+
+def plusOne(number):
+    return number+1
+
+
+newNumber=plusOne(5)
+
+print(newNumber)
+
+\end{verbatim}
+
+\begin{verbatim}
+6
+\end{verbatim}
+
+
+
+What does the print function return?
+
+The function returns a special value of a data type ``None''. It represents a lack of a data type.
+
+
+\begin{verbatim}
+
+spam=print()
+
+print(type(spam))
+
+
+\end{verbatim}
+
+\begin{verbatim}
+
+<class 'NoneType'>
+\end{verbatim}
+
+
+We can take away from this the fact that every function call has some sort of return value, including the print function. When a function does not have a return statement, the return value defaults to ``None'', as in the print function.
+
+
+Some functions have keyword arguments. These can be optional arguments, for example the print function adds a new line after you call the function. However, this can be changed as seen below. We can also choose what separates the separating character between the arguments.
+
+
+\begin{verbatim}
+
+print("Hello")
+print("World")
+
+
+print("Hello", end="")
+print("World")
+
+
+print("cat", "dog", "mouse")
+
+
+print("cat", "dog", "mouse", sep="ABC")
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello
+World
+HelloWorld
+cat dog mouse
+catABCdogABCmouse
+\end{verbatim}
 \end{document}
