@@ -1,0 +1,5 @@
+#+TITLE: Section 4
+#+SUBTITLE: Handling Errors with try/except
+#+AUTHOR: Mohammed Asir Shahid
+#+EMAIL: MohammedShahid@protonmail.com
+#+DATE: 2021-07-31
