@@ -118,4 +118,90 @@ hello()
 
 When a function is defined using the "def" statement, the code inside of it is not executed. The code inside the function is only executed when the function is called.
 
-One of the benefits of functions is that it lets you avoid duplicating code. This can be an issue because when you find a bug in the code, you need to make sure you fix it everywhere.
+One of the benefits of functions is that it lets you avoid duplicating code. Duplication can be an issue because when you find a bug in the code, you need to make sure you fix it everywhere. With functions, you can just fix the function itself.
+
+Our functions can also contain arguments that our function can use, for example the argument given in a "print" or "len" function.
+
+
+
+
+#+begin_src python :results output :exports both
+
+def hello(name):
+    print("Hello " + name)
+
+hello("Alice")
+hello("Bob")
+
+#+end_src
+
+#+RESULTS:
+: Hello Alice
+: Hello Bob
+
+Above when the "hello" function is called, the argument is passed into the function and used as the name variable.
+
+
+#+begin_src python :results output :exports both
+
+def plusOne(number):
+    return number+1
+
+
+newNumber=plusOne(5)
+
+print(newNumber)
+
+#+end_src
+
+#+RESULTS:
+: 6
+
+
+What does the print function return?
+
+The function returns a special value of a data type "None". It represents a lack of a data type.
+
+
+#+begin_src python :results output :exports both
+
+spam=print()
+
+print(type(spam))
+
+
+#+end_src
+
+#+RESULTS:
+:
+: <class 'NoneType'>
+
+We can take away from this the fact that every function call has some sort of return value, including the print function. When a function does not have a return statement, the return value defaults to "None", as in the print function.
+
+
+Some functions have keyword arguments. These can be optional arguments, for example the print function adds a new line after you call the function. However, this can be changed as seen below. We can also choose what separates the separating character between the arguments.
+
+
+#+begin_src python :results output :exports both
+
+print("Hello")
+print("World")
+
+
+print("Hello", end="")
+print("World")
+
+
+print("cat", "dog", "mouse")
+
+
+print("cat", "dog", "mouse", sep="ABC")
+
+#+end_src
+
+#+RESULTS:
+: Hello
+: World
+: HelloWorld
+: cat dog mouse
+: catABCdogABCmouse
