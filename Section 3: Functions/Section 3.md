@@ -1,13 +1,13 @@
 
 # Table of Contents
 
-1.  [Pythons Built-In Functions](#org42eb3e8)
-2.  [Writing Your Own Functions](#org72903ec)
-3.  [Global and Local Scopes](#org9727e83)
+1.  [Pythons Built-In Functions](#org30e6bc8)
+2.  [Writing Your Own Functions](#org2f208f3)
+3.  [Global and Local Scopes](#org0ef3a0f)
 
 
 
-<a id="org42eb3e8"></a>
+<a id="org30e6bc8"></a>
 
 # Pythons Built-In Functions
 
@@ -18,7 +18,7 @@ Python comes with many built in functions such as print, input, and len which we
     
     print(random.randint(1,10))
 
-    4
+    7
 
 The above randint function gives us a random number between the given integers. We need to preface the randint function by &ldquo;random&rdquo; since it is inside of the random module. It is not a built-in function, so Python will not find it without first calling the random module. Python&rsquo;s standard library has many such modules that can be imported via the import statement.
 
@@ -29,7 +29,7 @@ We can also import statements in a different way &ldquo;from random import \*&rd
     
     print(randint(1,10))
 
-    5
+    9
 
 Sometimes you want to terminate a program early. There is a function for this in the &ldquo;sys&rdquo; module. The &ldquo;sys.exit&rdquo; function.
 
@@ -61,7 +61,7 @@ The pyperclip module contains 2 functions, the copy and paste functions which ca
     Hello world!
 
 
-<a id="org72903ec"></a>
+<a id="org2f208f3"></a>
 
 # Writing Your Own Functions
 
@@ -153,7 +153,7 @@ Some functions have keyword arguments. These can be optional arguments, for exam
     catABCdogABCmouse
 
 
-<a id="org9727e83"></a>
+<a id="org0ef3a0f"></a>
 
 # Global and Local Scopes
 
@@ -161,10 +161,95 @@ Variables inside of a function can have the same name as variables inside of a f
 
 Scopes can be thought of containers for variables. All variables existing in the global scope are global variables while variables existing in a local scope are local variables.
 
+A global scope for global variables is created when the program starts and is destroyed when the program ends while a local scope for local variables is created when the function is called and ends when the function returns.
+
 There are a few reasons why local and global scopes matter.
 
 1.  Code in a global scope can&rsquo;t use local variable.
-2.  Code in a local scope can use global variables.
-3.  Code in one function&rsquo;s local scope can&rsquo;t use variables in another local scope.
-4.  You can use the same name for variables given that they are in a different scope.
+    
+    Let&rsquo;s look at the following example:
+
+    
+    def spam():
+        eggs=99
+    
+    spam()
+    print(eggs)
+
+This looks like it should work, however it returns an error saying that eggs is not defined.
+
+When we call the spam function, it creates the local scope. However, the eggs variables does not print. This is because after the spam function runs and returns, the local scope is destroyed. Thus we can&rsquo;t use the local variable in our global scope.
+
+1.  Code in a local scope can use global variables.
+
+    
+    def spam():
+        print(eggs)
+    
+    eggs=42
+        
+    spam()
+
+    42
+
+As we can see above, first the spam function is assigned, then we define the eggs variable in the global scope, then the spam function is called. Now since Python does not see any local variables named eggs, it will check and see if there are any global variables named eggs, it will use that and print it out.
+
+This eggs variable here is a global variable that is being read from a local scope. Python distinguishes based on where the variable is assigned.
+
+    
+    def spam():
+        eggs="Hello"
+        print(eggs)
+    
+    eggs=42
+    
+    spam()
+
+    Hello
+
+Above we can see that Python will prioritize local variables.
+
+What if we want to change the global variable from inside of the local scope? We can do the following:
+
+    
+    def spam():
+        global eggs
+        eggs="Hello"
+        print(eggs)
+    
+    eggs=42
+    
+    spam()
+    print(eggs)
+
+    Hello
+    Hello
+
+1.  Code in one function&rsquo;s local scope can&rsquo;t use variables in another local scope.
+
+    
+    def spam():
+        eggs=99
+        bacon()
+        print(eggs)
+    
+    def bacon():
+        ham=101
+        eggs=0
+    
+    spam()
+
+    99
+
+The above code prints out 99, which is the value of the eggs variable inside of the spam function.
+
+When bacon is called in the spam function, we know that the eggs variable inside of the bacon function is different than the eggs variable inside of the spam function. When the bacon function runs, it creates the local scope, assigns values to the ham and eggs variables, and then returns which destroys the local scope. Then the spam function continues and prints out eggs with a value of 99.
+
+1.  You can use the same name for variables given that they are in a different scope.
+    
+    This is self explanatory.
+
+So why do we need to have local and global scopes in the first place? Why not just have everything as a global variables?
+
+The benefit that local variables provide is that they separate code from the rest of the program. This helps with debugging. If something is wrong in the global scope because of a bad variable, you only need to check the global scope for issues. If something is wrong in a function due to a bad variable, you only need to check the local scope of the function.
 
