@@ -3,3 +3,15 @@
 #+AUTHOR: Mohammed Asir Shahid
 #+EMAIL: MohammedShahid@protonmail.com
 #+DATE: 2021-07-31
+
+* Writing a "Guess the Number" Program
+
+
+#+begin_src python :results output :exports both :var name=(read-string "Hello. What is your name?")
+
+import random
+
+print("Hello. What is your name?")
+print(name)
+
+#+end_src
