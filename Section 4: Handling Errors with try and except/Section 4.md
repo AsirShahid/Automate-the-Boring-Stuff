@@ -1,7 +1,84 @@
 
 # Table of Contents
 
+1.  [Try and Except statements](#orgd161f22)
 
 
 
+<a id="orgd161f22"></a>
+
+# Try and Except statements
+
+Right now, getting an error or exception leads to the program crashing. However, we generally don&rsquo;t want this to happen in real life. We want the program to detect errors, handle them, and then continue running.
+
+    
+    def div42by(divideBy):
+        return 42/ divideBy
+    
+    print(div42by(2))
+    print(div42by(12))
+    print(div42by(0))
+    print(div42by(1))
+
+Running this causes an error. as we are trying to divide by 0, which is not mathematically allowed. So whenever this happens, the program crashes and terminates. We do not want one mistake to crash the entire program. We can try doing the following:
+
+    
+    def div42by(divideBy):
+        try:
+            return 42/ divideBy
+        except ZeroDivisionError:
+            print("Erorr: You tried to divide by zero.")
+    
+    
+    print(div42by(2))
+    print(div42by(12))
+    print(div42by(0))
+    print(div42by(1))
+
+    21.0
+    3.5
+    Erorr: You tried to divide by zero.
+    None
+    42.0
+
+Now with this try/except, the program will still continue running despite the error we ran into.
+
+This is because when the code in the try clause causes a zero division error, it runs the code in the except clause. Following that, the code execution continues running like normal.
+
+We can also just have a standard, general except clause which will catch all kinds of errors. This can be useful when we allow users to input a value.
+
+    
+    print("How many cats do you have?")
+    print(numCats)
+    
+    # numCats=input()
+    
+    if int(numCats)>=4:
+        print("That is a lot of cats.")
+    else:
+        print("That is not many cats.")
+
+    How many cats do you have?
+    1
+    That is not many cats.
+
+With an open ended input like we have above, the user can type in whatever value they want. This can causes errors since we can&rsquo;t turn any random string into an int. In order to fix this, we can use the try/except clauses.
+
+    
+    print("How many cats do you have?")
+    print(numCats)
+    
+    # numCats=input()
+    
+    try:
+        if int(numCats)>=4:
+            print("That is a lot of cats.")
+        else:
+            print("That is not many cats.")
+    except:
+        print("You did not enter a number.")
+
+    How many cats do you have?
+    t
+    You did not enter a number.
 
