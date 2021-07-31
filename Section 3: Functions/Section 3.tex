@@ -1,4 +1,4 @@
-% Created 2021-07-30 Fri 13:28
+% Created 2021-07-30 Fri 22:56
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{Pythons Built-In Functions}
-\label{sec:org996c585}
+\label{sec:org0369cda}
 
 Python comes with many built in functions such as print, input, and len which we have already used. Python also comes with Modules known as the Standard Library. For example, we have the Math module containing mathematics functions, the random module containing random number functions, etc. In order to use functions from these modules, we need to import them as follows:
 
@@ -45,9 +45,70 @@ print(random.randint(1,10))
 \end{verbatim}
 
 \begin{verbatim}
+1
+\end{verbatim}
+
+
+The above randint function gives us a random number between the given integers. We need to preface the randint function by ``random'' since it is inside of the random module. It is not a built-in function, so Python will not find it without first calling the random module. Python's standard library has many such modules that can be imported via the import statement.
+
+We can also import statements in a different way ``from random import *'' which removes the need to put in ``random'' before calling the function. However, this can decrease readibility as you do not know which module the function comes from.
+
+\begin{verbatim}
+
+from random import *
+
+print(randint(1,10))
+
+\end{verbatim}
+
+\begin{verbatim}
 3
 \end{verbatim}
 
 
-The above randint function gives us a random number between the given integers.
+Sometimes you want to terminate a program early. There is a function for this in the ``sys'' module. The ``sys.exit'' function.
+
+
+\begin{verbatim}
+
+import sys
+
+print("Hello")
+
+sys.exit()
+
+print("Goodbye")
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello
+\end{verbatim}
+
+
+As we can see above, the ``Goodbye'' string was not printed. This is due to the fact that we used the exit function and terminated the program early.
+
+
+While Python comes with several modules in the standard library, we can also install new modules using the pip program.
+
+\begin{verbatim}
+pip install pyperclip
+\end{verbatim}
+
+
+The pyperclip module contains 2 functions, the copy and paste functions which can be used to copy and paste text.
+
+\begin{verbatim}
+
+import pyperclip
+
+pyperclip.copy("Hello world!")
+print(pyperclip.paste())
+
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello world!
+\end{verbatim}
 \end{document}
