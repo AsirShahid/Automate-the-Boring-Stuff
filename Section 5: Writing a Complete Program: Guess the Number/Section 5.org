@@ -6,12 +6,4 @@
 
 * Writing a "Guess the Number" Program
 
-
-#+begin_src python :results output :exports both :var name=(read-string "Hello. What is your name?")
-
-import random
-
-print("Hello. What is your name?")
-print(name)
-
-#+end_src
+Using the concepts we have learned, we can create a guess the number game. The program will pick a random integer between 1 and 20, then respond to your guesses and tell you whether the guess is too high, low, or if it's correct.
