@@ -1,4 +1,4 @@
-% Created 2021-08-03 Tue 19:20
+% Created 2021-08-03 Tue 19:34
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,13 +32,25 @@
 
 
 \section{Launching Python Programs from Outside IDLE}
-\label{sec:org4d7157c}
+\label{sec:org8e0ce82}
 
-Opening your IDE, then opening the program, and then
+Opening your IDE, then opening the program, and then running it is time consuming and not convenient. You can instead run it from the terminal, but the way to do this differs based on your operating system.
 
-**
+\subsection{Shebang Line}
+\label{sec:orgef1f61d}
+
+The shebang line should be the first line in your Python programs. In Linux it is
+
 
 \begin{verbatim}
-#
+#! /usr/bin/python3
 \end{verbatim}
+
+\subsection{The Terminal}
+\label{sec:org23e5d60}
+
+Next you must open up a terminal, run python and then give the path to the file you want to run.
+
+
+The rest of the lesson is Windows specific.
 \end{document}

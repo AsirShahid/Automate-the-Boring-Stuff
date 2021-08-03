@@ -6,10 +6,22 @@
 
 * Launching Python Programs from Outside IDLE
 
-Opening your IDE, then opening the program, and then
+Opening your IDE, then opening the program, and then running it is time consuming and not convenient. You can instead run it from the terminal, but the way to do this differs based on your operating system.
 
-**
+** Shebang Line
+
+The shebang line should be the first line in your Python programs. In Linux it is
+
 
 #+begin_src bash
-#
+#! /usr/bin/python3
 #+end_src
+
+#+RESULTS:
+
+** The Terminal
+
+Next you must open up a terminal, run python and then give the path to the file you want to run.
+
+
+The rest of the lesson is Windows specific.
