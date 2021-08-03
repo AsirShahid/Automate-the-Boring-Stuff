@@ -1,4 +1,4 @@
-% Created 2021-08-02 Mon 15:24
+% Created 2021-08-03 Tue 14:18
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -31,9 +31,9 @@
 \tableofcontents
 
 
-\section{The List Data type}
-\label{sec:org33fd758}
 
+\section{The List Data type}
+\label{sec:org09f52b4}
 A list is a data type that contains multiple ordered items. Lists begin and end with square brackets and are separated by commas. They can be assigned to variables just like any other value.
 
 
@@ -263,4 +263,160 @@ True
 False
 True
 \end{verbatim}
+
+\section{For Loops with Lists, Multiple Assignment, and Augmented Operators}
+\label{sec:org17d3b7e}
+
+For Loops can be used to execute a block of code a certain number of times.
+
+\begin{verbatim}
+
+for i in range(4):
+    print(i)
+
+
+\end{verbatim}
+
+\begin{verbatim}
+0
+1
+2
+3
+\end{verbatim}
+
+
+Python interprets the range object similarly to a list of integers. For example, the above code can also be written as follows:
+
+\begin{verbatim}
+
+for i in [0,1,2,3]:
+    print(i)
+
+\end{verbatim}
+
+\begin{verbatim}
+0
+1
+2
+3
+\end{verbatim}
+
+
+We can also use the list function in order to convert the range object into a list.
+
+
+\begin{verbatim}
+
+print(list(range(4)))
+
+\end{verbatim}
+
+\begin{verbatim}
+[0, 1, 2, 3]
+\end{verbatim}
+
+
+So if you want to make a long list of integers that follows a pattern, using the range function can be better than writing it out.
+
+\begin{verbatim}
+
+print(list(range(0,100,2)))
+
+\end{verbatim}
+
+\begin{verbatim}
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98]
+\end{verbatim}
+
+
+One way to use range is to use a for loop over the range of the length of some list.
+
+
+\begin{verbatim}
+
+supplies=["pens","staplers","flame-throwers","binders"]
+
+for item in range(len(supplies)):
+    print("Index {} in supplies is {}".format(item,supplies[item]))
+
+\end{verbatim}
+
+\begin{verbatim}
+Index 0 in supplies is pens
+Index 1 in supplies is staplers
+Index 2 in supplies is flame-throwers
+Index 3 in supplies is binders
+\end{verbatim}
+
+
+
+The nice thing about the above for loop is that it'll work regardless of the length of the supplies list.
+
+
+\begin{verbatim}
+
+cat=["fat","orange","loud"]
+
+size=cat[0]
+
+color=cat[1]
+
+disposition=cat[2]
+
+# Instead of 3 lines of code for something like this, we can assign mutiple variables at once.
+
+size, color, disposition = cat
+print(size)
+print(color)
+print(disposition)
+
+# We could also have mutiple variables on the right side.
+
+size, color, disposition = "skinny","black","quiet"
+print(size)
+print(color)
+print(disposition)
+
+
+\end{verbatim}
+
+\begin{verbatim}
+fat
+orange
+loud
+skinny
+black
+quiet
+\end{verbatim}
+
+
+We can use the multiple assignment for swapping variables.
+
+\begin{verbatim}
+
+a="AAA"
+b="BBB"
+
+a,b=b,a
+
+print(a,b)
+
+\end{verbatim}
+
+\begin{verbatim}
+BBB AAA
+\end{verbatim}
+
+
+Python also lets us use Augmented Assignment Operators.
+
+\begin{verbatim}
+
+spam=42
+spam=spam+1
+spam+=1
+
+\end{verbatim}
+
+Instead of doing ``spam=spam+1'', we can do ``spam+=1''. This also applies to other operators such as plus, minus, multiplication, division, and modulus.
 \end{document}
