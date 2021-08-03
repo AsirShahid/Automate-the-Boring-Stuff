@@ -1,4 +1,4 @@
-% Created 2021-08-03 Tue 18:28
+% Created 2021-08-03 Tue 19:08
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,14 +32,14 @@
 
 
 \section{Advanced String Syntax}
-\label{sec:org59a5bb0}
+\label{sec:org24599eb}
 
 Text is one of the most common forms of data that we will work with.
 
 How do we add quotes and apostrophes in Python Strings?
 
 \subsection{Escape Characters}
-\label{sec:org371a300}
+\label{sec:org38a11e6}
 
 \begin{verbatim}
 
@@ -79,7 +79,7 @@ I'm fine
 \end{verbatim}
 
 \subsection{Raw Strings}
-\label{sec:org9715a20}
+\label{sec:org9532f7a}
 
 We can also have raw strings which should be used when we have text that includes many backslashes that we don't want to use for escape characters. There are similar to regular strings, but have ``r'' right at the beginning.
 
@@ -96,7 +96,7 @@ That is Carol\'s cat.
 \end{verbatim}
 
 \subsection{Multiline Strings with Triple Quotes}
-\label{sec:org8e05039}
+\label{sec:org922bfaa}
 
 Instead of using \n in order to put a newline in the string, it can be easier to use multiline strings.
 
@@ -120,7 +120,7 @@ Bob
 Above, Python automatically formats this using \n and \t in the background.
 
 \subsection{Similarities Between Strings and Lists}
-\label{sec:org17a854d}
+\label{sec:org218c629}
 
 Strings can use indices and slices similar to lists. The string ``Hello'' can be seen as a list with 5 items, each of which are individual strings.
 
@@ -148,12 +148,12 @@ False
 \end{verbatim}
 
 \section{String Methods}
-\label{sec:orga282c9c}
+\label{sec:orgf20090c}
 
 Unlike list methods, string methods return a new string value rather than modifying the existing string in place. This is due to the fact that strings are immutable.
 
 \subsection{upper(), lower()}
-\label{sec:orgfa55ae1}
+\label{sec:org556c88d}
 
 
 \begin{verbatim}
@@ -185,7 +185,7 @@ hello world!
 This can be helpful when we allow the user to input an answer and we do not care about uppercase or lowercase. There is also a corresponding title() method.
 
 \subsection{isupper(), islower()}
-\label{sec:org80d050f}
+\label{sec:org00da624}
 
 These methods return a boolean value depending on whether the strings are uppercase or lowercase. If we have a blank string or a string without any uppercase or lowercase characters, both isupper() and islower() will be false.
 
@@ -225,7 +225,7 @@ True
 \end{verbatim}
 
 \subsection{The isX() methods}
-\label{sec:org52d72da}
+\label{sec:orgd6be5a7}
 
 There are several other string methods that begin with is and return a boolean.
 
@@ -266,7 +266,7 @@ True
 \end{verbatim}
 
 \subsection{startswith(), endswith()}
-\label{sec:org9c4959b}
+\label{sec:org81b97bc}
 
 These return true if the string value that they are called on begins or ends, respectively, with the string that is passed to the method.
 
@@ -291,7 +291,7 @@ True
 \end{verbatim}
 
 \subsection{join() and split()}
-\label{sec:org6436673}
+\label{sec:orgd7f9814}
 
 The join() method is useful when we have a list of strings that need to be joined together into a single string value. It gets passed a list of strings and returns a string.
 
@@ -338,7 +338,7 @@ print("My name is Simon".split("!"))
 \end{verbatim}
 
 \subsection{rjust(), ljsut(), center()}
-\label{sec:orgd260f4c}
+\label{sec:orga435dca}
 
 rjust() and ljust() return a padded version of the string they are called upon in order to either right or left justify the string. They take an argument that dictates the character length of the justification. We can also give an argument to change the character that is used for the justification.
 
@@ -370,7 +370,80 @@ Hello-----
 \end{verbatim}
 
 \subsection{strip(), rstrip(), lstrip()}
-\label{sec:org3271968}
+\label{sec:org4c6547a}
 
-These methods can be used when we want to strip off whitespace characters like spaces, tabs, or new lines.
+These methods can be used when we want to strip off whitespace characters like spaces, tabs, or new lines from the right side, left side, or both sides. We can also pass a string that we want to remove instead of just the whitespace.
+
+\begin{verbatim}
+
+spam="Hello".rjust(10)
+
+print(spam)
+
+spam=spam.strip()
+
+print(spam)
+
+print("   x    ".strip())
+print("   x    ".rstrip())
+print("   x    ".lstrip())
+
+
+spam="SpamSpamBaconSpamEggsSpamSpam"
+
+print(spam.strip("amSp"))
+
+\end{verbatim}
+
+\begin{verbatim}
+     Hello
+Hello
+x
+   x
+x    
+BaconSpamEggs
+\end{verbatim}
+
+\subsection{replace()}
+\label{sec:org7e5fc91}
+
+This method looks for two arguments, a string to look for and a string to replace it with.
+
+\begin{verbatim}
+
+spam="Hello there!"
+
+print(spam)
+
+spam.replace("e","XYZ")
+
+print(spam)
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello there!
+Hello there!
+\end{verbatim}
+
+\subsection{The pyperclip Module}
+\label{sec:org8f004ee}
+
+We installed this in a previous section. It comes with copy and paste functions that lets it read and write to your computer's clipboard.
+
+\begin{verbatim}
+
+pip install pyperclip
+
+\end{verbatim}
+
+
+\begin{verbatim}
+
+import pyperclip
+
+#pyperclip.copy("Hello!!!!!!")
+#pyperclip.paste("Hello!!!!!!")
+
+\end{verbatim}
 \end{document}

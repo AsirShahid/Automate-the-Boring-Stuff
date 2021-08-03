@@ -310,4 +310,79 @@ print("Hello".center(20,"="))
 
 ** strip(), rstrip(), lstrip()
 
-These methods can be used when we want to strip off whitespace characters like spaces, tabs, or new lines.
+These methods can be used when we want to strip off whitespace characters like spaces, tabs, or new lines from the right side, left side, or both sides. We can also pass a string that we want to remove instead of just the whitespace.
+
+#+begin_src python :results output :exports both
+
+spam="Hello".rjust(10)
+
+print(spam)
+
+spam=spam.strip()
+
+print(spam)
+
+print("   x    ".strip())
+print("   x    ".rstrip())
+print("   x    ".lstrip())
+
+
+spam="SpamSpamBaconSpamEggsSpamSpam"
+
+print(spam.strip("amSp"))
+
+#+end_src
+
+#+RESULTS:
+:      Hello
+: Hello
+: x
+:    x
+: x
+: BaconSpamEggs
+
+** replace()
+
+This method looks for two arguments, a string to look for and a string to replace it with.
+
+#+begin_src python :results output :exports both
+
+spam="Hello there!"
+
+print(spam)
+
+spam.replace("e","XYZ")
+
+print(spam)
+
+#+end_src
+
+#+RESULTS:
+: Hello there!
+: Hello there!
+
+** The pyperclip Module
+
+We installed this in a previous section. It comes with copy and paste functions that lets it read and write to your computer's clipboard.
+
+#+begin_src bash
+
+pip install pyperclip
+
+#+end_src
+
+#+RESULTS:
+| Defaulting  | to      | user       | installation | because | normal                                             | site-packages | is | not | writeable |
+| Requirement | already | satisfied: | pyperclip    | in      | /home/mohammeds/.local/lib/python3.9/site-packages | (1.8.2)       |    |     |           |
+
+
+#+begin_src python :results output :exports both
+
+import pyperclip
+
+#pyperclip.copy("Hello!!!!!!")
+#pyperclip.paste("Hello!!!!!!")
+
+#+end_src
+
+#+RESULTS:
