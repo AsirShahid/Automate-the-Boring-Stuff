@@ -1,13 +1,14 @@
 
 # Table of Contents
 
-1.  [The List Data type](#org9f94543)
-2.  [For Loops with Lists, Multiple Assignment, and Augmented Operators](#orgd67e025)
-3.  [List methods](#orgb546779)
+1.  [The List Data type](#orge24bf68)
+2.  [For Loops with Lists, Multiple Assignment, and Augmented Operators](#org73c1efd)
+3.  [List methods](#org9b507fb)
+4.  [Similarities Between Lists and strings](#org7128cc2)
 
 
 
-<a id="org9f94543"></a>
+<a id="orge24bf68"></a>
 
 # The List Data type
 
@@ -177,7 +178,7 @@ We can use the in or not in operators with lists.
     True
 
 
-<a id="orgd67e025"></a>
+<a id="org73c1efd"></a>
 
 # For Loops with Lists, Multiple Assignment, and Augmented Operators
 
@@ -284,7 +285,7 @@ Python also lets us use Augmented Assignment Operators.
 Instead of doing &ldquo;spam=spam+1&rdquo;, we can do &ldquo;spam+=1&rdquo;. This also applies to other operators such as plus, minus, multiplication, division, and modulus.
 
 
-<a id="orgb546779"></a>
+<a id="org9b507fb"></a>
 
 # List methods
 
@@ -407,4 +408,113 @@ The sort method uses ASCII order, not regular alphabetical order. This means tha
     ['A', 'a', 'Z', 'z']
     ['A', 'Z', 'a', 'z']
     ['A', 'a', 'Z', 'z']
+
+
+<a id="org7128cc2"></a>
+
+# Similarities Between Lists and strings
+
+Lists are similar due to how strings can be seen as a list of single character strings. Due to this, a lot of what can be done with lists can also be done with strings.
+
+    
+    print(list("Hello"))
+    
+    name="Zophie"
+    
+    print(name[0])
+    
+    print(name[1:3])
+    
+    print(name[-2])
+    
+    print("Zo" in name)
+    print("xxx" in name)
+    
+    for letter in name:
+        print(letter)
+
+    ['H', 'e', 'l', 'l', 'o']
+    Z
+    op
+    i
+    True
+    False
+    Z
+    o
+    p
+    h
+    i
+    e
+
+One key difference is that lists are mutable while strings are immutable. Lists can have values added, removed, and changed while string values cannot be changed.
+
+    
+    name="Zophie the cat"
+    print(name)
+    print(name[7])
+
+    Zophie the cat
+    t
+
+However, trying to change the value of name[7] above would result in an error.
+
+The correct way to modify a string is using a new string using slices.
+
+    
+    name="Zophie a cat"
+    print(name)
+    
+    newName="{}the{}".format(name[0:7],name[8:12])
+    print(newName)
+
+    Zophie a cat
+    Zophie the cat
+
+The reason you can&rsquo;t change the string directly is because there is a large difference between mutable and immutable value in Python.
+
+    
+    spam=42
+    cheese=spam
+    
+    
+    spam=100
+    
+    print(spam,cheese)
+
+    100 42
+
+However, lists do not work this way. When you assign a list to a variable, you are assigning a reference to that variable.
+
+    
+    spam=[0,1,2,3,4,5]
+    cheese=spam
+    
+    cheese[1]="Hello"
+    
+    print(cheese,spam)
+
+    [0, 'Hello', 2, 3, 4, 5] [0, 'Hello', 2, 3, 4, 5]
+
+As we see above, we only modified the cheese variable, however the value in the spam variable also changed. This is because Python uses references here. spam and cheese are the same list due to this distinction.
+
+This does not happen to immutable values since they can&rsquo;t be modified in place, they can only be replaced by new values.
+
+If you don&rsquo;t keep this in mind, it can lead to some issues.
+
+    
+    def eggs(someParameter):
+        someParameter.append("Hello")
+    
+    spam= [1,2,3]
+    
+    print(spam)
+    
+    eggs(spam)
+    
+    print(spam)
+
+    [1, 2, 3]
+    [1, 2, 3, 'Hello']
+
+Above the changes made inside of the function are still applied outside of the local scope. This is due to the references that Python uses for lists.
 

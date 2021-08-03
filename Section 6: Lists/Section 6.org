@@ -516,3 +516,142 @@ print(spam)
 : ['A', 'a', 'Z', 'z']
 : ['A', 'Z', 'a', 'z']
 : ['A', 'a', 'Z', 'z']
+
+* Similarities Between Lists and strings
+
+Lists are similar due to how strings can be seen as a list of single character strings. Due to this, a lot of what can be done with lists can also be done with strings.
+
+
+#+begin_src python :results output :exports both
+
+print(list("Hello"))
+
+name="Zophie"
+
+print(name[0])
+
+print(name[1:3])
+
+print(name[-2])
+
+print("Zo" in name)
+print("xxx" in name)
+
+for letter in name:
+    print(letter)
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+['H', 'e', 'l', 'l', 'o']
+Z
+op
+i
+True
+False
+Z
+o
+p
+h
+i
+e
+#+end_example
+
+One key difference is that lists are mutable while strings are immutable. Lists can have values added, removed, and changed while string values cannot be changed.
+
+
+#+begin_src python :results output :exports both
+
+name="Zophie the cat"
+print(name)
+print(name[7])
+
+
+#+end_src
+
+#+RESULTS:
+: Zophie the cat
+: t
+
+However, trying to change the value of name[7] above would result in an error.
+
+The correct way to modify a string is using a new string using slices.
+
+
+#+begin_src python :results output :exports both
+
+name="Zophie a cat"
+print(name)
+
+newName="{}the{}".format(name[0:7],name[8:12])
+print(newName)
+#+end_src
+
+#+RESULTS:
+: Zophie a cat
+: Zophie the cat
+
+The reason you can't change the string directly is because there is a large difference between mutable and immutable value in Python.
+
+
+#+begin_src python :results output :exports both
+
+spam=42
+cheese=spam
+
+
+spam=100
+
+print(spam,cheese)
+
+#+end_src
+
+#+RESULTS:
+: 100 42
+
+However, lists do not work this way. When you assign a list to a variable, you are assigning a reference to that variable.
+
+
+#+begin_src python :results output :exports both
+
+spam=[0,1,2,3,4,5]
+cheese=spam
+
+cheese[1]="Hello"
+
+print(cheese,spam)
+
+
+#+end_src
+
+#+RESULTS:
+: [0, 'Hello', 2, 3, 4, 5] [0, 'Hello', 2, 3, 4, 5]
+
+As we see above, we only modified the cheese variable, however the value in the spam variable also changed. This is because Python uses references here. spam and cheese are the same list due to this distinction.
+
+
+This does not happen to immutable values since they can't be modified in place, they can only be replaced by new values.
+
+If you don't keep this in mind, it can lead to some issues.
+
+#+begin_src python :results output :exports both
+
+def eggs(someParameter):
+    someParameter.append("Hello")
+
+spam= [1,2,3]
+
+print(spam)
+
+eggs(spam)
+
+print(spam)
+
+#+end_src
+
+#+RESULTS:
+: [1, 2, 3]
+: [1, 2, 3, 'Hello']
+
+Above the changes made inside of the function are still applied outside of the local scope. This is due to the references that Python uses for lists.
