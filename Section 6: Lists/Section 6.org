@@ -655,3 +655,50 @@ print(spam)
 : [1, 2, 3, 'Hello']
 
 Above the changes made inside of the function are still applied outside of the local scope. This is due to the references that Python uses for lists.
+
+Why have this complicated reference system to begin with?
+
+Because lists and other immutable data types can be huge and having to copy the entire huge lists each time we make a function call would be slow and computationally expensive.
+
+However, there is a way to make a true copy of a list. The deepcopy function from the copy module.
+
+#+begin_src python :results output :exports both
+
+import copy
+
+spam=["A","B","C","D"]
+
+cheese=copy.deepcopy(spam)
+
+print(spam,cheese)
+
+cheese[1]=42
+
+print(spam,cheese)
+
+#+end_src
+
+#+RESULTS:
+: ['A', 'B', 'C', 'D'] ['A', 'B', 'C', 'D']
+: ['A', 'B', 'C', 'D'] ['A', 42, 'C', 'D']
+
+When making a deepcopy, we can edit the copy of the list without editing the original.
+
+
+Lists can also spam multiple lines of code, regardless of the indentation.
+
+#+begin_src python :results output :exports both
+
+spam=["apples",
+      "oranges",
+      "bananas",
+      "cats"]
+
+print(spam)
+
+#+end_src
+
+#+RESULTS:
+: ['apples', 'oranges', 'bananas', 'cats']
+
+For other non lists, we can use "\" in order to deliminate new lines.

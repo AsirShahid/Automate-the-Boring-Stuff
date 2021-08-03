@@ -1,14 +1,14 @@
 
 # Table of Contents
 
-1.  [The List Data type](#orge24bf68)
-2.  [For Loops with Lists, Multiple Assignment, and Augmented Operators](#org73c1efd)
-3.  [List methods](#org9b507fb)
-4.  [Similarities Between Lists and strings](#org7128cc2)
+1.  [The List Data type](#orgbac65a4)
+2.  [For Loops with Lists, Multiple Assignment, and Augmented Operators](#orgce11826)
+3.  [List methods](#orgd0dff55)
+4.  [Similarities Between Lists and strings](#org7b0a414)
 
 
 
-<a id="orge24bf68"></a>
+<a id="orgbac65a4"></a>
 
 # The List Data type
 
@@ -178,7 +178,7 @@ We can use the in or not in operators with lists.
     True
 
 
-<a id="org73c1efd"></a>
+<a id="orgce11826"></a>
 
 # For Loops with Lists, Multiple Assignment, and Augmented Operators
 
@@ -285,7 +285,7 @@ Python also lets us use Augmented Assignment Operators.
 Instead of doing &ldquo;spam=spam+1&rdquo;, we can do &ldquo;spam+=1&rdquo;. This also applies to other operators such as plus, minus, multiplication, division, and modulus.
 
 
-<a id="org9b507fb"></a>
+<a id="orgd0dff55"></a>
 
 # List methods
 
@@ -410,7 +410,7 @@ The sort method uses ASCII order, not regular alphabetical order. This means tha
     ['A', 'a', 'Z', 'z']
 
 
-<a id="org7128cc2"></a>
+<a id="org7b0a414"></a>
 
 # Similarities Between Lists and strings
 
@@ -517,4 +517,42 @@ If you don&rsquo;t keep this in mind, it can lead to some issues.
     [1, 2, 3, 'Hello']
 
 Above the changes made inside of the function are still applied outside of the local scope. This is due to the references that Python uses for lists.
+
+Why have this complicated reference system to begin with?
+
+Because lists and other immutable data types can be huge and having to copy the entire huge lists each time we make a function call would be slow and computationally expensive.
+
+However, there is a way to make a true copy of a list. The deepcopy function from the copy module.
+
+    
+    import copy
+    
+    spam=["A","B","C","D"]
+    
+    cheese=copy.deepcopy(spam)
+    
+    print(spam,cheese)
+    
+    cheese[1]=42
+    
+    print(spam,cheese)
+
+    ['A', 'B', 'C', 'D'] ['A', 'B', 'C', 'D']
+    ['A', 'B', 'C', 'D'] ['A', 42, 'C', 'D']
+
+When making a deepcopy, we can edit the copy of the list without editing the original.
+
+Lists can also spam multiple lines of code, regardless of the indentation.
+
+    
+    spam=["apples",
+          "oranges",
+          "bananas",
+          "cats"]
+    
+    print(spam)
+
+    ['apples', 'oranges', 'bananas', 'cats']
+
+For other non lists, we can use &ldquo;\\&rdquo; in order to deliminate new lines.
 

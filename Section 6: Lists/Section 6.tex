@@ -1,4 +1,4 @@
-% Created 2021-08-03 Tue 15:24
+% Created 2021-08-03 Tue 15:50
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -33,7 +33,7 @@
 
 
 \section{The List Data type}
-\label{sec:orgddc4863}
+\label{sec:org8c996d5}
 A list is a data type that contains multiple ordered items. Lists begin and end with square brackets and are separated by commas. They can be assigned to variables just like any other value.
 
 
@@ -265,7 +265,7 @@ True
 \end{verbatim}
 
 \section{For Loops with Lists, Multiple Assignment, and Augmented Operators}
-\label{sec:orgefc2e46}
+\label{sec:orgb797932}
 
 For Loops can be used to execute a block of code a certain number of times.
 
@@ -421,7 +421,7 @@ spam+=1
 Instead of doing ``spam=spam+1'', we can do ``spam+=1''. This also applies to other operators such as plus, minus, multiplication, division, and modulus.
 
 \section{List methods}
-\label{sec:org5897993}
+\label{sec:org1dd1c4c}
 
 A method is the same thing as a function, except it is attached to a certain value.
 
@@ -582,7 +582,7 @@ print(spam)
 \end{verbatim}
 
 \section{Similarities Between Lists and strings}
-\label{sec:org5ae0b87}
+\label{sec:orgfd7c712}
 
 Lists are similar due to how strings can be seen as a list of single character strings. Due to this, a lot of what can be done with lists can also be done with strings.
 
@@ -729,4 +729,55 @@ print(spam)
 
 
 Above the changes made inside of the function are still applied outside of the local scope. This is due to the references that Python uses for lists.
+
+Why have this complicated reference system to begin with?
+
+Because lists and other immutable data types can be huge and having to copy the entire huge lists each time we make a function call would be slow and computationally expensive.
+
+However, there is a way to make a true copy of a list. The deepcopy function from the copy module.
+
+\begin{verbatim}
+
+import copy
+
+spam=["A","B","C","D"]
+
+cheese=copy.deepcopy(spam)
+
+print(spam,cheese)
+
+cheese[1]=42
+
+print(spam,cheese)
+
+\end{verbatim}
+
+\begin{verbatim}
+['A', 'B', 'C', 'D'] ['A', 'B', 'C', 'D']
+['A', 'B', 'C', 'D'] ['A', 42, 'C', 'D']
+\end{verbatim}
+
+
+When making a deepcopy, we can edit the copy of the list without editing the original.
+
+
+Lists can also spam multiple lines of code, regardless of the indentation.
+
+\begin{verbatim}
+
+spam=["apples",
+      "oranges",
+      "bananas",
+      "cats"]
+
+print(spam)
+
+\end{verbatim}
+
+\begin{verbatim}
+['apples', 'oranges', 'bananas', 'cats']
+\end{verbatim}
+
+
+For other non lists, we can use ``$\backslash$'' in order to deliminate new lines.
 \end{document}
