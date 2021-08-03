@@ -1,4 +1,4 @@
-% Created 2021-08-03 Tue 17:23
+% Created 2021-08-03 Tue 17:47
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -30,4 +30,120 @@
 \maketitle
 \tableofcontents
 
+
+\section{Advanced String Syntax}
+\label{sec:orgc4f689e}
+
+Text is one of the most common forms of data that we will work with.
+
+How do we add quotes and apostrophes in Python Strings?
+
+\subsection{Escape Characters}
+\label{sec:orgd2a8c68}
+
+\begin{verbatim}
+
+print("Hello")
+print('That is Alice\'s cat')
+print('Say hi to Bob\'s mother')
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello
+That is Alice's cat
+Say hi to Bob's mother
+\end{verbatim}
+
+
+
+We can have several different types of escape characters.
+\begin{enumerate}
+\item $\backslash$' - Prints as Single quote
+\item $\backslash$`` - Prints as Double quote
+\item \t - Prints as tab
+\item \n - Prints as newline
+\item $\backslash$\ - Prints as backslash.
+\end{enumerate}
+
+\begin{verbatim}
+
+print("Hello there!\nHow are you?\nI\'m fine")
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello there!
+How are you?
+I'm fine
+\end{verbatim}
+
+\subsection{Raw Strings}
+\label{sec:org262fe9c}
+
+We can also have raw strings which should be used when we have text that includes many backslashes that we don't want to use for escape characters. There are similar to regular strings, but have ``r'' right at the beginning.
+
+\begin{verbatim}
+
+print(r"Hello")
+print(r"That is Carol\'s cat.")
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello
+That is Carol\'s cat.
+\end{verbatim}
+
+\subsection{Multiline Strings with Triple Quotes}
+\label{sec:org6bcf3ce}
+
+Instead of using \n in order to put a newline in the string, it can be easier to use multiline strings.
+
+\begin{verbatim}
+
+print("""Dear Alice,
+Eve's cat has been arrested for catnapping, cat burgularly, and extortion.
+Sincerly,
+Bob""")
+
+\end{verbatim}
+
+\begin{verbatim}
+Dear Alice,
+Eve's cat has been arrested for catnapping, cat burgularly, and extortion.
+Sincerly,
+Bob
+\end{verbatim}
+
+
+Above, Python automatically formats this using \n and \t in the background.
+
+\subsection{Similarities Between Strings and Lists}
+\label{sec:org6ac4f19}
+
+Strings can use indices and slices similar to lists. The string ``Hello'' can be seen as a list with 5 items, each of which are individual strings.
+
+\begin{verbatim}
+
+spam="Hello world!"
+
+print(spam[0])
+print(spam[1:5])
+print(spam[-1])
+
+print("Hello" in spam)
+print("x" in spam)
+print("HELLO" in spam)
+
+\end{verbatim}
+
+\begin{verbatim}
+H
+ello
+!
+True
+False
+False
+\end{verbatim}
 \end{document}

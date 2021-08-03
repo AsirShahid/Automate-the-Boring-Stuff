@@ -3,3 +3,105 @@
 #+AUTHOR: Mohammed Asir Shahid
 #+EMAIL: MohammedShahid@protonmail.com
 #+DATE: 2021-08-03
+
+* Advanced String Syntax
+
+Text is one of the most common forms of data that we will work with.
+
+How do we add quotes and apostrophes in Python Strings?
+
+** Escape Characters
+
+#+begin_src python :results output :exports both
+
+print("Hello")
+print('That is Alice\'s cat')
+print('Say hi to Bob\'s mother')
+
+#+end_src
+
+#+RESULTS:
+: Hello
+: That is Alice's cat
+: Say hi to Bob's mother
+
+
+We can have several different types of escape characters.
+1. \' - Prints as Single quote
+2. \" - Prints as Double quote
+3. \t - Prints as tab
+4. \n - Prints as newline
+5. \\ - Prints as backslash.
+
+#+begin_src python :results output :exports both
+
+print("Hello there!\nHow are you?\nI\'m fine")
+
+#+end_src
+
+#+RESULTS:
+: Hello there!
+: How are you?
+: I'm fine
+
+** Raw Strings
+
+We can also have raw strings which should be used when we have text that includes many backslashes that we don't want to use for escape characters. There are similar to regular strings, but have "r" right at the beginning.
+
+#+begin_src python :results output :exports both
+
+print(r"Hello")
+print(r"That is Carol\'s cat.")
+
+#+end_src
+
+#+RESULTS:
+: Hello
+: That is Carol\'s cat.
+
+** Multiline Strings with Triple Quotes
+
+Instead of using \n in order to put a newline in the string, it can be easier to use multiline strings.
+
+#+begin_src python :results output :exports both
+
+print("""Dear Alice,
+Eve's cat has been arrested for catnapping, cat burgularly, and extortion.
+Sincerly,
+Bob""")
+
+#+end_src
+
+#+RESULTS:
+: Dear Alice,
+: Eve's cat has been arrested for catnapping, cat burgularly, and extortion.
+: Sincerly,
+: Bob
+
+Above, Python automatically formats this using \n and \t in the background.
+
+** Similarities Between Strings and Lists
+
+Strings can use indices and slices similar to lists. The string "Hello" can be seen as a list with 5 items, each of which are individual strings.
+
+#+begin_src python :results output :exports both
+
+spam="Hello world!"
+
+print(spam[0])
+print(spam[1:5])
+print(spam[-1])
+
+print("Hello" in spam)
+print("x" in spam)
+print("HELLO" in spam)
+
+#+end_src
+
+#+RESULTS:
+: H
+: ello
+: !
+: True
+: False
+: False
