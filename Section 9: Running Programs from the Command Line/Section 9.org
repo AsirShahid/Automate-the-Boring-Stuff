@@ -3,3 +3,13 @@
 #+AUTHOR: Mohammed Asir Shahid
 #+EMAIL: MohammedShahid@protonmail.com
 #+DATE: 2021-08-03
+
+* Launching Python Programs from Outside IDLE
+
+Opening your IDE, then opening the program, and then
+
+**
+
+#+begin_src bash
+#
+#+end_src
