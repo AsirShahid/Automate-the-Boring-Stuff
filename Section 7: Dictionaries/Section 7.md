@@ -1,11 +1,12 @@
 
 # Table of Contents
 
-1.  [The Dictionary Data type](#orgb8e8e7d)
+1.  [The Dictionary Data type](#orgf544149)
+2.  [Data Structures](#org8edbd70)
 
 
 
-<a id="orgb8e8e7d"></a>
+<a id="orgf544149"></a>
 
 # The Dictionary Data type
 
@@ -213,4 +214,144 @@ We can use the pprint module in order to display the items in the dictionary in 
      'T': 6,
      'W': 2,
      'Y': 1}
+
+
+<a id="org8edbd70"></a>
+
+# Data Structures
+
+Lists and dictionaries are powerful ways to organize data in Python. We can also have lists of dictionaries and dictionaries of lists.
+
+    
+    cat={"name":"Zophie", "age":7, "color":"gray"}
+    allCats=[]
+    
+    allCats.append(cat)
+    print(allCats)
+    
+    cat={"name":"Pooka", "age":5, "color":"black"}
+    allCats.append(cat)
+    print(allCats)
+    
+    cat={"name":"Fat-tail", "age":5, "color":"gray"}
+    allCats.append(cat)
+    print(allCats)
+    
+    cat={"name":"???", "age":-1, "color":"orange"}
+    allCats.append(cat)
+    print(allCats)
+
+    [{'name': 'Zophie', 'age': 7, 'color': 'gray'}]
+    [{'name': 'Zophie', 'age': 7, 'color': 'gray'}, {'name': 'Pooka', 'age': 5, 'color': 'black'}]
+    [{'name': 'Zophie', 'age': 7, 'color': 'gray'}, {'name': 'Pooka', 'age': 5, 'color': 'black'}, {'name': 'Fat-tail', 'age': 5, 'color': 'gray'}]
+    [{'name': 'Zophie', 'age': 7, 'color': 'gray'}, {'name': 'Pooka', 'age': 5, 'color': 'black'}, {'name': 'Fat-tail', 'age': 5, 'color': 'gray'}, {'name': '???', 'age': -1, 'color': 'orange'}]
+
+We can have dictionaries that represent many different types of data structures, for example a tic-tac-toe board.
+
+    import pprint
+    
+    theBoard={"top-L":" ", "top-M":" ", "top-R":" ","mid-L":" ", "mid-M":" ", "mid-R":" ","low-L":" ", "low-M":" ", "low-R":" "}
+    
+    pprint.pprint(theBoard)
+
+    {'low-L': ' ',
+     'low-M': ' ',
+     'low-R': ' ',
+     'mid-L': ' ',
+     'mid-M': ' ',
+     'mid-R': ' ',
+     'top-L': ' ',
+     'top-M': ' ',
+     'top-R': ' '}
+
+We can have Python use this dictionary to represent a full tic-tac-toe board.
+
+    
+    import pprint
+    
+    theBoard={"top-L":" ", "top-M":" ", "top-R":" ","mid-L":" ", "mid-M":" ", "mid-R":" ","low-L":" ", "low-M":" ", "low-R":" "}
+    
+    theBoard["mid-M"]="X"
+    theBoard["mid-L"]="X"
+    theBoard["low-R"]="X"
+    
+    theBoard["top-L"]="O"
+    theBoard["top-M"]="O"
+    theBoard["top-R"]="O"
+    
+    pprint.pprint(theBoard)
+
+    {'low-L': ' ',
+     'low-M': ' ',
+     'low-R': 'X',
+     'mid-L': 'X',
+     'mid-M': 'X',
+     'mid-R': ' ',
+     'top-L': 'O',
+     'top-M': 'O',
+     'top-R': 'O'}
+
+We can also have Python convert this dictionary into a nice looking board.
+
+    
+    theBoard={"top-L":" ", "top-M":" ", "top-R":" ","mid-L":" ", "mid-M":" ", "mid-R":" ","low-L":" ", "low-M":" ", "low-R":" "}
+    
+    def printBoard(board):
+        print("{} | {} | {}".format(board["top-L"],board["top-M"],board["top-R"]))
+        print("---------")
+        print("{} | {} | {}".format(board["mid-L"],board["mid-M"],board["mid-R"]))
+        print("---------")
+        print("{} | {} | {}".format(board["low-L"],board["low-M"],board["low-R"]))
+    
+    printBoard(theBoard)
+
+      |   |  
+    ---------
+      |   |  
+    ---------
+      |   |  
+
+As above, we can change the values in the dictionary in order to put values in the board.
+
+    
+    theBoard={"top-L":" ", "top-M":" ", "top-R":" ","mid-L":" ", "mid-M":" ", "mid-R":" ","low-L":" ", "low-M":" ", "low-R":" "}
+    
+    def printBoard(board):
+        print("{} | {} | {}".format(board["top-L"],board["top-M"],board["top-R"]))
+        print("---------")
+        print("{} | {} | {}".format(board["mid-L"],board["mid-M"],board["mid-R"]))
+        print("---------")
+        print("{} | {} | {}".format(board["low-L"],board["low-M"],board["low-R"]))
+    
+    
+    theBoard["mid-M"]="X"
+    theBoard["mid-L"]="X"
+    theBoard["low-R"]="X"
+    
+    theBoard["top-L"]="O"
+    theBoard["top-M"]="O"
+    theBoard["top-R"]="O"
+    
+    printBoard(theBoard)
+
+    O | O | O
+    ---------
+    X | X |  
+    ---------
+      |   | X
+
+We have a type function that can be helpful when we want to figure out the data type of any value.
+
+    
+    theBoard={"top-L":" ", "top-M":" ", "top-R":" ","mid-L":" ", "mid-M":" ", "mid-R":" ","low-L":" ", "low-M":" ", "low-R":" "}
+    
+    print(type(42))
+    print(type(3.14))
+    print(type("Hello"))
+    print(type(theBoard))
+
+    <class 'int'>
+    <class 'float'>
+    <class 'str'>
+    <class 'dict'>
 

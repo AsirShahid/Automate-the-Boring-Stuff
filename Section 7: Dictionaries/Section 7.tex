@@ -1,4 +1,4 @@
-% Created 2021-08-03 Tue 16:52
+% Created 2021-08-03 Tue 17:20
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{The Dictionary Data type}
-\label{sec:orge7a77d4}
+\label{sec:orgadb6a16}
 
 Like a list, a dictionary is a collection of many values, however indices can be many different types of data types, not just integers. These indices are called keys.
 
@@ -301,5 +301,183 @@ print(formattedtext)
  'T': 6,
  'W': 2,
  'Y': 1}
+\end{verbatim}
+
+\section{Data Structures}
+\label{sec:org2e32b25}
+
+Lists and dictionaries are powerful ways to organize data in Python. We can also have lists of dictionaries and dictionaries of lists.
+
+
+\begin{verbatim}
+
+cat={"name":"Zophie", "age":7, "color":"gray"}
+allCats=[]
+
+allCats.append(cat)
+print(allCats)
+
+cat={"name":"Pooka", "age":5, "color":"black"}
+allCats.append(cat)
+print(allCats)
+
+cat={"name":"Fat-tail", "age":5, "color":"gray"}
+allCats.append(cat)
+print(allCats)
+
+cat={"name":"???", "age":-1, "color":"orange"}
+allCats.append(cat)
+print(allCats)
+
+\end{verbatim}
+
+\begin{verbatim}
+[{'name': 'Zophie', 'age': 7, 'color': 'gray'}]
+[{'name': 'Zophie', 'age': 7, 'color': 'gray'}, {'name': 'Pooka', 'age': 5, 'color': 'black'}]
+[{'name': 'Zophie', 'age': 7, 'color': 'gray'}, {'name': 'Pooka', 'age': 5, 'color': 'black'}, {'name': 'Fat-tail', 'age': 5, 'color': 'gray'}]
+[{'name': 'Zophie', 'age': 7, 'color': 'gray'}, {'name': 'Pooka', 'age': 5, 'color': 'black'}, {'name': 'Fat-tail', 'age': 5, 'color': 'gray'}, {'name': '???', 'age': -1, 'color': 'orange'}]
+\end{verbatim}
+
+
+We can have dictionaries that represent many different types of data structures, for example a tic-tac-toe board.
+
+
+\begin{verbatim}
+import pprint
+
+theBoard={"top-L":" ", "top-M":" ", "top-R":" ","mid-L":" ", "mid-M":" ", "mid-R":" ","low-L":" ", "low-M":" ", "low-R":" "}
+
+pprint.pprint(theBoard)
+
+\end{verbatim}
+
+\begin{verbatim}
+{'low-L': ' ',
+ 'low-M': ' ',
+ 'low-R': ' ',
+ 'mid-L': ' ',
+ 'mid-M': ' ',
+ 'mid-R': ' ',
+ 'top-L': ' ',
+ 'top-M': ' ',
+ 'top-R': ' '}
+\end{verbatim}
+
+
+We can have Python use this dictionary to represent a full tic-tac-toe board.
+
+
+\begin{verbatim}
+
+import pprint
+
+theBoard={"top-L":" ", "top-M":" ", "top-R":" ","mid-L":" ", "mid-M":" ", "mid-R":" ","low-L":" ", "low-M":" ", "low-R":" "}
+
+theBoard["mid-M"]="X"
+theBoard["mid-L"]="X"
+theBoard["low-R"]="X"
+
+theBoard["top-L"]="O"
+theBoard["top-M"]="O"
+theBoard["top-R"]="O"
+
+pprint.pprint(theBoard)
+
+\end{verbatim}
+
+\begin{verbatim}
+{'low-L': ' ',
+ 'low-M': ' ',
+ 'low-R': 'X',
+ 'mid-L': 'X',
+ 'mid-M': 'X',
+ 'mid-R': ' ',
+ 'top-L': 'O',
+ 'top-M': 'O',
+ 'top-R': 'O'}
+\end{verbatim}
+
+
+We can also have Python convert this dictionary into a nice looking board.
+
+
+\begin{verbatim}
+
+theBoard={"top-L":" ", "top-M":" ", "top-R":" ","mid-L":" ", "mid-M":" ", "mid-R":" ","low-L":" ", "low-M":" ", "low-R":" "}
+
+def printBoard(board):
+    print("{} | {} | {}".format(board["top-L"],board["top-M"],board["top-R"]))
+    print("---------")
+    print("{} | {} | {}".format(board["mid-L"],board["mid-M"],board["mid-R"]))
+    print("---------")
+    print("{} | {} | {}".format(board["low-L"],board["low-M"],board["low-R"]))
+
+printBoard(theBoard)
+
+\end{verbatim}
+
+\begin{verbatim}
+  |   |  
+---------
+  |   |  
+---------
+  |   |  
+\end{verbatim}
+
+
+As above, we can change the values in the dictionary in order to put values in the board.
+
+\begin{verbatim}
+
+theBoard={"top-L":" ", "top-M":" ", "top-R":" ","mid-L":" ", "mid-M":" ", "mid-R":" ","low-L":" ", "low-M":" ", "low-R":" "}
+
+def printBoard(board):
+    print("{} | {} | {}".format(board["top-L"],board["top-M"],board["top-R"]))
+    print("---------")
+    print("{} | {} | {}".format(board["mid-L"],board["mid-M"],board["mid-R"]))
+    print("---------")
+    print("{} | {} | {}".format(board["low-L"],board["low-M"],board["low-R"]))
+
+
+theBoard["mid-M"]="X"
+theBoard["mid-L"]="X"
+theBoard["low-R"]="X"
+
+theBoard["top-L"]="O"
+theBoard["top-M"]="O"
+theBoard["top-R"]="O"
+
+printBoard(theBoard)
+
+\end{verbatim}
+
+\begin{verbatim}
+O | O | O
+---------
+X | X |  
+---------
+  |   | X
+\end{verbatim}
+
+
+
+We have a type function that can be helpful when we want to figure out the data type of any value.
+
+
+\begin{verbatim}
+
+theBoard={"top-L":" ", "top-M":" ", "top-R":" ","mid-L":" ", "mid-M":" ", "mid-R":" ","low-L":" ", "low-M":" ", "low-R":" "}
+
+print(type(42))
+print(type(3.14))
+print(type("Hello"))
+print(type(theBoard))
+\end{verbatim}
+
+\begin{verbatim}
+<class 'int'>
+<class 'float'>
+<class 'str'>
+<class 'dict'>
 \end{verbatim}
 \end{document}
