@@ -105,3 +105,209 @@ print("HELLO" in spam)
 : True
 : False
 : False
+
+* String Methods
+
+Unlike list methods, string methods return a new string value rather than modifying the existing string in place. This is due to the fact that strings are immutable.
+
+** upper(), lower()
+
+
+#+begin_src python :results output :exports both
+
+spam="Hello world!"
+
+spam.upper()
+
+print(spam)
+
+spam=spam.upper()
+
+print(spam)
+
+spam=spam.lower()
+
+print(spam)
+
+
+#+end_src
+
+#+RESULTS:
+: Hello world!
+: HELLO WORLD!
+: hello world!
+
+This can be helpful when we allow the user to input an answer and we do not care about uppercase or lowercase. There is also a corresponding title() method.
+
+** isupper(), islower()
+
+These methods return a boolean value depending on whether the strings are uppercase or lowercase. If we have a blank string or a string without any uppercase or lowercase characters, both isupper() and islower() will be false.
+
+#+begin_src python :results output :exports both
+
+spam="Hello world"
+
+print(spam.islower())
+
+spam="hello world"
+
+print(spam.islower())
+
+spam="HELLO WORLD"
+
+print(spam.isupper())
+
+#+end_src
+
+#+RESULTS:
+: False
+: True
+: True
+
+We can also call both upper() and isupper() on the same string.
+
+#+begin_src python :results output :exports both
+
+print("Hello".upper().isupper())
+
+#+end_src
+
+#+RESULTS:
+: True
+
+** The isX() methods
+
+There are several other string methods that begin with is and return a boolean.
+
+1. isalpha() Returns True if the string consists only of letters and isn’t blank
+
+2. isalnum() Returns True if the string consists only of letters and numbers and is not blank
+
+3. isdecimal() Returns True if the string consists only of numeric characters and is not blank
+
+4. isspace() Returns True if the string consists only of spaces, tabs, and newlines and is not blank
+
+5. istitle() Returns True if the string consists only of words that begin with an uppercase letter followed by only lowercase letters
+
+
+
+#+begin_src python :results output :exports both
+
+print("hello".isalpha())
+print("hello123".isalnum())
+print("123".isdecimal())
+print("    ".isspace())
+print("Hello world!".isspace())
+print("Hello world!"[5].isspace())
+print("This Is Title Case!".istitle())
+
+#+end_src
+
+#+RESULTS:
+: True
+: True
+: True
+: True
+: False
+: True
+: True
+
+** startswith(), endswith()
+
+These return true if the string value that they are called on begins or ends, respectively, with the string that is passed to the method.
+
+#+begin_src python :results output :exports both
+
+print("Hello world!".startswith("Hello"))
+print("Hello world!".startswith("h"))
+print("Hello world!".startswith("ello"))
+
+print("Hello world!".endswith("world!"))
+print("Hello world!".endswith("world"))
+print("Hello world!".endswith("!"))
+#+end_src
+
+#+RESULTS:
+: True
+: False
+: False
+: True
+: False
+: True
+
+** join() and split()
+
+The join() method is useful when we have a list of strings that need to be joined together into a single string value. It gets passed a list of strings and returns a string.
+
+#+begin_src python :results output :exports both
+
+print(",".join(["cats","rats","bats"]))
+
+print("".join(["cats","rats","bats"]))
+
+print(" ".join(["cats","rats","bats"]))
+
+print("\n\n".join(["cats","rats","bats"]))
+
+#+end_src
+
+#+RESULTS:
+: cats,rats,bats
+: catsratsbats
+: cats rats bats
+: cats
+:
+: rats
+:
+: bats
+
+The split method does the opposite. It is called on a string value and returns a list of strings.
+
+#+begin_src python :results output :exports both
+
+print("My name is Simon".split())
+
+print("My name is Simon".split("m"))
+
+print("My name is Simon".split("!"))
+
+#+end_src
+
+#+RESULTS:
+: ['My', 'name', 'is', 'Simon']
+: ['My na', 'e is Si', 'on']
+: ['My name is Simon']
+
+** rjust(), ljsut(), center()
+
+rjust() and ljust() return a padded version of the string they are called upon in order to either right or left justify the string. They take an argument that dictates the character length of the justification. We can also give an argument to change the character that is used for the justification.
+
+The center method works similarly, but it centers the text instead of justifying to the right or left.
+
+#+begin_src python :results output :exports both
+
+print("Hello".rjust(10))
+print("Hello".rjust(30))
+print("Hello".ljust(10))
+
+print("Hello".rjust(20, "*"))
+print("Hello".ljust(10, "-"))
+
+print("Hello".center(20))
+print("Hello".center(20,"*"))
+print("Hello".center(20,"="))
+#+end_src
+
+#+RESULTS:
+:      Hello
+:                          Hello
+: Hello
+: ***************Hello
+: Hello-----
+:        Hello
+: *******Hello********
+: =======Hello========
+
+** strip(), rstrip(), lstrip()
+
+These methods can be used when we want to strip off whitespace characters like spaces, tabs, or new lines.

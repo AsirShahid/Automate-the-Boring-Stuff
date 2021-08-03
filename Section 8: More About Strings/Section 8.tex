@@ -1,4 +1,4 @@
-% Created 2021-08-03 Tue 17:47
+% Created 2021-08-03 Tue 18:28
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,14 +32,14 @@
 
 
 \section{Advanced String Syntax}
-\label{sec:orgc4f689e}
+\label{sec:org59a5bb0}
 
 Text is one of the most common forms of data that we will work with.
 
 How do we add quotes and apostrophes in Python Strings?
 
 \subsection{Escape Characters}
-\label{sec:orgd2a8c68}
+\label{sec:org371a300}
 
 \begin{verbatim}
 
@@ -79,7 +79,7 @@ I'm fine
 \end{verbatim}
 
 \subsection{Raw Strings}
-\label{sec:org262fe9c}
+\label{sec:org9715a20}
 
 We can also have raw strings which should be used when we have text that includes many backslashes that we don't want to use for escape characters. There are similar to regular strings, but have ``r'' right at the beginning.
 
@@ -96,7 +96,7 @@ That is Carol\'s cat.
 \end{verbatim}
 
 \subsection{Multiline Strings with Triple Quotes}
-\label{sec:org6bcf3ce}
+\label{sec:org8e05039}
 
 Instead of using \n in order to put a newline in the string, it can be easier to use multiline strings.
 
@@ -120,7 +120,7 @@ Bob
 Above, Python automatically formats this using \n and \t in the background.
 
 \subsection{Similarities Between Strings and Lists}
-\label{sec:org6ac4f19}
+\label{sec:org17a854d}
 
 Strings can use indices and slices similar to lists. The string ``Hello'' can be seen as a list with 5 items, each of which are individual strings.
 
@@ -146,4 +146,231 @@ True
 False
 False
 \end{verbatim}
+
+\section{String Methods}
+\label{sec:orga282c9c}
+
+Unlike list methods, string methods return a new string value rather than modifying the existing string in place. This is due to the fact that strings are immutable.
+
+\subsection{upper(), lower()}
+\label{sec:orgfa55ae1}
+
+
+\begin{verbatim}
+
+spam="Hello world!"
+
+spam.upper()
+
+print(spam)
+
+spam=spam.upper()
+
+print(spam)
+
+spam=spam.lower()
+
+print(spam)
+
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello world!
+HELLO WORLD!
+hello world!
+\end{verbatim}
+
+
+This can be helpful when we allow the user to input an answer and we do not care about uppercase or lowercase. There is also a corresponding title() method.
+
+\subsection{isupper(), islower()}
+\label{sec:org80d050f}
+
+These methods return a boolean value depending on whether the strings are uppercase or lowercase. If we have a blank string or a string without any uppercase or lowercase characters, both isupper() and islower() will be false.
+
+\begin{verbatim}
+
+spam="Hello world"
+
+print(spam.islower())
+
+spam="hello world"
+
+print(spam.islower())
+
+spam="HELLO WORLD"
+
+print(spam.isupper())
+
+\end{verbatim}
+
+\begin{verbatim}
+False
+True
+True
+\end{verbatim}
+
+
+We can also call both upper() and isupper() on the same string.
+
+\begin{verbatim}
+
+print("Hello".upper().isupper())
+
+\end{verbatim}
+
+\begin{verbatim}
+True
+\end{verbatim}
+
+\subsection{The isX() methods}
+\label{sec:org52d72da}
+
+There are several other string methods that begin with is and return a boolean.
+
+\begin{enumerate}
+\item isalpha() Returns True if the string consists only of letters and isn’t blank
+
+\item isalnum() Returns True if the string consists only of letters and numbers and is not blank
+
+\item isdecimal() Returns True if the string consists only of numeric characters and is not blank
+
+\item isspace() Returns True if the string consists only of spaces, tabs, and newlines and is not blank
+
+\item istitle() Returns True if the string consists only of words that begin with an uppercase letter followed by only lowercase letters
+\end{enumerate}
+
+
+
+\begin{verbatim}
+
+print("hello".isalpha())
+print("hello123".isalnum())
+print("123".isdecimal())
+print("    ".isspace())
+print("Hello world!".isspace())
+print("Hello world!"[5].isspace())
+print("This Is Title Case!".istitle())
+
+\end{verbatim}
+
+\begin{verbatim}
+True
+True
+True
+True
+False
+True
+True
+\end{verbatim}
+
+\subsection{startswith(), endswith()}
+\label{sec:org9c4959b}
+
+These return true if the string value that they are called on begins or ends, respectively, with the string that is passed to the method.
+
+\begin{verbatim}
+
+print("Hello world!".startswith("Hello"))
+print("Hello world!".startswith("h"))
+print("Hello world!".startswith("ello"))
+
+print("Hello world!".endswith("world!"))
+print("Hello world!".endswith("world"))
+print("Hello world!".endswith("!"))
+\end{verbatim}
+
+\begin{verbatim}
+True
+False
+False
+True
+False
+True
+\end{verbatim}
+
+\subsection{join() and split()}
+\label{sec:org6436673}
+
+The join() method is useful when we have a list of strings that need to be joined together into a single string value. It gets passed a list of strings and returns a string.
+
+\begin{verbatim}
+
+print(",".join(["cats","rats","bats"]))
+
+print("".join(["cats","rats","bats"]))
+
+print(" ".join(["cats","rats","bats"]))
+
+print("\n\n".join(["cats","rats","bats"]))
+
+\end{verbatim}
+
+\begin{verbatim}
+cats,rats,bats
+catsratsbats
+cats rats bats
+cats
+
+rats
+
+bats
+\end{verbatim}
+
+
+The split method does the opposite. It is called on a string value and returns a list of strings.
+
+\begin{verbatim}
+
+print("My name is Simon".split())
+
+print("My name is Simon".split("m"))
+
+print("My name is Simon".split("!"))
+
+\end{verbatim}
+
+\begin{verbatim}
+['My', 'name', 'is', 'Simon']
+['My na', 'e is Si', 'on']
+['My name is Simon']
+\end{verbatim}
+
+\subsection{rjust(), ljsut(), center()}
+\label{sec:orgd260f4c}
+
+rjust() and ljust() return a padded version of the string they are called upon in order to either right or left justify the string. They take an argument that dictates the character length of the justification. We can also give an argument to change the character that is used for the justification.
+
+The center method works similarly, but it centers the text instead of justifying to the right or left.
+
+\begin{verbatim}
+
+print("Hello".rjust(10))
+print("Hello".rjust(30))
+print("Hello".ljust(10))
+
+print("Hello".rjust(20, "*"))
+print("Hello".ljust(10, "-"))
+
+print("Hello".center(20))
+print("Hello".center(20,"*"))
+print("Hello".center(20,"="))
+\end{verbatim}
+
+\begin{verbatim}
+     Hello
+                         Hello
+Hello     
+***************Hello
+Hello-----
+       Hello        
+*******Hello********
+=======Hello========
+\end{verbatim}
+
+\subsection{strip(), rstrip(), lstrip()}
+\label{sec:org3271968}
+
+These methods can be used when we want to strip off whitespace characters like spaces, tabs, or new lines.
 \end{document}
