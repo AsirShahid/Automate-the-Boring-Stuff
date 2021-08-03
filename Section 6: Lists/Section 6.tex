@@ -1,4 +1,4 @@
-% Created 2021-08-03 Tue 14:18
+% Created 2021-08-03 Tue 15:03
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -33,7 +33,7 @@
 
 
 \section{The List Data type}
-\label{sec:org09f52b4}
+\label{sec:org4f64951}
 A list is a data type that contains multiple ordered items. Lists begin and end with square brackets and are separated by commas. They can be assigned to variables just like any other value.
 
 
@@ -265,7 +265,7 @@ True
 \end{verbatim}
 
 \section{For Loops with Lists, Multiple Assignment, and Augmented Operators}
-\label{sec:org17d3b7e}
+\label{sec:org24bfa6f}
 
 For Loops can be used to execute a block of code a certain number of times.
 
@@ -419,4 +419,165 @@ spam+=1
 \end{verbatim}
 
 Instead of doing ``spam=spam+1'', we can do ``spam+=1''. This also applies to other operators such as plus, minus, multiplication, division, and modulus.
+
+\section{List methods}
+\label{sec:orgb4b67d2}
+
+A method is the same thing as a function, except it is attached to a certain value.
+
+All list values have a method called index that gives you the index of an item inside of a list. You can not call a method by itself, so the index method must be called on a particular list.
+
+\begin{verbatim}
+
+spam=["hello","hi","howdy","heyas"]
+
+print(spam.index("hello"))
+print(spam.index("heyas"))
+
+\end{verbatim}
+
+\begin{verbatim}
+0
+3
+\end{verbatim}
+
+
+The method name comes after the value/variable and then a dot.
+
+Each data type has different types of methods.
+
+If the value does not exist inside the list, then an exception is raised. If there are more than one value in the list, then the index for the first one it was seen will be given.
+
+\begin{verbatim}
+
+spam=["Zophie","Pooka","Fat-tail","Pooka"]
+
+print(spam.index("Pooka"))
+
+\end{verbatim}
+
+\begin{verbatim}
+1
+\end{verbatim}
+
+
+We can use the append() and insert() list methods in order to add new values to a list.
+
+
+
+\begin{verbatim}
+
+spam=["cat","dog","bat"]
+
+print(spam)
+
+spam.append("moose")
+
+print(spam)
+
+spam.insert(1,"chicken")
+
+print(spam)
+
+\end{verbatim}
+
+\begin{verbatim}
+['cat', 'dog', 'bat']
+['cat', 'dog', 'bat', 'moose']
+['cat', 'chicken', 'dog', 'bat', 'moose']
+\end{verbatim}
+
+
+
+The list is modified in place, meaning we don't need to set spam equal to spam.append()
+
+These methods belong to a single data type. The append and insert methods are list methods and can only be called on list values.
+
+There is also a remove method for lists that can help you remove items.
+
+\begin{verbatim}
+
+spam=["cat","bat","rat","elephant","bat"]
+
+print(spam)
+
+spam.remove("bat")
+
+print(spam)
+\end{verbatim}
+
+\begin{verbatim}
+['cat', 'bat', 'rat', 'elephant', 'bat']
+['cat', 'rat', 'elephant', 'bat']
+\end{verbatim}
+
+
+This differs from the del statement because it allows you to identify the value that you want to remove, not just the index of the value you want to remove.
+
+If a value appears multiple times, the remove method will only remove the first occurrence.
+
+A list with number or string values can be sorted using the sort method. However, this only works when the list contains only string values or only number values. Not when it contains a mix of the two.
+
+\begin{verbatim}
+
+spam=[2,5,3.14,1,-7]
+
+print(spam)
+
+spam.sort()
+
+print(spam)
+
+spam=["ants","cats","dogs","badgers","elephants"]
+
+print(spam)
+
+spam.sort()
+
+print(spam)
+
+\end{verbatim}
+
+\begin{verbatim}
+[2, 5, 3.14, 1, -7]
+[-7, 1, 2, 3.14, 5]
+['ants', 'cats', 'dogs', 'badgers', 'elephants']
+['ants', 'badgers', 'cats', 'dogs', 'elephants']
+\end{verbatim}
+
+
+
+The sort method uses ASCII order, not regular alphabetical order. This means that uppercase characters come before lowercase characters, meaning that uppercase Z comes before lowercase a. We can pass an argument into the method in order to change this.
+
+\begin{verbatim}
+
+spam=["Alice","Bob","ants","badgers","Carol","cats"]
+
+print(spam)
+
+spam.sort()
+
+print(spam)
+
+spam=["A","a","Z","z"]
+
+print(spam)
+
+spam.sort()
+
+print(spam)
+
+spam.sort(key=str.lower)
+
+print(spam)
+
+\end{verbatim}
+
+\begin{verbatim}
+['Alice', 'Bob', 'ants', 'badgers', 'Carol', 'cats']
+['Alice', 'Bob', 'Carol', 'ants', 'badgers', 'cats']
+['A', 'a', 'Z', 'z']
+['A', 'Z', 'a', 'z']
+['A', 'a', 'Z', 'z']
+\end{verbatim}
 \end{document}

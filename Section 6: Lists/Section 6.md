@@ -1,12 +1,13 @@
 
 # Table of Contents
 
-1.  [The List Data type](#orgde29e2a)
-2.  [For Loops with Lists, Multiple Assignment, and Augmented Operators](#orga6daae2)
+1.  [The List Data type](#org9f94543)
+2.  [For Loops with Lists, Multiple Assignment, and Augmented Operators](#orgd67e025)
+3.  [List methods](#orgb546779)
 
 
 
-<a id="orgde29e2a"></a>
+<a id="org9f94543"></a>
 
 # The List Data type
 
@@ -176,7 +177,7 @@ We can use the in or not in operators with lists.
     True
 
 
-<a id="orga6daae2"></a>
+<a id="orgd67e025"></a>
 
 # For Loops with Lists, Multiple Assignment, and Augmented Operators
 
@@ -281,4 +282,129 @@ Python also lets us use Augmented Assignment Operators.
     spam+=1
 
 Instead of doing &ldquo;spam=spam+1&rdquo;, we can do &ldquo;spam+=1&rdquo;. This also applies to other operators such as plus, minus, multiplication, division, and modulus.
+
+
+<a id="orgb546779"></a>
+
+# List methods
+
+A method is the same thing as a function, except it is attached to a certain value.
+
+All list values have a method called index that gives you the index of an item inside of a list. You can not call a method by itself, so the index method must be called on a particular list.
+
+    
+    spam=["hello","hi","howdy","heyas"]
+    
+    print(spam.index("hello"))
+    print(spam.index("heyas"))
+
+    0
+    3
+
+The method name comes after the value/variable and then a dot.
+
+Each data type has different types of methods.
+
+If the value does not exist inside the list, then an exception is raised. If there are more than one value in the list, then the index for the first one it was seen will be given.
+
+    
+    spam=["Zophie","Pooka","Fat-tail","Pooka"]
+    
+    print(spam.index("Pooka"))
+
+    1
+
+We can use the append() and insert() list methods in order to add new values to a list.
+
+    
+    spam=["cat","dog","bat"]
+    
+    print(spam)
+    
+    spam.append("moose")
+    
+    print(spam)
+    
+    spam.insert(1,"chicken")
+    
+    print(spam)
+
+    ['cat', 'dog', 'bat']
+    ['cat', 'dog', 'bat', 'moose']
+    ['cat', 'chicken', 'dog', 'bat', 'moose']
+
+The list is modified in place, meaning we don&rsquo;t need to set spam equal to spam.append()
+
+These methods belong to a single data type. The append and insert methods are list methods and can only be called on list values.
+
+There is also a remove method for lists that can help you remove items.
+
+    
+    spam=["cat","bat","rat","elephant","bat"]
+    
+    print(spam)
+    
+    spam.remove("bat")
+    
+    print(spam)
+
+    ['cat', 'bat', 'rat', 'elephant', 'bat']
+    ['cat', 'rat', 'elephant', 'bat']
+
+This differs from the del statement because it allows you to identify the value that you want to remove, not just the index of the value you want to remove.
+
+If a value appears multiple times, the remove method will only remove the first occurrence.
+
+A list with number or string values can be sorted using the sort method. However, this only works when the list contains only string values or only number values. Not when it contains a mix of the two.
+
+    
+    spam=[2,5,3.14,1,-7]
+    
+    print(spam)
+    
+    spam.sort()
+    
+    print(spam)
+    
+    spam=["ants","cats","dogs","badgers","elephants"]
+    
+    print(spam)
+    
+    spam.sort()
+    
+    print(spam)
+
+    [2, 5, 3.14, 1, -7]
+    [-7, 1, 2, 3.14, 5]
+    ['ants', 'cats', 'dogs', 'badgers', 'elephants']
+    ['ants', 'badgers', 'cats', 'dogs', 'elephants']
+
+The sort method uses ASCII order, not regular alphabetical order. This means that uppercase characters come before lowercase characters, meaning that uppercase Z comes before lowercase a. We can pass an argument into the method in order to change this.
+
+    
+    spam=["Alice","Bob","ants","badgers","Carol","cats"]
+    
+    print(spam)
+    
+    spam.sort()
+    
+    print(spam)
+    
+    spam=["A","a","Z","z"]
+    
+    print(spam)
+    
+    spam.sort()
+    
+    print(spam)
+    
+    spam.sort(key=str.lower)
+    
+    print(spam)
+
+    ['Alice', 'Bob', 'ants', 'badgers', 'Carol', 'cats']
+    ['Alice', 'Bob', 'Carol', 'ants', 'badgers', 'cats']
+    ['A', 'a', 'Z', 'z']
+    ['A', 'Z', 'a', 'z']
+    ['A', 'a', 'Z', 'z']
 
