@@ -386,3 +386,24 @@ import pyperclip
 #+end_src
 
 #+RESULTS:
+
+* String Formatting
+
+Often times when we want to combine strings to form a single string, we use the plus operator. However, this can get complicated when we have long strings with a lot of variables. Python has string formatting techniques that make this easier.
+
+#+begin_src python :results output :exports both
+
+name = "Alice"
+place = "Main Street"
+time = "6 pm"
+food = "turnips"
+
+print("Hello " + name + ", you are invited to a party at " + place + " at " + time + ". Plaese bring " + food + ".")
+
+print("Hello %s, you are invited to a party at %s at %s. Please bring %s." % (name, place, time, food))
+
+#+end_src
+
+#+RESULTS:
+: Hello Alice, you are invited to a party at Main Street at 6 pm. Plaese bring turnips.
+: Hello Alice, you are invited to a party at Main Street at 6 pm. Please bring turnips.

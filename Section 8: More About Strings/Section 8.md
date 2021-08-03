@@ -1,25 +1,26 @@
 
 # Table of Contents
 
-1.  [Advanced String Syntax](#orge88446c)
-    1.  [Escape Characters](#org6058c11)
-    2.  [Raw Strings](#orgd113884)
-    3.  [Multiline Strings with Triple Quotes](#org5461147)
-    4.  [Similarities Between Strings and Lists](#org5250b95)
-2.  [String Methods](#org14d005a)
-    1.  [upper(), lower()](#org8612678)
-    2.  [isupper(), islower()](#org644905e)
-    3.  [The isX() methods](#orgdf23de1)
-    4.  [startswith(), endswith()](#orge9bf997)
-    5.  [join() and split()](#orgf404b2e)
-    6.  [rjust(), ljsut(), center()](#orgaf01e00)
-    7.  [strip(), rstrip(), lstrip()](#orgc0b2f0e)
-    8.  [replace()](#org568261b)
-    9.  [The pyperclip Module](#orgf8680b7)
+1.  [Advanced String Syntax](#org3223399)
+    1.  [Escape Characters](#org316e642)
+    2.  [Raw Strings](#org4513d1a)
+    3.  [Multiline Strings with Triple Quotes](#orge560027)
+    4.  [Similarities Between Strings and Lists](#org6faccdb)
+2.  [String Methods](#org2ff4828)
+    1.  [upper(), lower()](#org9a0389e)
+    2.  [isupper(), islower()](#orgd2106b7)
+    3.  [The isX() methods](#org270dcbe)
+    4.  [startswith(), endswith()](#orga5f98c8)
+    5.  [join() and split()](#org385b222)
+    6.  [rjust(), ljsut(), center()](#org7f8ce3f)
+    7.  [strip(), rstrip(), lstrip()](#org2b3fdb2)
+    8.  [replace()](#orgbcd1a9f)
+    9.  [The pyperclip Module](#org985aa44)
+3.  [String Formatting](#orge28dfe4)
 
 
 
-<a id="orge88446c"></a>
+<a id="org3223399"></a>
 
 # Advanced String Syntax
 
@@ -28,7 +29,7 @@ Text is one of the most common forms of data that we will work with.
 How do we add quotes and apostrophes in Python Strings?
 
 
-<a id="org6058c11"></a>
+<a id="org316e642"></a>
 
 ## Escape Characters
 
@@ -57,7 +58,7 @@ We can have several different types of escape characters.
     I'm fine
 
 
-<a id="orgd113884"></a>
+<a id="org4513d1a"></a>
 
 ## Raw Strings
 
@@ -71,7 +72,7 @@ We can also have raw strings which should be used when we have text that include
     That is Carol\'s cat.
 
 
-<a id="org5461147"></a>
+<a id="orge560027"></a>
 
 ## Multiline Strings with Triple Quotes
 
@@ -91,7 +92,7 @@ Instead of using \n in order to put a newline in the string, it can be easier to
 Above, Python automatically formats this using \n and \t in the background.
 
 
-<a id="org5250b95"></a>
+<a id="org6faccdb"></a>
 
 ## Similarities Between Strings and Lists
 
@@ -116,14 +117,14 @@ Strings can use indices and slices similar to lists. The string &ldquo;Hello&rdq
     False
 
 
-<a id="org14d005a"></a>
+<a id="org2ff4828"></a>
 
 # String Methods
 
 Unlike list methods, string methods return a new string value rather than modifying the existing string in place. This is due to the fact that strings are immutable.
 
 
-<a id="org8612678"></a>
+<a id="org9a0389e"></a>
 
 ## upper(), lower()
 
@@ -149,7 +150,7 @@ Unlike list methods, string methods return a new string value rather than modify
 This can be helpful when we allow the user to input an answer and we do not care about uppercase or lowercase. There is also a corresponding title() method.
 
 
-<a id="org644905e"></a>
+<a id="orgd2106b7"></a>
 
 ## isupper(), islower()
 
@@ -180,7 +181,7 @@ We can also call both upper() and isupper() on the same string.
     True
 
 
-<a id="orgdf23de1"></a>
+<a id="org270dcbe"></a>
 
 ## The isX() methods
 
@@ -214,7 +215,7 @@ There are several other string methods that begin with is and return a boolean.
     True
 
 
-<a id="orge9bf997"></a>
+<a id="orga5f98c8"></a>
 
 ## startswith(), endswith()
 
@@ -237,7 +238,7 @@ These return true if the string value that they are called on begins or ends, re
     True
 
 
-<a id="orgf404b2e"></a>
+<a id="org385b222"></a>
 
 ## join() and split()
 
@@ -275,7 +276,7 @@ The split method does the opposite. It is called on a string value and returns a
     ['My name is Simon']
 
 
-<a id="orgaf01e00"></a>
+<a id="org7f8ce3f"></a>
 
 ## rjust(), ljsut(), center()
 
@@ -305,7 +306,7 @@ The center method works similarly, but it centers the text instead of justifying
     =======Hello========
 
 
-<a id="orgc0b2f0e"></a>
+<a id="org2b3fdb2"></a>
 
 ## strip(), rstrip(), lstrip()
 
@@ -337,7 +338,7 @@ These methods can be used when we want to strip off whitespace characters like s
     BaconSpamEggs
 
 
-<a id="org568261b"></a>
+<a id="orgbcd1a9f"></a>
 
 ## replace()
 
@@ -356,7 +357,7 @@ This method looks for two arguments, a string to look for and a string to replac
     Hello there!
 
 
-<a id="orgf8680b7"></a>
+<a id="org985aa44"></a>
 
 ## The pyperclip Module
 
@@ -370,4 +371,24 @@ We installed this in a previous section. It comes with copy and paste functions 
     
     #pyperclip.copy("Hello!!!!!!")
     #pyperclip.paste("Hello!!!!!!")
+
+
+<a id="orge28dfe4"></a>
+
+# String Formatting
+
+Often times when we want to combine strings to form a single string, we use the plus operator. However, this can get complicated when we have long strings with a lot of variables. Python has string formatting techniques that make this easier.
+
+    
+    name = "Alice"
+    place = "Main Street"
+    time = "6 pm"
+    food = "turnips"
+    
+    print("Hello " + name + ", you are invited to a party at " + place + " at " + time + ". Plaese bring " + food + ".")
+    
+    print("Hello %s, you are invited to a party at %s at %s. Please bring %s." % (name, place, time, food))
+
+    Hello Alice, you are invited to a party at Main Street at 6 pm. Plaese bring turnips.
+    Hello Alice, you are invited to a party at Main Street at 6 pm. Please bring turnips.
 
