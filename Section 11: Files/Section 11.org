@@ -618,3 +618,39 @@ send2trash.send2trash("bacon.txt")
 #+end_src
 
 #+RESULTS:
+* Walking a Directory Tree
+
+How can we write a program that applies to all of the directories and files inside of a particular directory.
+
+** The os.walk() Function
+
+This function is passed a root folder that we want to check and the return value is used in for loops. It returns 3 values on each iteration of the for loop.
+
+#+begin_src python :results output :exports both
+
+import os
+
+for folderName, subfolders, filenames in os.walk("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files"):
+    print("The folder is %s\nThe subfolders in %s are: %s\nThe filenames in %s are: %s" % (folderName,folderName,subfolders,folderName,filenames))
+
+    for subfolder in subfolders:
+        if "fish" in subfolder:
+            os.rmdir(subfolder)
+#    for file in filenames:
+#        if file.endswith(".py"):
+#            shutil.copy(os.path.join(folderName, file), os.path.join(folderName, file+"backup"))
+
+#+end_src
+
+#+RESULTS:
+: The folder is /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files
+: The subfolders in /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files are: ['.auctex-auto', 'TestDir']
+: The filenames in /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files are: ['.gitkeep', 'Section 11.org', 'Section 11.tex', 'Section 11.pdf', 'Section 11.md', 'udemy-automate-boring-python-lesson-30.mp4', 'udemy-automate-boring-python-lesson-31.mp4', 'udemy-automate-boring-python-lesson-32.mp4', 'udemy-automate-boring-python-lesson-33.mp4', 'udemy-automate-boring-python-lesson-34.mp4', 'hello.txt', 'mydata', 'newhello2.txt']
+: The folder is /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/.auctex-auto
+: The subfolders in /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/.auctex-auto are: []
+: The filenames in /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/.auctex-auto are: ['Section 11.el']
+: The folder is /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/TestDir
+: The subfolders in /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/TestDir are: []
+: The filenames in /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/TestDir are: ['hello2.txt', 'newhello2.txt']
+
+This looks at all the contents of the directory recursively and makes many tasks like finding and renaming many different files/subdirectories significnatly faster.
