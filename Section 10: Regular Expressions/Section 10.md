@@ -1,22 +1,24 @@
 
 # Table of Contents
 
-1.  [Regular Expression Basics](#org767fa82)
-    1.  [The re Module](#org174dc60)
-2.  [Regex Groups and the Pipe Character](#org5c37688)
-    1.  [Groups](#orgc9f3e4e)
-    2.  [Pipe Character |](#orgd07b0d4)
-3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#org5b8298e)
-    1.  [? (zero or one)](#orgb4c9f86)
-    2.  [\* (zero or more)](#orgb098452)
-    3.  [+ (one or more)](#org1890ba9)
-    4.  [Escaping ?, \*, and +](#org2a840b1)
-    5.  [{x} (exactly x)](#orgc296792)
-    6.  [{x,y} (at least x, at most y)](#org26fcf61)
+1.  [Regular Expression Basics](#orgef05d77)
+    1.  [The re Module](#org5ec8a56)
+2.  [Regex Groups and the Pipe Character](#org7f896c9)
+    1.  [Groups](#org69120c5)
+    2.  [Pipe Character |](#org9d9a3b5)
+3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#orgd0f7a24)
+    1.  [? (zero or one)](#orgfe766b6)
+    2.  [\* (zero or more)](#orgfb3b821)
+    3.  [+ (one or more)](#org236f472)
+    4.  [Escaping ?, \*, and +](#orgdbce0e4)
+    5.  [{x} (exactly x)](#orgafd3a22)
+    6.  [{x,y} (at least x, at most y)](#orgd7f857b)
+4.  [Regex Character Classes and the findall() Method](#org8f3b124)
+    1.  [Character Classes](#org4949b7c)
 
 
 
-<a id="org767fa82"></a>
+<a id="orgef05d77"></a>
 
 # Regular Expression Basics
 
@@ -89,7 +91,7 @@ That&rsquo;s a lot of code for a relatively simple task. If we want to find phon
     Phone number found
 
 
-<a id="org174dc60"></a>
+<a id="org5ec8a56"></a>
 
 ## The re Module
 
@@ -114,7 +116,7 @@ We can write the previous code much faster using regular expressions.
     ['415-555-1011', '415-555-9999']
 
 
-<a id="org5c37688"></a>
+<a id="org7f896c9"></a>
 
 # Regex Groups and the Pipe Character
 
@@ -132,7 +134,7 @@ Let&rsquo;s say we want to seperate the area code from a phone number.
     415-555-4242
 
 
-<a id="orgc9f3e4e"></a>
+<a id="org69120c5"></a>
 
 ## Groups
 
@@ -164,7 +166,7 @@ The parentheses there can be useful syntax when we want to find specific parts o
     (415) 555-4242
 
 
-<a id="orgd07b0d4"></a>
+<a id="org9d9a3b5"></a>
 
 ## Pipe Character |
 
@@ -186,14 +188,14 @@ Let&rsquo;s say we wanted to match any of the strings &ldquo;Batman&rdquo;, &ldq
 If the search method can&rsquo;t find the regular expression pattern, it will return None. In that case, we can risk running into errors.
 
 
-<a id="org5b8298e"></a>
+<a id="orgd0f7a24"></a>
 
 # Repetition in Regex Patterns and Greedy/Nongreedy Matching
 
 How can we match a certain number of repetitions of a group? For example, one or more repitions, between 7 and 10 repitions, etc.
 
 
-<a id="orgb4c9f86"></a>
+<a id="orgfe766b6"></a>
 
 ## ? (zero or one)
 
@@ -247,7 +249,7 @@ Using our earlier phone number example, we can make a regular expression that lo
 If we need to match a question mark as part of the expression, we can simply escape it by doing \\?.
 
 
-<a id="orgb098452"></a>
+<a id="orgfb3b821"></a>
 
 ## \* (zero or more)
 
@@ -273,7 +275,7 @@ The asterisk means match 0 or more times.
 If you need to match an \* that appears in the pattern, you can escape it by doing \\\*.
 
 
-<a id="org1890ba9"></a>
+<a id="org236f472"></a>
 
 ## + (one or more)
 
@@ -299,7 +301,7 @@ Unlike the star, the group preceding a + must appear in the pattern.
 If you need to match a + that appears in the pattern, you can escape it by doing \\+.
 
 
-<a id="org2a840b1"></a>
+<a id="orgdbce0e4"></a>
 
 ## Escaping ?, \*, and +
 
@@ -324,7 +326,7 @@ We could also put the above +\*? into a group and then putting a + after it to s
     +*?+*?+*?
 
 
-<a id="orgc296792"></a>
+<a id="orgafd3a22"></a>
 
 ## {x} (exactly x)
 
@@ -351,7 +353,7 @@ While the above is a simple example, we could do it for many other, more complex
     415-555-1234,555-4242,212-555-0000
 
 
-<a id="org26fcf61"></a>
+<a id="orgd7f857b"></a>
 
 ## {x,y} (at least x, at most y)
 
@@ -394,4 +396,148 @@ In order to do a nongreedy match, we can specify a question mark following the c
     print(mo.group())
 
     123
+
+
+<a id="org8f3b124"></a>
+
+# Regex Character Classes and the findall() Method
+
+In this lesson, we&rsquo;ll talk about the findall() method with regular expressions.
+
+    
+    import re
+    
+    resume="""
+    JESSE KENDALL
+    123 Elm Street, Fall River, MA 02723, Cell: 508-555-5555, Home: 508-555-1234 twemel@charter.net
+    
+    
+    
+    SUMMARY OF QUALIFICATIONS
+    Dedicated cell phone sales professional with demonstrated success in retail management, product presentation, and customer service. Proven ability to assess client needs; establish rapport, build trust, and close deals. Meet and exceed sales objectives and challenging goals. Proficient in Microsoft Office (Word, Excel, PowerPoint, Access), and H/O billing systems.
+    
+    SALES SUCCESS
+    RETAIL STORE SALES MANAGER, 20xx – 20xx
+    ABC CELLULAR, Fall River, MA
+    Recruited, hired, trained, developed, and directed retail sales teams for two retail ABC Wireless dealer stores. Oversaw client relations, new account development, and customer service. Supervised administrative functions, inventory, cash flow, merchandising, and operations. Conducted ongoing staff development and personal growth planning for employees.
+    
+    Implemented a sales-tracking spreadsheet to replace a manual form writing process to increase efficiency.
+    Developed innovative and effective marketing programs; exceeded store sales quotas.
+    Successfully managed one of the highest-producing ABC Wireless dealer locations in the San Diego market.
+    Received several “Sales Manager of the Month” Awards.
+    Created a team spirit within the stores that resulted in increased sales, long-term employees, and customer satisfaction.
+    CELL PHONE SALES REPRESENTATIVE, 20xx – 20xx
+    BCD CELL PHONE HUT, Fall River, MA
+    Partnered with a high-performing sales staff to provided quality customer service. Served as a customer advocate; interfaced with the clients’ designated program administrators to provide product and service solutions and meet individual customer needs. Assisted customers with billing and expense management, post sale customer education on wireless service and equipment, issue resolution, and technical troubleshooting.
+    
+    Effectively delivered post-sale care services, exceeding clients’ expectations in a cost-effective manner.
+    Obtained significant business by delivering presale presentations to demonstrate new phone features.
+    CUSTOMER SERVICE REPRESENTATIVE, 20xx – 20xx
+    CDE CELLULAR SERVICES, Fall River, MA
+    Responded to billing inquiries, assisted in technical troubleshooting, and performed rate plan analysis. Provided friendly and professional customer service while answering over 90 inbound calls per day.
+    
+    Chosen to facilitate training in an outsourced call center.
+    EDUCATION
+    Bachelor of Arts in Communication (Major: Advertising), 20xx
+    XYZ UNIVERSITY, Milwaukee, WI
+    
+    REFERENCES
+    Excellent references provided upon request.
+    """
+    
+    
+    phoneRegex=re.compile(r"\d{3}-\d{3}-\d{4}")
+    mo=phoneRegex.findall(resume)
+    print(mo)
+
+    ['508-555-5555', '508-555-1234']
+
+We used findall() above so we can easily find all of the matches. If we used search() like we did earlier, it would only return the first match.
+
+There is an important distinction between search() and findall(). The search() method returns Match Objects while the findall() method returns a list of strings.
+
+If the regular expression string has 0 or 1 groups, then the findall() method will jstu return a list of strings which each string in the list is the text that was found.
+
+However, with regex objects that have 2 or more groups, the following occurs.
+
+    
+    import re
+    
+    resume="""
+    JESSE KENDALL
+    123 Elm Street, Fall River, MA 02723, Cell: 508-555-5555, Home: 508-555-1234 twemel@charter.net
+    
+    
+    
+    SUMMARY OF QUALIFICATIONS
+    Dedicated cell phone sales professional with demonstrated success in retail management, product presentation, and customer service. Proven ability to assess client needs; establish rapport, build trust, and close deals. Meet and exceed sales objectives and challenging goals. Proficient in Microsoft Office (Word, Excel, PowerPoint, Access), and H/O billing systems.
+    
+    SALES SUCCESS
+    RETAIL STORE SALES MANAGER, 20xx – 20xx
+    ABC CELLULAR, Fall River, MA
+    Recruited, hired, trained, developed, and directed retail sales teams for two retail ABC Wireless dealer stores. Oversaw client relations, new account development, and customer service. Supervised administrative functions, inventory, cash flow, merchandising, and operations. Conducted ongoing staff development and personal growth planning for employees.
+    
+    Implemented a sales-tracking spreadsheet to replace a manual form writing process to increase efficiency.
+    Developed innovative and effective marketing programs; exceeded store sales quotas.
+    Successfully managed one of the highest-producing ABC Wireless dealer locations in the San Diego market.
+    Received several “Sales Manager of the Month” Awards.
+    Created a team spirit within the stores that resulted in increased sales, long-term employees, and customer satisfaction.
+    CELL PHONE SALES REPRESENTATIVE, 20xx – 20xx
+    BCD CELL PHONE HUT, Fall River, MA
+    Partnered with a high-performing sales staff to provided quality customer service. Served as a customer advocate; interfaced with the clients’ designated program administrators to provide product and service solutions and meet individual customer needs. Assisted customers with billing and expense management, post sale customer education on wireless service and equipment, issue resolution, and technical troubleshooting.
+    
+    Effectively delivered post-sale care services, exceeding clients’ expectations in a cost-effective manner.
+    Obtained significant business by delivering presale presentations to demonstrate new phone features.
+    CUSTOMER SERVICE REPRESENTATIVE, 20xx – 20xx
+    CDE CELLULAR SERVICES, Fall River, MA
+    Responded to billing inquiries, assisted in technical troubleshooting, and performed rate plan analysis. Provided friendly and professional customer service while answering over 90 inbound calls per day.
+    
+    Chosen to facilitate training in an outsourced call center.
+    EDUCATION
+    Bachelor of Arts in Communication (Major: Advertising), 20xx
+    XYZ UNIVERSITY, Milwaukee, WI
+    
+    REFERENCES
+    Excellent references provided upon request.
+    """
+    
+    
+    phoneRegex=re.compile(r"(\d{3})-(\d{3}-\d{4})")
+    mo=phoneRegex.findall(resume)
+    print(mo)
+
+    [('508', '555-5555'), ('508', '555-1234')]
+
+Now, instead of returning a list of strings, a list of tuples containing strings is returned. Each string in the tuple is the contents of each group.
+
+
+<a id="org4949b7c"></a>
+
+## Character Classes
+
+We&rsquo;ve already looked at one character class (\d). It represents any numeric digit between 0 and 9. Character classes are shortcuts that make our code easier to read and write.
+
+1.  \d
+
+Any numeric digit from 0 to 9.
+
+\D
+
+Any character that is not a numeric digit from 0 to 9.
+
+\w
+
+Any letter, numeric digit, or the underscore character. (Think of this as matching “word” characters.)
+
+\W
+
+Any character that is not a letter, numeric digit, or the underscore character.
+
+\s
+
+Any space, tab, or newline character. (Think of this as matching “space” characters.)
+
+&sect;
+
+Any character that is not a space, tab, or newline.
 
