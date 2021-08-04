@@ -190,3 +190,80 @@ print(mo.group(1))
 : mobile
 
 If the search method can't find the regular expression pattern, it will return None. In that case, we can risk running into errors.
+
+* Repetition in Regex Patterns and Greedy/Nongreedy Matching
+
+How can we match a certain number of repetitions of a group? For example, one or more repitions, between 7 and 10 repitions, etc.
+
+** ? (zero or one)
+:LOGBOOK:
+CLOCK: [2021-08-03 Tue 21:32]
+:END:
+
+This says match the preceding group either 0 or 1 times.
+
+#+begin_src python :results output :exports both
+
+import re
+
+#batRegex=re.compile(r"Batman|Batwoman")
+batRegex=re.compile(r"Bat(wo)?man")
+
+mo=batRegex.search("The Adventures of Batman")
+print(mo.group())
+
+mo=batRegex.search("The Adventures of Batwoman")
+print(mo.group())
+
+mo=batRegex.search("The Adventures of Batwowoman")
+print(mo)
+
+#+end_src
+
+#+RESULTS:
+: Batman
+: Batwoman
+: None
+
+Using our earlier phone number example, we can make a regular expression that looks for phone numbers that do or do not have an area code. With our previous code, if we did not have an area code then the regex would not find the phone number.
+
+
+#+begin_src python :results output :exports both
+
+import re
+
+phoneRegex=re.compile(r"\d\d\d-\d\d\d-\d\d\d\d")
+
+mo = phoneRegex.search("My phone number is 415-555-1234")
+print(mo.group())
+
+mo = phoneRegex.search("My phone number is 555-1234")
+print(mo)
+
+phoneRegex=re.compile(r"(\d\d\d-)?\d\d\d-\d\d\d\d")
+
+mo = phoneRegex.search("My phone number is 415-555-1234")
+print(mo.group())
+
+mo = phoneRegex.search("My phone number is 555-1234")
+print(mo.group())
+
+#+end_src
+
+#+RESULTS:
+: 415-555-1234
+: None
+: 415-555-1234
+: 555-1234
+
+If we need to match a question mark as part of the expression, we can simply escape the question mark by putting a backslash in front of it.
+
+** * (zero or more)
+
+The asterisk means match 0 or more times.
+
+
+#+begin_src python :results output :exports both
+
+
+#+end_src

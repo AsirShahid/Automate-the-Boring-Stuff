@@ -1,4 +1,4 @@
-% Created 2021-08-03 Tue 20:56
+% Created 2021-08-03 Tue 21:39
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{Regular Expression Basics}
-\label{sec:org7901a6f}
+\label{sec:org6dcd759}
 
 In this lesson, we will be working with pattern matching and regular expressions. Regular expressions allow you to specify a pattern of text to search for.
 
@@ -114,7 +114,7 @@ Phone number found
 \end{verbatim}
 
 \subsection{The re Module}
-\label{sec:org2546724}
+\label{sec:orgfe170d0}
 
 We can write the previous code much faster using regular expressions.
 
@@ -143,7 +143,7 @@ print(phoneNumRegex.findall(message))
 \end{verbatim}
 
 \section{Regex Groups and the Pipe Character}
-\label{sec:org86f14e2}
+\label{sec:org02255d1}
 
 We can try some more of Python's more powerful pattern matching capabilities.
 
@@ -166,7 +166,7 @@ print(mo.group())
 \end{verbatim}
 
 \subsection{Groups}
-\label{sec:org997af89}
+\label{sec:org5043b5e}
 
 Let's say we only want the phone number or only the phone number portion of the number. We can do this sing parentheses to mark out groups in the string.
 
@@ -207,7 +207,7 @@ print(mo.group())
 \end{verbatim}
 
 \subsection{Pipe Character |}
-\label{sec:org7ca0222}
+\label{sec:orgb47a5e9}
 
 Pipes can be used to match one of several patterns as part of the regular expression.
 
@@ -232,4 +232,78 @@ mobile
 
 
 If the search method can't find the regular expression pattern, it will return None. In that case, we can risk running into errors.
+
+\section{Repetition in Regex Patterns and Greedy/Nongreedy Matching}
+\label{sec:orgc6cdbb9}
+
+How can we match a certain number of repetitions of a group? For example, one or more repitions, between 7 and 10 repitions, etc.
+
+\subsection{? (zero or one)}
+\label{sec:orgcd4e488}
+This says match the preceding group either 0 or 1 times.
+
+\begin{verbatim}
+
+import re
+
+#batRegex=re.compile(r"Batman|Batwoman")
+batRegex=re.compile(r"Bat(wo)?man")
+
+mo=batRegex.search("The Adventures of Batman")
+print(mo.group())
+
+mo=batRegex.search("The Adventures of Batwoman")
+print(mo.group())
+
+mo=batRegex.search("The Adventures of Batwowoman")
+print(mo)
+
+\end{verbatim}
+
+\begin{verbatim}
+Batman
+Batwoman
+None
+\end{verbatim}
+
+
+Using our earlier phone number example, we can make a regular expression that looks for phone numbers that do or do not have an area code. With our previous code, if we did not have an area code then the regex would not find the phone number.
+
+
+\begin{verbatim}
+
+import re
+
+phoneRegex=re.compile(r"\d\d\d-\d\d\d-\d\d\d\d")
+
+mo = phoneRegex.search("My phone number is 415-555-1234")
+print(mo.group())
+
+mo = phoneRegex.search("My phone number is 555-1234")
+print(mo)
+
+phoneRegex=re.compile(r"(\d\d\d-)?\d\d\d-\d\d\d\d")
+
+mo = phoneRegex.search("My phone number is 415-555-1234")
+print(mo.group())
+
+mo = phoneRegex.search("My phone number is 555-1234")
+print(mo.group())
+
+\end{verbatim}
+
+\begin{verbatim}
+415-555-1234
+None
+415-555-1234
+555-1234
+\end{verbatim}
+
+
+If we need to match a question mark as part of the expression, we can simply escape the question mark by putting a backslash in front of it.
+
+\subsection{* (zero or more)}
+\label{sec:org133cc89}
+
+The asterisk means match 0 or more times.
 \end{document}
