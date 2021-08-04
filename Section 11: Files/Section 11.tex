@@ -1,4 +1,4 @@
-% Created 2021-08-04 Wed 13:03
+% Created 2021-08-04 Wed 14:35
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -30,4 +30,324 @@
 \maketitle
 \tableofcontents
 
+
+\section{Filenames and Absolute/Relative File Paths}
+\label{sec:orgcfb13bc}
+
+We'll learn about files, folders, and how Python can work with them.
+
+If we want our data to persist after our program is finished, we need to save it to a file.
+
+\subsection{Fileames and File Paths}
+\label{sec:org0707d61}
+
+Each of our files has 2 key properties. The file name and the file path.
+
+\subsection{os module}
+\label{sec:org7794771}
+
+The os module contains numerous file path related functions that we can use.
+
+\subsubsection{os.getcwd()}
+\label{sec:org34e0546}
+
+Every program has a setting called the current working directory, this tells us the directory that we are currently in. We can use the getcwd() function in order to find our current working directory.
+
+\begin{verbatim}
+
+import os
+
+print(os.getcwd())
+
+\end{verbatim}
+
+\begin{verbatim}
+/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files
+\end{verbatim}
+
+\subsubsection{os.chdir()}
+\label{sec:orga11a621}
+
+We can also change the current working directory using this chdir() function.
+
+\begin{verbatim}
+
+import os
+
+print(os.getcwd())
+
+os.chdir("/")
+
+print(os.getcwd())
+
+\end{verbatim}
+
+\begin{verbatim}
+/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files
+/
+\end{verbatim}
+
+\subsection{Absolute and Relative Paths}
+\label{sec:org650a31c}
+
+There are two kinds of file paths, relative and absolute. The absolute file path begins with the root directory and gives you the complete location of the file. A relative file path is relative to the current working directory.
+
+\subsection{. and .. Folders}
+\label{sec:org613a575}
+
+These are not real directories, but they can be used with relative paths. The single dot stands for this directory while two dots stands for the paret directory, the directory that your current working directory is in.
+
+\subsection{os.path module}
+\label{sec:org2cf0c6d}
+\subsubsection{os.path.join()}
+\label{sec:org22247f1}
+
+This is a join function inside of a path module inside of an os module. It takes several string arguments and returns a string value of a path for the os that you are using.
+
+\begin{verbatim}
+
+import os
+print(os.path.join("folder1","folder2","folder3","file.png"))
+
+\end{verbatim}
+
+\begin{verbatim}
+folder1/folder2/folder3/file.png
+\end{verbatim}
+
+\subsubsection{os.path.abspath()}
+\label{sec:org8d3f576}
+
+The abspath() function will return the absolute path of the path that you pass it.
+
+\begin{verbatim}
+
+import os
+
+print(os.path.abspath("Section 11.org"))
+
+
+\end{verbatim}
+
+\begin{verbatim}
+/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
+\end{verbatim}
+
+\subsubsection{os.path.isabs()}
+\label{sec:org3e496e1}
+
+The isabs() function is a way to determine if a given path is absolute.
+
+\begin{verbatim}
+
+import os
+
+print(os.path.abspath("Section 11.org"))
+
+print(os.path.isabs("Section 11.org"))
+
+print(os.path.abspath("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+print(os.path.isabs("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+\end{verbatim}
+
+\begin{verbatim}
+/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
+False
+/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
+True
+\end{verbatim}
+
+\subsubsection{os.path.relpath()}
+\label{sec:orgd11936e}
+
+This function will give you the relative path between two paths. The first argument is the file/directory we want to get to and the second is the directory we are already in.
+
+
+
+\begin{verbatim}
+
+import os
+
+print(os.path.relpath("Section 11.org", "/usr/bin"))
+
+print(os.path.relpath("Section 11.org", "/home/mohammeds/"))
+
+
+\end{verbatim}
+
+\begin{verbatim}
+../../home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
+Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
+\end{verbatim}
+
+\subsubsection{os.path.dirname()}
+\label{sec:org56fa934}
+
+This function pulls out just the directory part of the path.
+
+\begin{verbatim}
+
+import os
+
+print(os.path.dirname("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+\end{verbatim}
+
+\begin{verbatim}
+/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files
+\end{verbatim}
+
+\subsubsection{os.path.basename()}
+\label{sec:org420ef22}
+
+This function pulls out just the last part of the path. Either the filename or just the directory itself if there is no file in the path.
+
+\begin{verbatim}
+
+import os
+
+print(os.path.basename("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+\end{verbatim}
+
+\begin{verbatim}
+Section 11.org
+\end{verbatim}
+
+\subsubsection{os.path.exists()}
+\label{sec:orgff4693b}
+
+This function can check and see if the path you are passing actually exists.
+
+\begin{verbatim}
+
+import os
+
+print(os.path.exists("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+print(os.path.exists("/home/mohammeds/Fake File Path"))
+
+\end{verbatim}
+
+\begin{verbatim}
+True
+False
+\end{verbatim}
+
+\subsubsection{os.path.isfile()}
+\label{sec:org644e339}
+
+We can use this function to see if what we pass to it is a file or not.
+
+\begin{verbatim}
+
+import os
+
+print(os.path.isfile("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+print(os.path.isfile("/home/mohammeds/Fake File Path"))
+
+\end{verbatim}
+
+\begin{verbatim}
+True
+False
+\end{verbatim}
+
+\subsubsection{os.path.isdir()}
+\label{sec:orgafd4f07}
+
+We can use this function to see if what we pass to it is a directory or not.
+
+\begin{verbatim}
+
+import os
+
+print(os.path.isdir("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+print(os.path.isdir("/home/mohammeds/"))
+
+\end{verbatim}
+
+\begin{verbatim}
+False
+True
+\end{verbatim}
+
+\subsubsection{os.path.getsize()}
+\label{sec:orgad74db1}
+
+This function gives us the size of the file in bytes.
+
+\begin{verbatim}
+
+import os
+
+print(os.path.getsize("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+\end{verbatim}
+
+\begin{verbatim}
+8057
+\end{verbatim}
+
+\subsection{os.listdir()}
+\label{sec:org00cc324}
+
+This function isn't in the path module. It can be passed a file path of a folder and then it'll return a list of strings of the filenames and folder names that it contains.
+
+\begin{verbatim}
+
+import os
+
+print(os.listdir("/home/mohammeds/Documents"))
+
+\end{verbatim}
+
+\begin{verbatim}
+['[Chapman and Hall_CRC the R Ser] Albert, Jim_ Baumer, Benjamin S._ Marchi, Max - Analyzing Baseball Data with R (2018, Chapman and Hall_CRC) - libgen.lc.pdf', 'bedrock-linux-0.7.20beta1-x86_64.sh', 'fstab.txt', 'Verify Payment.pdf', 'mission-369-advanced-regular-expressions-takeaways.pdf', 'userguide.pdf', 'Quidditch Through the Ages - J.K. Rowling.pdf', 'Resume', 'SmashCharacters.txt', 'LFS-BOOK-10.1.pdf', 'Linux From Scratch - Version 10.1 - LFS-BOOK-10.1.pdf', 'Oathbringer_ Book Three of the Stormlight Archive_B01NAWAH85.kfx', 'Andrew Ng Machine Learning Lectures', 'Hugo Websites', 'Data Scientist in Python DataQuest', 'mohammed-shahid-python-for-data-science-fundamentals.pdf', 'README.md', '.git', 'mkdir', 'Crypto Trading Bot', 'Machine Trading', 'The Home Depot - Order Confirmation.pdf', 'Online Return Center.pdf', 'LeetCode', 'Kaggle', 'Coursera', 'Data Analyst in R DataQuest', 'edX', 'org-basics.org', 'happybday.org', 'org', 'letter.org', 'AB_NYC_2019.csv', 'cse351_hw1_fazli_faraz_110018236.ipynb', '.ipynb_checkpoints', 'mariaradio.org', '.auctex-auto', 'mariaradio.tex', 'mariaradio.pdf', 'mariaradio.md', 'mariaradio.html', 'Order Confirmation _ Law School Admission Council.pdf', 'marialetter.org', 'Automate the Boring Stuff', 'TEKgence Application Form.xlsx', '.dir-locals.el']
+\end{verbatim}
+
+\subsection{Example Code: Finding the total size of all files in a folder.}
+\label{sec:orgb3a2218}
+
+\begin{verbatim}
+
+import os
+
+totalSize=0
+
+for file in os.listdir("/home/mohammeds/Documents"):
+    if not os.path.isfile(os.path.join("/home/mohammeds/Documents", file)):
+        continue
+    totalSize+=os.path.getsize(os.path.join("/home/mohammeds/Documents", file))
+
+print(totalSize)
+
+\end{verbatim}
+
+\begin{verbatim}
+382371482
+\end{verbatim}
+
+\subsection{os.makedirs()}
+\label{sec:org4334088}
+
+This function can create directories for you.
+
+\begin{verbatim}
+
+import os
+
+print(os.getcwd())
+
+print(os.listdir())
+
+os.makedirs("TestDir")
+
+print(os.listdir())
+
+\end{verbatim}
 \end{document}

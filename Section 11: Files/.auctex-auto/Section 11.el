@@ -29,6 +29,28 @@
     "textcomp"
     "amssymb"
     "capt-of"
-    "hyperref"))
+    "hyperref")
+   (LaTeX-add-labels
+    "sec:orgcfb13bc"
+    "sec:org0707d61"
+    "sec:org7794771"
+    "sec:org34e0546"
+    "sec:orga11a621"
+    "sec:org650a31c"
+    "sec:org613a575"
+    "sec:org2cf0c6d"
+    "sec:org22247f1"
+    "sec:org8d3f576"
+    "sec:org3e496e1"
+    "sec:orgd11936e"
+    "sec:org56fa934"
+    "sec:org420ef22"
+    "sec:orgff4693b"
+    "sec:org644e339"
+    "sec:orgafd4f07"
+    "sec:orgad74db1"
+    "sec:org00cc324"
+    "sec:orgb3a2218"
+    "sec:org4334088"))
  :latex)
 

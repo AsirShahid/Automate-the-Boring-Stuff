@@ -3,3 +3,289 @@
 #+AUTHOR: Mohammed Asir Shahid
 #+EMAIL: MohammedShahid@protonmail.com
 #+DATE: 2021-08-04
+
+* Filenames and Absolute/Relative File Paths
+
+We'll learn about files, folders, and how Python can work with them.
+
+If we want our data to persist after our program is finished, we need to save it to a file.
+
+** Fileames and File Paths
+
+Each of our files has 2 key properties. The file name and the file path.
+
+** os module
+
+The os module contains numerous file path related functions that we can use.
+
+*** os.getcwd()
+
+Every program has a setting called the current working directory, this tells us the directory that we are currently in. We can use the getcwd() function in order to find our current working directory.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.getcwd())
+
+#+end_src
+
+#+RESULTS:
+: /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files
+
+*** os.chdir()
+
+We can also change the current working directory using this chdir() function.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.getcwd())
+
+os.chdir("/")
+
+print(os.getcwd())
+
+#+end_src
+
+#+RESULTS:
+: /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files
+: /
+
+** Absolute and Relative Paths
+
+There are two kinds of file paths, relative and absolute. The absolute file path begins with the root directory and gives you the complete location of the file. A relative file path is relative to the current working directory.
+
+** . and .. Folders
+
+These are not real directories, but they can be used with relative paths. The single dot stands for this directory while two dots stands for the paret directory, the directory that your current working directory is in.
+
+** os.path module
+*** os.path.join()
+
+This is a join function inside of a path module inside of an os module. It takes several string arguments and returns a string value of a path for the os that you are using.
+
+#+begin_src python :results output :exports both
+
+import os
+print(os.path.join("folder1","folder2","folder3","file.png"))
+
+#+end_src
+
+#+RESULTS:
+: folder1/folder2/folder3/file.png
+
+*** os.path.abspath()
+
+The abspath() function will return the absolute path of the path that you pass it.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.path.abspath("Section 11.org"))
+
+
+#+end_src
+
+#+RESULTS:
+: /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
+
+*** os.path.isabs()
+
+The isabs() function is a way to determine if a given path is absolute.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.path.abspath("Section 11.org"))
+
+print(os.path.isabs("Section 11.org"))
+
+print(os.path.abspath("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+print(os.path.isabs("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+#+end_src
+
+#+RESULTS:
+: /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
+: False
+: /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
+: True
+
+*** os.path.relpath()
+
+This function will give you the relative path between two paths. The first argument is the file/directory we want to get to and the second is the directory we are already in.
+
+
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.path.relpath("Section 11.org", "/usr/bin"))
+
+print(os.path.relpath("Section 11.org", "/home/mohammeds/"))
+
+
+#+end_src
+
+#+RESULTS:
+: ../../home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
+: Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
+
+*** os.path.dirname()
+
+This function pulls out just the directory part of the path.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.path.dirname("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+#+end_src
+
+#+RESULTS:
+:
+: /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files
+
+*** os.path.basename()
+
+This function pulls out just the last part of the path. Either the filename or just the directory itself if there is no file in the path.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.path.basename("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+#+end_src
+
+#+RESULTS:
+: Section 11.org
+
+*** os.path.exists()
+
+This function can check and see if the path you are passing actually exists.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.path.exists("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+print(os.path.exists("/home/mohammeds/Fake File Path"))
+
+#+end_src
+
+#+RESULTS:
+: True
+: False
+
+*** os.path.isfile()
+
+We can use this function to see if what we pass to it is a file or not.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.path.isfile("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+print(os.path.isfile("/home/mohammeds/Fake File Path"))
+
+#+end_src
+
+#+RESULTS:
+: True
+: False
+
+*** os.path.isdir()
+
+We can use this function to see if what we pass to it is a directory or not.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.path.isdir("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+print(os.path.isdir("/home/mohammeds/"))
+
+#+end_src
+
+#+RESULTS:
+: False
+: True
+
+*** os.path.getsize()
+
+This function gives us the size of the file in bytes.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.path.getsize("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
+
+#+end_src
+
+#+RESULTS:
+: 5781
+
+** os.listdir()
+
+This function isn't in the path module. It can be passed a file path of a folder and then it'll return a list of strings of the filenames and folder names that it contains.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.listdir("/home/mohammeds/Documents"))
+
+#+end_src
+
+#+RESULTS:
+: ['[Chapman and Hall_CRC the R Ser] Albert, Jim_ Baumer, Benjamin S._ Marchi, Max - Analyzing Baseball Data with R (2018, Chapman and Hall_CRC) - libgen.lc.pdf', 'bedrock-linux-0.7.20beta1-x86_64.sh', 'fstab.txt', 'Verify Payment.pdf', 'mission-369-advanced-regular-expressions-takeaways.pdf', 'userguide.pdf', 'Quidditch Through the Ages - J.K. Rowling.pdf', 'Resume', 'SmashCharacters.txt', 'LFS-BOOK-10.1.pdf', 'Linux From Scratch - Version 10.1 - LFS-BOOK-10.1.pdf', 'Oathbringer_ Book Three of the Stormlight Archive_B01NAWAH85.kfx', 'Andrew Ng Machine Learning Lectures', 'Hugo Websites', 'Data Scientist in Python DataQuest', 'mohammed-shahid-python-for-data-science-fundamentals.pdf', 'README.md', '.git', 'mkdir', 'Crypto Trading Bot', 'Machine Trading', 'The Home Depot - Order Confirmation.pdf', 'Online Return Center.pdf', 'LeetCode', 'Kaggle', 'Coursera', 'Data Analyst in R DataQuest', 'edX', 'org-basics.org', 'happybday.org', 'org', 'letter.org', 'AB_NYC_2019.csv', 'cse351_hw1_fazli_faraz_110018236.ipynb', '.ipynb_checkpoints', 'mariaradio.org', '.auctex-auto', 'mariaradio.tex', 'mariaradio.pdf', 'mariaradio.md', 'mariaradio.html', 'Order Confirmation _ Law School Admission Council.pdf', 'marialetter.org', 'Automate the Boring Stuff', 'TEKgence Application Form.xlsx', '.dir-locals.el']
+
+** Example Code: Finding the total size of all files in a folder.
+
+#+begin_src python :results output :exports both
+
+import os
+
+totalSize=0
+
+for file in os.listdir("/home/mohammeds/Documents"):
+    if not os.path.isfile(os.path.join("/home/mohammeds/Documents", file)):
+        continue
+    totalSize+=os.path.getsize(os.path.join("/home/mohammeds/Documents", file))
+
+print(totalSize)
+
+#+end_src
+
+#+RESULTS:
+: 382371482
+
+** os.makedirs()
+
+This function can create directories for you.
+
+#+begin_src python :results output :exports both
+
+import os
+
+print(os.getcwd())
+
+print(os.listdir())
+
+os.makedirs("TestDir")
+
+print(os.listdir())
+
+#+end_src
