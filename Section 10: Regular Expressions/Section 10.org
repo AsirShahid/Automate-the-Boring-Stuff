@@ -607,3 +607,46 @@ print(consonantsRegex.findall("Robocop eats baby food."))
 : ['o', 'o', 'o', 'e', 'a', 'a', 'o', 'o']
 : ['ea', 'oo']
 : ['R', 'b', 'c', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ' ', 'f', 'd', '.']
+
+* Regex Dot-Star and the Caret/Dollar Characters
+
+In our last lesson, we learned that we can use a ^ at the start of the square brackets in order to create a negative character class. We can also use a carrot at the start of a regular expression to indicate that the match needs to occur at the beginning of the text. We can also put a dollar sign at the end of the regular expression to indicate that the string has to match at the end with the regex pattern.
+
+#+begin_src python :results output :exports both
+
+import re
+
+beginsWithHelloRegex=re.compile(r"^Hello")
+
+mo=beginsWithHelloRegex.search("Hello there")
+print(mo.group())
+
+mo=beginsWithHelloRegex.search("He said Hello!")
+print(mo)
+
+endsWithWorldRegex=re.compile(r"world!$")
+
+mo=endsWithWorldRegex.search("Hello world!")
+print(mo.group())
+
+mo=endsWithWorldRegex.search("Hello world!!!")
+print(mo)
+
+#+end_src
+
+#+RESULTS:
+: Hello
+: None
+: world!
+: None
+
+If we use both ^ at the beginning and $ at the end of our regex then that must indicate that the pattern must match the entire string.
+
+#+begin_src python :results output :exports both
+
+import re
+
+
+#+end_src
+
+#+RESULTS:

@@ -1,26 +1,27 @@
 
 # Table of Contents
 
-1.  [Regular Expression Basics](#org9294414)
-    1.  [The re Module](#org064f117)
-2.  [Regex Groups and the Pipe Character](#org4717194)
-    1.  [Groups](#org5b8fc3f)
-    2.  [Pipe Character |](#org46a41dc)
-3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#orgb5a532d)
-    1.  [? (zero or one)](#org19346b6)
-    2.  [\* (zero or more)](#org5e747be)
-    3.  [+ (one or more)](#org68cc154)
-    4.  [Escaping ?, \*, and +](#org734675e)
-    5.  [{x} (exactly x)](#org273a439)
-    6.  [{x,y} (at least x, at most y)](#orgab85591)
-4.  [Regex Character Classes and the findall() Method](#orge9db759)
-    1.  [Character Classes](#org117cd28)
-    2.  [12 Days of Christmas Example](#orga4c0df5)
-    3.  [Making Your Own Character Classes](#org76f6f59)
+1.  [Regular Expression Basics](#org0973c02)
+    1.  [The re Module](#org8ba097a)
+2.  [Regex Groups and the Pipe Character](#orgc0b31cf)
+    1.  [Groups](#orgffd8a61)
+    2.  [Pipe Character |](#orgd7e5477)
+3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#orgd29d47c)
+    1.  [? (zero or one)](#orgcb1a6a7)
+    2.  [\* (zero or more)](#orgd3957bf)
+    3.  [+ (one or more)](#org547d915)
+    4.  [Escaping ?, \*, and +](#orgf5f63b5)
+    5.  [{x} (exactly x)](#orgd69210c)
+    6.  [{x,y} (at least x, at most y)](#org11a5935)
+4.  [Regex Character Classes and the findall() Method](#orgd398087)
+    1.  [Character Classes](#org706e31d)
+    2.  [12 Days of Christmas Example](#org47c973b)
+    3.  [Making Your Own Character Classes](#org882677e)
+5.  [Regex Dot-Star and the Caret/Dollar Characters](#org75cc9d8)
 
 
 
-<a id="org9294414"></a>
+<a id="org0973c02"></a>
 
 # Regular Expression Basics
 
@@ -93,7 +94,7 @@ That&rsquo;s a lot of code for a relatively simple task. If we want to find phon
     Phone number found
 
 
-<a id="org064f117"></a>
+<a id="org8ba097a"></a>
 
 ## The re Module
 
@@ -118,7 +119,7 @@ We can write the previous code much faster using regular expressions.
     ['415-555-1011', '415-555-9999']
 
 
-<a id="org4717194"></a>
+<a id="orgc0b31cf"></a>
 
 # Regex Groups and the Pipe Character
 
@@ -136,7 +137,7 @@ Let&rsquo;s say we want to seperate the area code from a phone number.
     415-555-4242
 
 
-<a id="org5b8fc3f"></a>
+<a id="orgffd8a61"></a>
 
 ## Groups
 
@@ -168,7 +169,7 @@ The parentheses there can be useful syntax when we want to find specific parts o
     (415) 555-4242
 
 
-<a id="org46a41dc"></a>
+<a id="orgd7e5477"></a>
 
 ## Pipe Character |
 
@@ -190,14 +191,14 @@ Let&rsquo;s say we wanted to match any of the strings &ldquo;Batman&rdquo;, &ldq
 If the search method can&rsquo;t find the regular expression pattern, it will return None. In that case, we can risk running into errors.
 
 
-<a id="orgb5a532d"></a>
+<a id="orgd29d47c"></a>
 
 # Repetition in Regex Patterns and Greedy/Nongreedy Matching
 
 How can we match a certain number of repetitions of a group? For example, one or more repitions, between 7 and 10 repitions, etc.
 
 
-<a id="org19346b6"></a>
+<a id="orgcb1a6a7"></a>
 
 ## ? (zero or one)
 
@@ -251,7 +252,7 @@ Using our earlier phone number example, we can make a regular expression that lo
 If we need to match a question mark as part of the expression, we can simply escape it by doing \\?.
 
 
-<a id="org5e747be"></a>
+<a id="orgd3957bf"></a>
 
 ## \* (zero or more)
 
@@ -277,7 +278,7 @@ The asterisk means match 0 or more times.
 If you need to match an \* that appears in the pattern, you can escape it by doing \\\*.
 
 
-<a id="org68cc154"></a>
+<a id="org547d915"></a>
 
 ## + (one or more)
 
@@ -303,7 +304,7 @@ Unlike the star, the group preceding a + must appear in the pattern.
 If you need to match a + that appears in the pattern, you can escape it by doing \\+.
 
 
-<a id="org734675e"></a>
+<a id="orgf5f63b5"></a>
 
 ## Escaping ?, \*, and +
 
@@ -328,7 +329,7 @@ We could also put the above +\*? into a group and then putting a + after it to s
     +*?+*?+*?
 
 
-<a id="org273a439"></a>
+<a id="orgd69210c"></a>
 
 ## {x} (exactly x)
 
@@ -355,7 +356,7 @@ While the above is a simple example, we could do it for many other, more complex
     415-555-1234,555-4242,212-555-0000
 
 
-<a id="orgab85591"></a>
+<a id="org11a5935"></a>
 
 ## {x,y} (at least x, at most y)
 
@@ -400,7 +401,7 @@ In order to do a nongreedy match, we can specify a question mark following the c
     123
 
 
-<a id="orge9db759"></a>
+<a id="orgd398087"></a>
 
 # Regex Character Classes and the findall() Method
 
@@ -513,7 +514,7 @@ However, with regex objects that have 2 or more groups, the following occurs.
 Now, instead of returning a list of strings, a list of tuples containing strings is returned. Each string in the tuple is the contents of each group.
 
 
-<a id="org117cd28"></a>
+<a id="org706e31d"></a>
 
 ## Character Classes
 
@@ -573,7 +574,7 @@ We&rsquo;ve already looked at one character class (\d). It represents any numeri
 </table>
 
 
-<a id="orga4c0df5"></a>
+<a id="org47c973b"></a>
 
 ## 12 Days of Christmas Example
 
@@ -591,7 +592,7 @@ We can use regular expressions to find patterns where we have some number follow
     ['12 drummers', '11 pipers', '10 lords', '9 ladies', '7 swans', '6 geese', '5 golden', '4 calling', '3 french', '2 turtle', '1 partridge']
 
 
-<a id="org76f6f59"></a>
+<a id="org882677e"></a>
 
 ## Making Your Own Character Classes
 
@@ -614,4 +615,40 @@ Above we showed the existing shorthand character classes, but we can create our 
     ['o', 'o', 'o', 'e', 'a', 'a', 'o', 'o']
     ['ea', 'oo']
     ['R', 'b', 'c', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ' ', 'f', 'd', '.']
+
+
+<a id="org75cc9d8"></a>
+
+# Regex Dot-Star and the Caret/Dollar Characters
+
+In our last lesson, we learned that we can use a ^ at the start of the square brackets in order to create a negative character class. We can also use a carrot at the start of a regular expression to indicate that the match needs to occur at the beginning of the text. We can also put a dollar sign at the end of the regular expression to indicate that the string has to match at the end with the regex pattern.
+
+    
+    import re
+    
+    beginsWithHelloRegex=re.compile(r"^Hello")
+    
+    mo=beginsWithHelloRegex.search("Hello there")
+    print(mo.group())
+    
+    mo=beginsWithHelloRegex.search("He said Hello!")
+    print(mo)
+    
+    endsWithWorldRegex=re.compile(r"world!$")
+    
+    mo=endsWithWorldRegex.search("Hello world!")
+    print(mo.group())
+    
+    mo=endsWithWorldRegex.search("Hello world!!!")
+    print(mo)
+
+    Hello
+    None
+    world!
+    None
+
+If we use both ^ at the beginning and $ at the end of our regex then that must indicate that the pattern must match the entire string.
+
+    
+    import re
 

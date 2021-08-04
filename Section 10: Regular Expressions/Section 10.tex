@@ -1,4 +1,4 @@
-% Created 2021-08-04 Wed 00:50
+% Created 2021-08-04 Wed 00:59
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{Regular Expression Basics}
-\label{sec:orge5dc0be}
+\label{sec:orgbfc0eae}
 
 In this lesson, we will be working with pattern matching and regular expressions. Regular expressions allow you to specify a pattern of text to search for.
 
@@ -114,7 +114,7 @@ Phone number found
 \end{verbatim}
 
 \subsection{The re Module}
-\label{sec:org1e80427}
+\label{sec:orgaa2316f}
 
 We can write the previous code much faster using regular expressions.
 
@@ -143,7 +143,7 @@ print(phoneNumRegex.findall(message))
 \end{verbatim}
 
 \section{Regex Groups and the Pipe Character}
-\label{sec:org6a37d1a}
+\label{sec:org2c61f7a}
 
 We can try some more of Python's more powerful pattern matching capabilities.
 
@@ -166,7 +166,7 @@ print(mo.group())
 \end{verbatim}
 
 \subsection{Groups}
-\label{sec:org4955467}
+\label{sec:org82401e1}
 
 Let's say we only want the phone number or only the phone number portion of the number. We can do this sing parentheses to mark out groups in the string.
 
@@ -207,7 +207,7 @@ print(mo.group())
 \end{verbatim}
 
 \subsection{Pipe Character |}
-\label{sec:orgde1f350}
+\label{sec:org6e8a328}
 
 Pipes can be used to match one of several patterns as part of the regular expression.
 
@@ -234,12 +234,12 @@ mobile
 If the search method can't find the regular expression pattern, it will return None. In that case, we can risk running into errors.
 
 \section{Repetition in Regex Patterns and Greedy/Nongreedy Matching}
-\label{sec:org2c75d4d}
+\label{sec:org16c25e9}
 
 How can we match a certain number of repetitions of a group? For example, one or more repitions, between 7 and 10 repitions, etc.
 
 \subsection{? (zero or one)}
-\label{sec:org9e60eb8}
+\label{sec:orgce0fed6}
 This says match the preceding group either 0 or 1 times.
 
 \begin{verbatim}
@@ -303,7 +303,7 @@ None
 If we need to match a question mark as part of the expression, we can simply escape it by doing $\backslash$?.
 
 \subsection{* (zero or more)}
-\label{sec:org1566ad2}
+\label{sec:orgeff8ea5}
 
 The asterisk means match 0 or more times.
 
@@ -334,7 +334,7 @@ Batwowowoman
 If you need to match an * that appears in the pattern, you can escape it by doing $\backslash$*.
 
 \subsection{+ (one or more)}
-\label{sec:orgca412f1}
+\label{sec:org5c305ca}
 
 Unlike the star, the group preceding a + must appear in the pattern.
 
@@ -364,7 +364,7 @@ Batwowowoman
 If you need to match a + that appears in the pattern, you can escape it by doing $\backslash$+.
 
 \subsection{Escaping ?, *, and +}
-\label{sec:org62a8d36}
+\label{sec:org0394f15}
 
 
 \begin{verbatim}
@@ -399,7 +399,7 @@ print(mo.group())
 \end{verbatim}
 
 \subsection{\{x\} (exactly x)}
-\label{sec:org0685e97}
+\label{sec:org53da1bb}
 
 This can be used if you wanted to match a specific number of repetitions of a group.
 
@@ -436,7 +436,7 @@ print(mo.group())
 \end{verbatim}
 
 \subsection{\{x,y\} (at least x, at most y)}
-\label{sec:org97b66ec}
+\label{sec:org31f00b0}
 
 
 \begin{verbatim}
@@ -497,7 +497,7 @@ print(mo.group())
 \end{verbatim}
 
 \section{Regex Character Classes and the findall() Method}
-\label{sec:org2da1854}
+\label{sec:orgd29305f}
 
 In this lesson, we'll talk about the findall() method with regular expressions.
 
@@ -621,7 +621,7 @@ print(mo)
 Now, instead of returning a list of strings, a list of tuples containing strings is returned. Each string in the tuple is the contents of each group.
 
 \subsection{Character Classes}
-\label{sec:orgf6e167b}
+\label{sec:org49a2b8a}
 
 We've already looked at one character class (\d). It represents any numeric digit between 0 and 9. Character classes are shortcuts that make our code easier to read and write.
 
@@ -639,7 +639,7 @@ Shorthand character class & Represents\\
 \end{center}
 
 \subsection{12 Days of Christmas Example}
-\label{sec:orgd2e302c}
+\label{sec:orgeea0d55}
 
 We can use regular expressions to find patterns where we have some number followed by some words.
 
@@ -660,7 +660,7 @@ print(xmasRegex.findall(lyrics))
 \end{verbatim}
 
 \subsection{Making Your Own Character Classes}
-\label{sec:org27e2f6c}
+\label{sec:org749189e}
 
 Above we showed the existing shorthand character classes, but we can create our own character classes as well. Let's say we want to create a shorthand for vowels, then we can use r``[aeiouAEIOU]'' for our Regex. If we want to make a negative character class, we can put in a \^{} at the start of the square brackets.
 
@@ -684,5 +684,49 @@ print(consonantsRegex.findall("Robocop eats baby food."))
 ['o', 'o', 'o', 'e', 'a', 'a', 'o', 'o']
 ['ea', 'oo']
 ['R', 'b', 'c', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ' ', 'f', 'd', '.']
+\end{verbatim}
+
+\section{Regex Dot-Star and the Caret/Dollar Characters}
+\label{sec:org6de5c72}
+
+In our last lesson, we learned that we can use a \^{} at the start of the square brackets in order to create a negative character class. We can also use a carrot at the start of a regular expression to indicate that the match needs to occur at the beginning of the text. We can also put a dollar sign at the end of the regular expression to indicate that the string has to match at the end with the regex pattern.
+
+\begin{verbatim}
+
+import re
+
+beginsWithHelloRegex=re.compile(r"^Hello")
+
+mo=beginsWithHelloRegex.search("Hello there")
+print(mo.group())
+
+mo=beginsWithHelloRegex.search("He said Hello!")
+print(mo)
+
+endsWithWorldRegex=re.compile(r"world!$")
+
+mo=endsWithWorldRegex.search("Hello world!")
+print(mo.group())
+
+mo=endsWithWorldRegex.search("Hello world!!!")
+print(mo)
+
+\end{verbatim}
+
+\begin{verbatim}
+Hello
+None
+world!
+None
+\end{verbatim}
+
+
+If we use both \^{} at the beginning and \$ at the end of our regex then that must indicate that the pattern must match the entire string.
+
+\begin{verbatim}
+
+import re
+
+
 \end{verbatim}
 \end{document}
