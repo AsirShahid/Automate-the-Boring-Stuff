@@ -256,7 +256,7 @@ print(mo.group())
 : 415-555-1234
 : 555-1234
 
-If we need to match a question mark as part of the expression, we can simply escape the question mark by putting a backslash in front of it.
+If we need to match a question mark as part of the expression, we can simply escape it by doing \?.
 
 ** * (zero or more)
 
@@ -265,5 +265,169 @@ The asterisk means match 0 or more times.
 
 #+begin_src python :results output :exports both
 
+import re
+batRegex=re.compile(r"Bat(wo)*man")
+
+mo=batRegex.search("The Adventures of Batman")
+print(mo.group())
+
+mo=batRegex.search("The Adventures of Batwoman")
+print(mo.group())
+
+mo=batRegex.search("The Adventures of Batwowowoman")
+print(mo.group())
 
 #+end_src
+
+#+RESULTS:
+: Batman
+: Batwoman
+: Batwowowoman
+
+If you need to match an * that appears in the pattern, you can escape it by doing \*.
+
+** + (one or more)
+
+Unlike the star, the group preceding a + must appear in the pattern.
+
+#+begin_src python :results output :exports both
+
+import re
+batRegex=re.compile(r"Bat(wo)+man")
+
+mo=batRegex.search("The Adventures of Batman")
+print(mo)
+
+mo=batRegex.search("The Adventures of Batwoman")
+print(mo.group())
+
+mo=batRegex.search("The Adventures of Batwowowoman")
+print(mo.group())
+
+#+end_src
+
+#+RESULTS:
+: None
+: Batwoman
+: Batwowowoman
+
+If you need to match a + that appears in the pattern, you can escape it by doing \+.
+
+** Escaping ?, *, and +
+
+
+#+begin_src python :results output :exports both
+
+import re
+regex = re.compile(r"\+\*\?")
+
+mo=regex.search("I learned about +*? regex syntax")
+print(mo.group())
+
+#+end_src
+
+#+RESULTS:
+: +*?
+
+We could also put the above +*? into a group and then putting a + after it to say that the group needs to appear at least once.
+
+#+begin_src python :results output :exports both
+
+import re
+regex = re.compile(r"(\+\*\?)+")
+
+mo=regex.search("I learned about +*?+*?+*? regex syntax")
+print(mo.group())
+
+#+end_src
+
+#+RESULTS:
+: +*?+*?+*?
+
+** {x} (exactly x)
+
+This can be used if you wanted to match a specific number of repetitions of a group.
+
+
+#+begin_src python :results output :exports both
+
+import re
+
+haRegex=re.compile(r"(Ha){3}")
+mo=haRegex.search("He said \"HaHaHa\"")
+print(mo.group())
+
+#+end_src
+
+#+RESULTS:
+: HaHaHa
+
+While the above is a simple example, we could do it for many other, more complex examples.
+
+#+begin_src python :results output :exports both
+
+import re
+
+phoneRegex=re.compile(r"((\d\d\d-)?\d\d\d-\d\d\d\d(,)?){3}")
+mo=phoneRegex.search("My numbers are 415-555-1234,555-4242,212-555-0000")
+print(mo.group())
+
+#+end_src
+
+#+RESULTS:
+: 415-555-1234,555-4242,212-555-0000
+
+** {x,y} (at least x, at most y)
+
+
+#+begin_src python :results output :exports both
+
+import re
+haRegex=re.compile(r"(Ha){3,5}")
+mo=haRegex.search("He said \"HaHaHa\"")
+print(mo.group())
+
+mo=haRegex.search("He said \"HaHaHaHaHa\"")
+print(mo.group())
+
+mo=haRegex.search("He said \"HaHaHaHaHaHa\"")
+print(mo)
+
+#+end_src
+
+#+RESULTS:
+: HaHaHa
+: HaHaHaHaHa
+: <re.Match object; span=(9, 19), match='HaHaHaHaHa'>
+
+We can also have no y value which would have no maximum and be unbounded, x or more.
+
+#+begin_src python :results output :exports both
+
+import re
+
+digitRegex=re.compile(r"(\d){3,5}")
+mo=digitRegex.search("1234567890")
+print(mo.group())
+
+#+end_src
+
+#+RESULTS:
+: 12345
+
+As we can see above, there was a match of the first 5 digits even though the first 3 also would have sufficed. By default, Python regular expressions do greedy matches. This means that it tries to match the longest possible string that matches the pattern.
+
+In order to do a nongreedy match, we can specify a question mark following the curly braces. Then it matches the first, shortest pattern.
+
+#+begin_src python :results output :exports both
+
+import re
+
+digitRegex=re.compile(r"(\d){3,5}?")
+mo=digitRegex.search("1234567890")
+print(mo.group())
+
+#+end_src
+
+#+RESULTS:
+: 123

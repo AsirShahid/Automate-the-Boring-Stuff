@@ -1,18 +1,22 @@
 
 # Table of Contents
 
-1.  [Regular Expression Basics](#org4fb3316)
-    1.  [The re Module](#org2cdf945)
-2.  [Regex Groups and the Pipe Character](#orgfeb76af)
-    1.  [Groups](#org311e657)
-    2.  [Pipe Character |](#orgda80917)
-3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#org2ad5ef0)
-    1.  [? (zero or one)](#orgd402513)
-    2.  [\* (zero or more)](#org51146c9)
+1.  [Regular Expression Basics](#org767fa82)
+    1.  [The re Module](#org174dc60)
+2.  [Regex Groups and the Pipe Character](#org5c37688)
+    1.  [Groups](#orgc9f3e4e)
+    2.  [Pipe Character |](#orgd07b0d4)
+3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#org5b8298e)
+    1.  [? (zero or one)](#orgb4c9f86)
+    2.  [\* (zero or more)](#orgb098452)
+    3.  [+ (one or more)](#org1890ba9)
+    4.  [Escaping ?, \*, and +](#org2a840b1)
+    5.  [{x} (exactly x)](#orgc296792)
+    6.  [{x,y} (at least x, at most y)](#org26fcf61)
 
 
 
-<a id="org4fb3316"></a>
+<a id="org767fa82"></a>
 
 # Regular Expression Basics
 
@@ -85,7 +89,7 @@ That&rsquo;s a lot of code for a relatively simple task. If we want to find phon
     Phone number found
 
 
-<a id="org2cdf945"></a>
+<a id="org174dc60"></a>
 
 ## The re Module
 
@@ -110,7 +114,7 @@ We can write the previous code much faster using regular expressions.
     ['415-555-1011', '415-555-9999']
 
 
-<a id="orgfeb76af"></a>
+<a id="org5c37688"></a>
 
 # Regex Groups and the Pipe Character
 
@@ -128,7 +132,7 @@ Let&rsquo;s say we want to seperate the area code from a phone number.
     415-555-4242
 
 
-<a id="org311e657"></a>
+<a id="orgc9f3e4e"></a>
 
 ## Groups
 
@@ -160,7 +164,7 @@ The parentheses there can be useful syntax when we want to find specific parts o
     (415) 555-4242
 
 
-<a id="orgda80917"></a>
+<a id="orgd07b0d4"></a>
 
 ## Pipe Character |
 
@@ -182,14 +186,14 @@ Let&rsquo;s say we wanted to match any of the strings &ldquo;Batman&rdquo;, &ldq
 If the search method can&rsquo;t find the regular expression pattern, it will return None. In that case, we can risk running into errors.
 
 
-<a id="org2ad5ef0"></a>
+<a id="org5b8298e"></a>
 
 # Repetition in Regex Patterns and Greedy/Nongreedy Matching
 
 How can we match a certain number of repetitions of a group? For example, one or more repitions, between 7 and 10 repitions, etc.
 
 
-<a id="orgd402513"></a>
+<a id="orgb4c9f86"></a>
 
 ## ? (zero or one)
 
@@ -240,12 +244,154 @@ Using our earlier phone number example, we can make a regular expression that lo
     415-555-1234
     555-1234
 
-If we need to match a question mark as part of the expression, we can simply escape the question mark by putting a backslash in front of it.
+If we need to match a question mark as part of the expression, we can simply escape it by doing \\?.
 
 
-<a id="org51146c9"></a>
+<a id="orgb098452"></a>
 
 ## \* (zero or more)
 
 The asterisk means match 0 or more times.
+
+    
+    import re
+    batRegex=re.compile(r"Bat(wo)*man")
+    
+    mo=batRegex.search("The Adventures of Batman")
+    print(mo.group())
+    
+    mo=batRegex.search("The Adventures of Batwoman")
+    print(mo.group())
+    
+    mo=batRegex.search("The Adventures of Batwowowoman")
+    print(mo.group())
+
+    Batman
+    Batwoman
+    Batwowowoman
+
+If you need to match an \* that appears in the pattern, you can escape it by doing \\\*.
+
+
+<a id="org1890ba9"></a>
+
+## + (one or more)
+
+Unlike the star, the group preceding a + must appear in the pattern.
+
+    
+    import re
+    batRegex=re.compile(r"Bat(wo)+man")
+    
+    mo=batRegex.search("The Adventures of Batman")
+    print(mo)
+    
+    mo=batRegex.search("The Adventures of Batwoman")
+    print(mo.group())
+    
+    mo=batRegex.search("The Adventures of Batwowowoman")
+    print(mo.group())
+
+    None
+    Batwoman
+    Batwowowoman
+
+If you need to match a + that appears in the pattern, you can escape it by doing \\+.
+
+
+<a id="org2a840b1"></a>
+
+## Escaping ?, \*, and +
+
+    
+    import re
+    regex = re.compile(r"\+\*\?")
+    
+    mo=regex.search("I learned about +*? regex syntax")
+    print(mo.group())
+
+    +*?
+
+We could also put the above +\*? into a group and then putting a + after it to say that the group needs to appear at least once.
+
+    
+    import re
+    regex = re.compile(r"(\+\*\?)+")
+    
+    mo=regex.search("I learned about +*?+*?+*? regex syntax")
+    print(mo.group())
+
+    +*?+*?+*?
+
+
+<a id="orgc296792"></a>
+
+## {x} (exactly x)
+
+This can be used if you wanted to match a specific number of repetitions of a group.
+
+    
+    import re
+    
+    haRegex=re.compile(r"(Ha){3}")
+    mo=haRegex.search("He said \"HaHaHa\"")
+    print(mo.group())
+
+    HaHaHa
+
+While the above is a simple example, we could do it for many other, more complex examples.
+
+    
+    import re
+    
+    phoneRegex=re.compile(r"((\d\d\d-)?\d\d\d-\d\d\d\d(,)?){3}")
+    mo=phoneRegex.search("My numbers are 415-555-1234,555-4242,212-555-0000")
+    print(mo.group())
+
+    415-555-1234,555-4242,212-555-0000
+
+
+<a id="org26fcf61"></a>
+
+## {x,y} (at least x, at most y)
+
+    
+    import re
+    haRegex=re.compile(r"(Ha){3,5}")
+    mo=haRegex.search("He said \"HaHaHa\"")
+    print(mo.group())
+    
+    mo=haRegex.search("He said \"HaHaHaHaHa\"")
+    print(mo.group())
+    
+    mo=haRegex.search("He said \"HaHaHaHaHaHa\"")
+    print(mo)
+
+    HaHaHa
+    HaHaHaHaHa
+    <re.Match object; span=(9, 19), match='HaHaHaHaHa'>
+
+We can also have no y value which would have no maximum and be unbounded, x or more.
+
+    
+    import re
+    
+    digitRegex=re.compile(r"(\d){3,5}")
+    mo=digitRegex.search("1234567890")
+    print(mo.group())
+
+    12345
+
+As we can see above, there was a match of the first 5 digits even though the first 3 also would have sufficed. By default, Python regular expressions do greedy matches. This means that it tries to match the longest possible string that matches the pattern.
+
+In order to do a nongreedy match, we can specify a question mark following the curly braces. Then it matches the first, shortest pattern.
+
+    
+    import re
+    
+    digitRegex=re.compile(r"(\d){3,5}?")
+    mo=digitRegex.search("1234567890")
+    print(mo.group())
+
+    123
 
