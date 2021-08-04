@@ -408,7 +408,6 @@ print(baconFile.read())
 #+RESULTS:
 : Bacon is not a vegetable
 
-
 ** The shelve Module
 
 Writing and reading text files is a good way to store single long strings, but if we want to save more complex data structures like lists and dictionaries, then we can save Python programs to binary shelve files.
@@ -454,3 +453,72 @@ print(list(shelfFile.values()))
 
 shelfFile.close()
 #+end_src
+* Copying and Moving Files and Folders
+
+We can also organize files on our drive using Python.
+
+** Shell Utilities Module
+
+This module has functions that let us copy, rename, and delete files in Python programs.
+
+*** shutil.copy() Function
+
+This function lets us copy files in Python. We can either copy and leave the filename or copy and give a new file name.
+
+#+begin_src python :results output :exports both
+
+import shutil,os
+
+shutil.copy("hello2.txt", "TestDir")
+
+shutil.copy("hello2.txt", "TestDir/newhello2.txt")
+
+print(os.listdir("TestDir"))
+
+#+end_src
+
+#+RESULTS:
+: ['hello2.txt', 'newhello2.txt']
+
+*** shutil.copytree() Function
+
+The copy function works for single files, but what if we want to copy an entire folder? Then we can use the copytree function.
+
+
+#+begin_src python :results output :exports both
+
+import shutil,os
+
+shutil.copytree("TestDir","TestDirBackup")
+
+#+end_src
+
+#+RESULTS:
+
+#+begin_src python :results output :exports both
+
+import shutil,os
+
+print(os.listdir("TestDirBackup"))
+
+#+end_src
+
+#+RESULTS:
+: ['hello2.txt', 'newhello2.txt']
+
+*** shutil.move() function
+
+This can be used for moving and renaming files. If you want to rename a file, you can move it to the same directory using the move() function and then change the filename.
+
+#+begin_src python :results output :exports both
+
+import shutil,os
+
+shutil.move("TestDirBackup/newhello2.txt", ".")
+
+print(os.listdir("TestDirBackup"))
+
+#+end_src
+
+#+RESULTS:
+: ['hello2.txt']

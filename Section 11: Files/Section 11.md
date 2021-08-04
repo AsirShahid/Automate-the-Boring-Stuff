@@ -1,45 +1,50 @@
 
 # Table of Contents
 
-1.  [Filenames and Absolute/Relative File Paths](#org38c87b5)
-    1.  [Fileames and File Paths](#org9fb2480)
-    2.  [os module](#org3b70f0e)
-        1.  [os.getcwd()](#org71d4a7f)
-        2.  [os.chdir()](#org57f0003)
-    3.  [Absolute and Relative Paths](#orgb914b6f)
-    4.  [. and .. Folders](#org60bf973)
-    5.  [os.path module](#org8c23f18)
-        1.  [os.path.join()](#org29e6d66)
-        2.  [os.path.abspath()](#org673e5fa)
-        3.  [os.path.isabs()](#org177cbec)
-        4.  [os.path.relpath()](#orga095fb4)
-        5.  [os.path.dirname()](#org4e4843b)
-        6.  [os.path.basename()](#org3354398)
-        7.  [os.path.exists()](#orgf3a9192)
-        8.  [os.path.isfile()](#org20f63f9)
-        9.  [os.path.isdir()](#orgd4a1cef)
-        10. [os.path.getsize()](#org71d5f99)
-    6.  [os.listdir()](#org3df80ca)
-    7.  [Example Code: Finding the total size of all files in a folder.](#orgf966f47)
-    8.  [os.makedirs()](#orge7b4902)
-2.  [Reading and Writing Plaintext Files](#org0673eaa)
-    1.  [Plaintext and Binary Files](#org9be8c59)
-    2.  [Reading or Writing Files in Python](#org916cab1)
-        1.  [The open() Function](#org4f86b6b)
-        2.  [Read Mode](#org15de788)
-        3.  [The read() method](#org24bac84)
-        4.  [The close() method](#orge9ae579)
-        5.  [The readlines() Method](#org5e33159)
-        6.  [Write mode](#org71cd796)
-        7.  [Append mode](#org32a58f6)
-        8.  [Example](#orgd7f7f4e)
-    3.  [The shelve Module](#org8db744e)
-        1.  [The shelve.open() Method](#org2cf173c)
-        2.  [The keys() and values() Shelf Methods](#org2178af0)
+1.  [Filenames and Absolute/Relative File Paths](#org92c611e)
+    1.  [Fileames and File Paths](#org720b2e7)
+    2.  [os module](#orgf13227c)
+        1.  [os.getcwd()](#orgac7d73f)
+        2.  [os.chdir()](#org69e9bce)
+    3.  [Absolute and Relative Paths](#org22c1764)
+    4.  [. and .. Folders](#org97f7908)
+    5.  [os.path module](#org3be1a26)
+        1.  [os.path.join()](#orga77db41)
+        2.  [os.path.abspath()](#org0883a5e)
+        3.  [os.path.isabs()](#org090df3e)
+        4.  [os.path.relpath()](#org77df3c6)
+        5.  [os.path.dirname()](#orgb577abb)
+        6.  [os.path.basename()](#org2579330)
+        7.  [os.path.exists()](#org0e57d2b)
+        8.  [os.path.isfile()](#org5643c61)
+        9.  [os.path.isdir()](#org9f214ee)
+        10. [os.path.getsize()](#org9c28ae2)
+    6.  [os.listdir()](#org3f0ac15)
+    7.  [Example Code: Finding the total size of all files in a folder.](#org7e85c54)
+    8.  [os.makedirs()](#orgfc608fc)
+2.  [Reading and Writing Plaintext Files](#org840ee7e)
+    1.  [Plaintext and Binary Files](#org49145c2)
+    2.  [Reading or Writing Files in Python](#orgc233efc)
+        1.  [The open() Function](#org34e9811)
+        2.  [Read Mode](#org40282a4)
+        3.  [The read() method](#orga8fb11d)
+        4.  [The close() method](#orgab18b98)
+        5.  [The readlines() Method](#orgddeb82b)
+        6.  [Write mode](#org856f1ed)
+        7.  [Append mode](#org9d2669e)
+        8.  [Example](#org78edab6)
+    3.  [The shelve Module](#orgb04ce7d)
+        1.  [The shelve.open() Method](#org5529bd3)
+        2.  [The keys() and values() Shelf Methods](#org6c275c0)
+3.  [Copying and Moving Files and Folders](#org1709a94)
+    1.  [Shell Utilities Module](#org52917b7)
+        1.  [shutil.copy() Function](#orgadeb74c)
+        2.  [shutil.copytree() Function](#orgc47fc84)
+        3.  [shutil.move() function](#org425def8)
 
 
 
-<a id="org38c87b5"></a>
+<a id="org92c611e"></a>
 
 # Filenames and Absolute/Relative File Paths
 
@@ -48,21 +53,21 @@ We&rsquo;ll learn about files, folders, and how Python can work with them.
 If we want our data to persist after our program is finished, we need to save it to a file.
 
 
-<a id="org9fb2480"></a>
+<a id="org720b2e7"></a>
 
 ## Fileames and File Paths
 
 Each of our files has 2 key properties. The file name and the file path.
 
 
-<a id="org3b70f0e"></a>
+<a id="orgf13227c"></a>
 
 ## os module
 
 The os module contains numerous file path related functions that we can use.
 
 
-<a id="org71d4a7f"></a>
+<a id="orgac7d73f"></a>
 
 ### os.getcwd()
 
@@ -76,7 +81,7 @@ Every program has a setting called the current working directory, this tells us 
     /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files
 
 
-<a id="org57f0003"></a>
+<a id="org69e9bce"></a>
 
 ### os.chdir()
 
@@ -95,26 +100,26 @@ We can also change the current working directory using this chdir() function.
     /
 
 
-<a id="orgb914b6f"></a>
+<a id="org22c1764"></a>
 
 ## Absolute and Relative Paths
 
 There are two kinds of file paths, relative and absolute. The absolute file path begins with the root directory and gives you the complete location of the file. A relative file path is relative to the current working directory.
 
 
-<a id="org60bf973"></a>
+<a id="org97f7908"></a>
 
 ## . and .. Folders
 
 These are not real directories, but they can be used with relative paths. The single dot stands for this directory while two dots stands for the paret directory, the directory that your current working directory is in.
 
 
-<a id="org8c23f18"></a>
+<a id="org3be1a26"></a>
 
 ## os.path module
 
 
-<a id="org29e6d66"></a>
+<a id="orga77db41"></a>
 
 ### os.path.join()
 
@@ -127,7 +132,7 @@ This is a join function inside of a path module inside of an os module. It takes
     folder1/folder2/folder3/file.png
 
 
-<a id="org673e5fa"></a>
+<a id="org0883a5e"></a>
 
 ### os.path.abspath()
 
@@ -141,7 +146,7 @@ The abspath() function will return the absolute path of the path that you pass i
     /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
 
 
-<a id="org177cbec"></a>
+<a id="org090df3e"></a>
 
 ### os.path.isabs()
 
@@ -164,7 +169,7 @@ The isabs() function is a way to determine if a given path is absolute.
     True
 
 
-<a id="orga095fb4"></a>
+<a id="org77df3c6"></a>
 
 ### os.path.relpath()
 
@@ -181,7 +186,7 @@ This function will give you the relative path between two paths. The first argum
     Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
 
 
-<a id="org4e4843b"></a>
+<a id="orgb577abb"></a>
 
 ### os.path.dirname()
 
@@ -195,7 +200,7 @@ This function pulls out just the directory part of the path.
     /home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files
 
 
-<a id="org3354398"></a>
+<a id="org2579330"></a>
 
 ### os.path.basename()
 
@@ -209,7 +214,7 @@ This function pulls out just the last part of the path. Either the filename or j
     Section 11.org
 
 
-<a id="orgf3a9192"></a>
+<a id="org0e57d2b"></a>
 
 ### os.path.exists()
 
@@ -226,7 +231,7 @@ This function can check and see if the path you are passing actually exists.
     False
 
 
-<a id="org20f63f9"></a>
+<a id="org5643c61"></a>
 
 ### os.path.isfile()
 
@@ -243,7 +248,7 @@ We can use this function to see if what we pass to it is a file or not.
     False
 
 
-<a id="orgd4a1cef"></a>
+<a id="org9f214ee"></a>
 
 ### os.path.isdir()
 
@@ -260,7 +265,7 @@ We can use this function to see if what we pass to it is a directory or not.
     True
 
 
-<a id="org71d5f99"></a>
+<a id="org9c28ae2"></a>
 
 ### os.path.getsize()
 
@@ -271,10 +276,10 @@ This function gives us the size of the file in bytes.
     
     print(os.path.getsize("/home/mohammeds/Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org"))
 
-    11962
+    13214
 
 
-<a id="org3df80ca"></a>
+<a id="org3f0ac15"></a>
 
 ## os.listdir()
 
@@ -288,7 +293,7 @@ This function isn&rsquo;t in the path module. It can be passed a file path of a 
     ['[Chapman and Hall_CRC the R Ser] Albert, Jim_ Baumer, Benjamin S._ Marchi, Max - Analyzing Baseball Data with R (2018, Chapman and Hall_CRC) - libgen.lc.pdf', 'bedrock-linux-0.7.20beta1-x86_64.sh', 'fstab.txt', 'Verify Payment.pdf', 'mission-369-advanced-regular-expressions-takeaways.pdf', 'userguide.pdf', 'Quidditch Through the Ages - J.K. Rowling.pdf', 'Resume', 'SmashCharacters.txt', 'LFS-BOOK-10.1.pdf', 'Linux From Scratch - Version 10.1 - LFS-BOOK-10.1.pdf', 'Oathbringer_ Book Three of the Stormlight Archive_B01NAWAH85.kfx', 'Andrew Ng Machine Learning Lectures', 'Hugo Websites', 'Data Scientist in Python DataQuest', 'mohammed-shahid-python-for-data-science-fundamentals.pdf', 'README.md', '.git', 'mkdir', 'Crypto Trading Bot', 'Machine Trading', 'The Home Depot - Order Confirmation.pdf', 'Online Return Center.pdf', 'LeetCode', 'Kaggle', 'Coursera', 'Data Analyst in R DataQuest', 'edX', 'org-basics.org', 'happybday.org', 'org', 'letter.org', 'AB_NYC_2019.csv', 'cse351_hw1_fazli_faraz_110018236.ipynb', '.ipynb_checkpoints', 'mariaradio.org', '.auctex-auto', 'mariaradio.tex', 'mariaradio.pdf', 'mariaradio.md', 'mariaradio.html', 'Order Confirmation _ Law School Admission Council.pdf', 'marialetter.org', 'Automate the Boring Stuff', 'TEKgence Application Form.xlsx', '.dir-locals.el']
 
 
-<a id="orgf966f47"></a>
+<a id="org7e85c54"></a>
 
 ## Example Code: Finding the total size of all files in a folder.
 
@@ -307,7 +312,7 @@ This function isn&rsquo;t in the path module. It can be passed a file path of a 
     382371482
 
 
-<a id="orge7b4902"></a>
+<a id="orgfc608fc"></a>
 
 ## os.makedirs()
 
@@ -325,14 +330,14 @@ This function can create directories for you.
     print(os.listdir())
 
 
-<a id="org0673eaa"></a>
+<a id="org840ee7e"></a>
 
 # Reading and Writing Plaintext Files
 
 We can start writing strings to files that we create in order to save information. We can then read this data with Python.
 
 
-<a id="org9be8c59"></a>
+<a id="org49145c2"></a>
 
 ## Plaintext and Binary Files
 
@@ -343,14 +348,14 @@ They can be opened with text editors such as Emacs.
 Binary files are all other types of files. PDF, JPG, PNG, etc. When you open these with a text editor, it will be impossible to understand.
 
 
-<a id="org916cab1"></a>
+<a id="orgc233efc"></a>
 
 ## Reading or Writing Files in Python
 
 There are three main steps for reading and writing files in Python.
 
 
-<a id="org4f86b6b"></a>
+<a id="org34e9811"></a>
 
 ### The open() Function
 
@@ -360,21 +365,21 @@ This function opens files.
     open("hello.txt")
 
 
-<a id="org15de788"></a>
+<a id="org40282a4"></a>
 
 ### Read Mode
 
 The open() function opens the file in read mode. This only lets you read the data, it does not let you modify it.
 
 
-<a id="org24bac84"></a>
+<a id="orga8fb11d"></a>
 
 ### The read() method
 
 This method lets you read the opened file.
 
 
-<a id="orge9ae579"></a>
+<a id="orgab18b98"></a>
 
 ### The close() method
 
@@ -391,10 +396,10 @@ This method closes the opened file. If you want to continue accessing it, you sh
     helloFile.close()
 
     Hello!
-    How are you?How are you?
+    How are you?How are you?How are you?How are you?
 
 
-<a id="org5e33159"></a>
+<a id="orgddeb82b"></a>
 
 ### The readlines() Method
 
@@ -406,10 +411,10 @@ This method returns all of the lines as strings within a list.
     
     print(content)
 
-    ['Hello!\n', 'How are you?How are you?']
+    ['Hello!\n', 'How are you?How are you?How are you?How are you?']
 
 
-<a id="org71cd796"></a>
+<a id="org856f1ed"></a>
 
 ### Write mode
 
@@ -420,7 +425,7 @@ In order to write to a file, it needs to be opened in write or append mode. This
     helloFile.write("Hello!!!!")
 
 
-<a id="org32a58f6"></a>
+<a id="org9d2669e"></a>
 
 ### Append mode
 
@@ -431,7 +436,7 @@ In order to write to a file, it needs to be opened in write or append mode. This
     helloFile.write("How are you?")
 
 
-<a id="orgd7f7f4e"></a>
+<a id="org78edab6"></a>
 
 ### Example
 
@@ -449,14 +454,14 @@ In order to write to a file, it needs to be opened in write or append mode. This
     Bacon is not a vegetable
 
 
-<a id="org8db744e"></a>
+<a id="orgb04ce7d"></a>
 
 ## The shelve Module
 
 Writing and reading text files is a good way to store single long strings, but if we want to save more complex data structures like lists and dictionaries, then we can save Python programs to binary shelve files.
 
 
-<a id="org2cf173c"></a>
+<a id="org5529bd3"></a>
 
 ### The shelve.open() Method
 
@@ -477,7 +482,7 @@ This method can open shelve files.
 The benefit of using the shelve module is that you can store lists, dictionaries, and non text data and then reopen them in the future.
 
 
-<a id="org2178af0"></a>
+<a id="org6c275c0"></a>
 
 ### The keys() and values() Shelf Methods
 
@@ -497,8 +502,73 @@ Shelf file objects are very similar to dictionaries in the sense that they have 
     
     shelfFile.close()
 
-    KeysView(<shelve.DbfilenameShelf object at 0x7fd72b4d3130>)
-    ValuesView(<shelve.DbfilenameShelf object at 0x7fd72b4d3130>)
+    KeysView(<shelve.DbfilenameShelf object at 0x7faac2fbb130>)
+    ValuesView(<shelve.DbfilenameShelf object at 0x7faac2fbb130>)
     ['cats']
     [['Zophie', 'Pooka', 'Simon', 'Fat-tail', 'Cleo']]
+
+
+<a id="org1709a94"></a>
+
+# Copying and Moving Files and Folders
+
+We can also organize files on our drive using Python.
+
+
+<a id="org52917b7"></a>
+
+## Shell Utilities Module
+
+This module has functions that let us copy, rename, and delete files in Python programs.
+
+
+<a id="orgadeb74c"></a>
+
+### shutil.copy() Function
+
+This function lets us copy files in Python. We can either copy and leave the filename or copy and give a new file name.
+
+    
+    import shutil,os
+    
+    shutil.copy("hello2.txt", "TestDir")
+    
+    shutil.copy("hello2.txt", "TestDir/newhello2.txt")
+    
+    print(os.listdir("TestDir"))
+
+    ['hello2.txt', 'newhello2.txt']
+
+
+<a id="orgc47fc84"></a>
+
+### shutil.copytree() Function
+
+The copy function works for single files, but what if we want to copy an entire folder? Then we can use the copytree function.
+
+    
+    import shutil,os
+    
+    shutil.copytree("TestDir","TestDirBackup")
+
+    
+    import shutil,os
+    
+    print(os.listdir("TestDirBackup"))
+
+    ['hello2.txt']
+
+
+<a id="org425def8"></a>
+
+### shutil.move() function
+
+This can be used for moving and renaming files. If you want to rename a file, you can move it to the same directory using the move() function and then change the filename.
+
+    
+    import shutil,os
+    
+    shutil.move("TestDirBackup/newhello2.txt", ".")
+    
+    print(os.listdir("TestDirBackup"))
 
