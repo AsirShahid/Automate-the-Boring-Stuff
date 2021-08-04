@@ -1,32 +1,36 @@
 
 # Table of Contents
 
-1.  [Regular Expression Basics](#org14b1961)
-    1.  [The re Module](#orgca44558)
-2.  [Regex Groups and the Pipe Character](#org5256dd8)
-    1.  [Groups](#org102a360)
-    2.  [Pipe Character |](#org15fca93)
-3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#org0bd92be)
-    1.  [? (zero or one)](#org09b4700)
-    2.  [\* (zero or more)](#orgc5f6b89)
-    3.  [+ (one or more)](#org593e443)
-    4.  [Escaping ?, \*, and +](#org88d0f20)
-    5.  [{x} (exactly x)](#orge5cb75a)
-    6.  [{x,y} (at least x, at most y)](#org97a541f)
-4.  [Regex Character Classes and the findall() Method](#orgbda9478)
-    1.  [Character Classes](#orga9132bc)
-    2.  [12 Days of Christmas Example](#orgc3dd193)
-    3.  [Making Your Own Character Classes](#orgbc81bbe)
-5.  [Regex Dot-Star and the Caret/Dollar Characters](#orgb98ce3e)
-    1.  [. (anything except newline)](#orgee3e17c)
-    2.  [Dot-Star to Match Anything](#orga73c915)
-    3.  [(.\*) is greedy, (.\*?) is non-greedy](#org25d07e0)
-    4.  [Making Dot Match Newlines Too (with re.DOTALL)](#orge9240ea)
-    5.  [re.IGNORECASE](#org5753c51)
+1.  [Regular Expression Basics](#org9ca87af)
+    1.  [The re Module](#org969cd96)
+2.  [Regex Groups and the Pipe Character](#org0629910)
+    1.  [Groups](#org34ba37b)
+    2.  [Pipe Character |](#org15944b8)
+3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#orge7284d8)
+    1.  [? (zero or one)](#orgd911563)
+    2.  [\* (zero or more)](#org6e5c2c6)
+    3.  [+ (one or more)](#org4cc26ca)
+    4.  [Escaping ?, \*, and +](#orgc120d34)
+    5.  [{x} (exactly x)](#org3bf1469)
+    6.  [{x,y} (at least x, at most y)](#orgafbdf31)
+4.  [Regex Character Classes and the findall() Method](#org5a9e36c)
+    1.  [Character Classes](#org1c1439a)
+    2.  [12 Days of Christmas Example](#orgb0f1ffd)
+    3.  [Making Your Own Character Classes](#orgcda33de)
+5.  [Regex Dot-Star and the Caret/Dollar Characters](#org2a2142c)
+    1.  [. (anything except newline)](#orgc4ec618)
+    2.  [Dot-Star to Match Anything](#orge573850)
+    3.  [(.\*) is greedy, (.\*?) is non-greedy](#org95df777)
+    4.  [Making Dot Match Newlines Too (with re.DOTALL)](#orgbbc0250)
+    5.  [re.IGNORECASE](#orgce2b27d)
+6.  [Regex sub() Method and Verbose Mode](#orgd83cb92)
+    1.  [The sub() method](#org83cb409)
+    2.  [Verbose Mode with re.VERBOSE](#org35efd06)
+    3.  [Using Multiple Options (re.I, re.DOTALL, re.VERBOSE)](#org3737a3e)
 
 
 
-<a id="org14b1961"></a>
+<a id="org9ca87af"></a>
 
 # Regular Expression Basics
 
@@ -99,7 +103,7 @@ That&rsquo;s a lot of code for a relatively simple task. If we want to find phon
     Phone number found
 
 
-<a id="orgca44558"></a>
+<a id="org969cd96"></a>
 
 ## The re Module
 
@@ -124,7 +128,7 @@ We can write the previous code much faster using regular expressions.
     ['415-555-1011', '415-555-9999']
 
 
-<a id="org5256dd8"></a>
+<a id="org0629910"></a>
 
 # Regex Groups and the Pipe Character
 
@@ -142,7 +146,7 @@ Let&rsquo;s say we want to seperate the area code from a phone number.
     415-555-4242
 
 
-<a id="org102a360"></a>
+<a id="org34ba37b"></a>
 
 ## Groups
 
@@ -174,7 +178,7 @@ The parentheses there can be useful syntax when we want to find specific parts o
     (415) 555-4242
 
 
-<a id="org15fca93"></a>
+<a id="org15944b8"></a>
 
 ## Pipe Character |
 
@@ -196,14 +200,14 @@ Let&rsquo;s say we wanted to match any of the strings &ldquo;Batman&rdquo;, &ldq
 If the search method can&rsquo;t find the regular expression pattern, it will return None. In that case, we can risk running into errors.
 
 
-<a id="org0bd92be"></a>
+<a id="orge7284d8"></a>
 
 # Repetition in Regex Patterns and Greedy/Nongreedy Matching
 
 How can we match a certain number of repetitions of a group? For example, one or more repitions, between 7 and 10 repitions, etc.
 
 
-<a id="org09b4700"></a>
+<a id="orgd911563"></a>
 
 ## ? (zero or one)
 
@@ -257,7 +261,7 @@ Using our earlier phone number example, we can make a regular expression that lo
 If we need to match a question mark as part of the expression, we can simply escape it by doing \\?.
 
 
-<a id="orgc5f6b89"></a>
+<a id="org6e5c2c6"></a>
 
 ## \* (zero or more)
 
@@ -283,7 +287,7 @@ The asterisk means match 0 or more times.
 If you need to match an \* that appears in the pattern, you can escape it by doing \\\*.
 
 
-<a id="org593e443"></a>
+<a id="org4cc26ca"></a>
 
 ## + (one or more)
 
@@ -309,7 +313,7 @@ Unlike the star, the group preceding a + must appear in the pattern.
 If you need to match a + that appears in the pattern, you can escape it by doing \\+.
 
 
-<a id="org88d0f20"></a>
+<a id="orgc120d34"></a>
 
 ## Escaping ?, \*, and +
 
@@ -334,7 +338,7 @@ We could also put the above +\*? into a group and then putting a + after it to s
     +*?+*?+*?
 
 
-<a id="orge5cb75a"></a>
+<a id="org3bf1469"></a>
 
 ## {x} (exactly x)
 
@@ -361,7 +365,7 @@ While the above is a simple example, we could do it for many other, more complex
     415-555-1234,555-4242,212-555-0000
 
 
-<a id="org97a541f"></a>
+<a id="orgafbdf31"></a>
 
 ## {x,y} (at least x, at most y)
 
@@ -406,7 +410,7 @@ In order to do a nongreedy match, we can specify a question mark following the c
     123
 
 
-<a id="orgbda9478"></a>
+<a id="org5a9e36c"></a>
 
 # Regex Character Classes and the findall() Method
 
@@ -519,7 +523,7 @@ However, with regex objects that have 2 or more groups, the following occurs.
 Now, instead of returning a list of strings, a list of tuples containing strings is returned. Each string in the tuple is the contents of each group.
 
 
-<a id="orga9132bc"></a>
+<a id="org1c1439a"></a>
 
 ## Character Classes
 
@@ -579,7 +583,7 @@ We&rsquo;ve already looked at one character class (\d). It represents any numeri
 </table>
 
 
-<a id="orgc3dd193"></a>
+<a id="orgb0f1ffd"></a>
 
 ## 12 Days of Christmas Example
 
@@ -597,7 +601,7 @@ We can use regular expressions to find patterns where we have some number follow
     ['12 drummers', '11 pipers', '10 lords', '9 ladies', '7 swans', '6 geese', '5 golden', '4 calling', '3 french', '2 turtle', '1 partridge']
 
 
-<a id="orgbc81bbe"></a>
+<a id="orgcda33de"></a>
 
 ## Making Your Own Character Classes
 
@@ -622,7 +626,7 @@ Above we showed the existing shorthand character classes, but we can create our 
     ['R', 'b', 'c', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ' ', 'f', 'd', '.']
 
 
-<a id="orgb98ce3e"></a>
+<a id="org2a2142c"></a>
 
 # Regex Dot-Star and the Caret/Dollar Characters
 
@@ -669,7 +673,7 @@ If we use both ^ at the beginning and $ at the end of our regex then that must i
     None
 
 
-<a id="orgee3e17c"></a>
+<a id="orgc4ec618"></a>
 
 ## . (anything except newline)
 
@@ -696,7 +700,7 @@ We can see above that the regex did not match &ldquo;flat&rdquo; since the . cha
     [' cat', ' hat', ' sat', 'flat', ' mat']
 
 
-<a id="orga73c915"></a>
+<a id="orge573850"></a>
 
 ## Dot-Star to Match Anything
 
@@ -715,7 +719,7 @@ A common thing that is done is a .\* pattern to match anything, any pattern what
     [('Al', 'Sweigart')]
 
 
-<a id="org25d07e0"></a>
+<a id="org95df777"></a>
 
 ## (.\*) is greedy, (.\*?) is non-greedy
 
@@ -738,7 +742,7 @@ By default, dot-star uses greedy mode. We need to add the ? in order to make it 
     ['To serve humans> for dinner.']
 
 
-<a id="orge9240ea"></a>
+<a id="orgbbc0250"></a>
 
 ## Making Dot Match Newlines Too (with re.DOTALL)
 
@@ -765,7 +769,7 @@ Earlier, we mentioned that the dot character matches everything except for the n
     <re.Match object; span=(0, 63), match='Serve the public trust. \nProtect the innocent. \>
 
 
-<a id="org5753c51"></a>
+<a id="orgce2b27d"></a>
 
 ## re.IGNORECASE
 
@@ -782,4 +786,86 @@ Have second arguments to the compile function can be pretty useful. We can also 
 
     ['o', 'e', 'o', 'u', 'o', 'a', 'i', 'o', 'o', 'a', 'a', 'o', 'u', 'o', 'o', 'o', 'o', 'u']
     ['A', 'o', 'e', 'o', 'u', 'o', 'a', 'i', 'o', 'o', 'a', 'a', 'o', 'u', 'o', 'o', 'o', 'o', 'u']
+
+
+<a id="orgd83cb92"></a>
+
+# Regex sub() Method and Verbose Mode
+
+Previously we called the re.compile function to create regular expression objects. These objects had search and findall methods. There are like the search features in word processors.
+
+
+<a id="org83cb409"></a>
+
+## The sub() method
+
+The sub() method is like the replace feature in word processors. Let&rsquo;s see how to use it.
+
+    
+    import re
+    
+    namesRegex=re.compile(r"Agent \w+")
+    mo=namesRegex.findall("Agent Alice gave the secret documents to Agent Bob.")
+    print(mo)
+    
+    mo=namesRegex.sub("REDACTED","Agent Alice gave the secret documents to Agent Bob.")
+    print(mo)
+
+    ['Agent Alice', 'Agent Bob']
+    REDACTED gave the secret documents to REDACTED.
+
+What if instead of doing REDACTED, we want to change the name to Agent plus first initial?
+
+We have to use a group and then call the group from the original text using \\1.
+
+    
+    import re
+    
+    namesRegex=re.compile(r"Agent (\w)\w*")
+    mo=namesRegex.findall("Agent Alice gave the secret documents to Agent Bob.")
+    print(mo)
+    
+    mo=namesRegex.sub(r"Agent \1******","Agent Alice gave the secret documents to Agent Bob.")
+    print(mo)
+
+    ['A', 'B']
+    Agent A****** gave the secret documents to Agent B******.
+
+
+<a id="org35efd06"></a>
+
+## Verbose Mode with re.VERBOSE
+
+Regex strings can look awkward and difficult to parse, particularly when they get too long. We can use the verbose format in order to fix this.
+
+    
+    import re
+    
+    re.compile(r"""
+    (\d\d\d)|   # area code without parentheses, with dash
+    (\(\d\d\d\)) or area code with parentheses
+    -        # first dash
+    \d\d\d   # first 3 digits
+    -        # second dash
+    \d\d\d\d # last 4 digits
+    \sx\d{2,4} # extension like x1234""", re.VERBOSE)
+
+
+<a id="org3737a3e"></a>
+
+## Using Multiple Options (re.I, re.DOTALL, re.VERBOSE)
+
+We have learned about 3 different options for our re.compile function. What if we want to use several of these for the same regex? We can combine them using pipe symbols.
+
+    
+    import re
+    
+    re.compile(r"""
+    (\d\d\d)|   # area code without parentheses, with dash
+    (\(\d\d\d\)) or area code with parentheses
+    -        # first dash
+    \d\d\d   # first 3 digits
+    -        # second dash
+    \d\d\d\d # last 4 digits
+    \sx\d{2,4} # extension like x1234""", re.VERBOSE | re.DOTALL | re.I)
 

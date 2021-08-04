@@ -785,3 +785,91 @@ print(vowelRegex.findall("Al, why does your programming book talk about RoboCop 
 #+RESULTS:
 : ['o', 'e', 'o', 'u', 'o', 'a', 'i', 'o', 'o', 'a', 'a', 'o', 'u', 'o', 'o', 'o', 'o', 'u']
 : ['A', 'o', 'e', 'o', 'u', 'o', 'a', 'i', 'o', 'o', 'a', 'a', 'o', 'u', 'o', 'o', 'o', 'o', 'u']
+
+* Regex sub() Method and Verbose Mode
+
+ Previously we called the re.compile function to create regular expression objects. These objects had search and findall methods. There are like the search features in word processors.
+
+** The sub() method
+
+The sub() method is like the replace feature in word processors. Let's see how to use it.
+
+#+begin_src python :results output :exports both
+
+import re
+
+namesRegex=re.compile(r"Agent \w+")
+mo=namesRegex.findall("Agent Alice gave the secret documents to Agent Bob.")
+print(mo)
+
+mo=namesRegex.sub("REDACTED","Agent Alice gave the secret documents to Agent Bob.")
+print(mo)
+
+#+end_src
+
+#+RESULTS:
+: ['Agent Alice', 'Agent Bob']
+: REDACTED gave the secret documents to REDACTED.
+
+What if instead of doing REDACTED, we want to change the name to Agent plus first initial?
+
+We have to use a group and then call the group from the original text using \1.
+
+#+begin_src python :results output :exports both
+
+import re
+
+namesRegex=re.compile(r"Agent (\w)\w*")
+mo=namesRegex.findall("Agent Alice gave the secret documents to Agent Bob.")
+print(mo)
+
+mo=namesRegex.sub(r"Agent \1******","Agent Alice gave the secret documents to Agent Bob.")
+print(mo)
+
+#+end_src
+
+#+RESULTS:
+: ['A', 'B']
+: Agent A****** gave the secret documents to Agent B******.
+
+** Verbose Mode with re.VERBOSE
+
+Regex strings can look awkward and difficult to parse, particularly when they get too long. We can use the verbose format in order to fix this.
+
+#+begin_src python :results output :exports both
+
+import re
+
+re.compile(r"""
+(\d\d\d)|   # area code without parentheses, with dash
+(\(\d\d\d\)) or area code with parentheses
+-        # first dash
+\d\d\d   # first 3 digits
+-        # second dash
+\d\d\d\d # last 4 digits
+\sx\d{2,4} # extension like x1234""", re.VERBOSE)
+
+#+end_src
+
+#+RESULTS:
+
+** Using Multiple Options (re.I, re.DOTALL, re.VERBOSE)
+
+We have learned about 3 different options for our re.compile function. What if we want to use several of these for the same regex? We can combine them using pipe symbols.
+
+#+begin_src python :results output :exports both
+
+import re
+
+re.compile(r"""
+(\d\d\d)|   # area code without parentheses, with dash
+(\(\d\d\d\)) or area code with parentheses
+-        # first dash
+\d\d\d   # first 3 digits
+-        # second dash
+\d\d\d\d # last 4 digits
+\sx\d{2,4} # extension like x1234""", re.VERBOSE | re.DOTALL | re.I)
+
+#+end_src
+
+#+RESULTS:
