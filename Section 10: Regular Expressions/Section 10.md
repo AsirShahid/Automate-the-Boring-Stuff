@@ -1,27 +1,32 @@
 
 # Table of Contents
 
-1.  [Regular Expression Basics](#org0973c02)
-    1.  [The re Module](#org8ba097a)
-2.  [Regex Groups and the Pipe Character](#orgc0b31cf)
-    1.  [Groups](#orgffd8a61)
-    2.  [Pipe Character |](#orgd7e5477)
-3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#orgd29d47c)
-    1.  [? (zero or one)](#orgcb1a6a7)
-    2.  [\* (zero or more)](#orgd3957bf)
-    3.  [+ (one or more)](#org547d915)
-    4.  [Escaping ?, \*, and +](#orgf5f63b5)
-    5.  [{x} (exactly x)](#orgd69210c)
-    6.  [{x,y} (at least x, at most y)](#org11a5935)
-4.  [Regex Character Classes and the findall() Method](#orgd398087)
-    1.  [Character Classes](#org706e31d)
-    2.  [12 Days of Christmas Example](#org47c973b)
-    3.  [Making Your Own Character Classes](#org882677e)
-5.  [Regex Dot-Star and the Caret/Dollar Characters](#org75cc9d8)
+1.  [Regular Expression Basics](#org14b1961)
+    1.  [The re Module](#orgca44558)
+2.  [Regex Groups and the Pipe Character](#org5256dd8)
+    1.  [Groups](#org102a360)
+    2.  [Pipe Character |](#org15fca93)
+3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#org0bd92be)
+    1.  [? (zero or one)](#org09b4700)
+    2.  [\* (zero or more)](#orgc5f6b89)
+    3.  [+ (one or more)](#org593e443)
+    4.  [Escaping ?, \*, and +](#org88d0f20)
+    5.  [{x} (exactly x)](#orge5cb75a)
+    6.  [{x,y} (at least x, at most y)](#org97a541f)
+4.  [Regex Character Classes and the findall() Method](#orgbda9478)
+    1.  [Character Classes](#orga9132bc)
+    2.  [12 Days of Christmas Example](#orgc3dd193)
+    3.  [Making Your Own Character Classes](#orgbc81bbe)
+5.  [Regex Dot-Star and the Caret/Dollar Characters](#orgb98ce3e)
+    1.  [. (anything except newline)](#orgee3e17c)
+    2.  [Dot-Star to Match Anything](#orga73c915)
+    3.  [(.\*) is greedy, (.\*?) is non-greedy](#org25d07e0)
+    4.  [Making Dot Match Newlines Too (with re.DOTALL)](#orge9240ea)
+    5.  [re.IGNORECASE](#org5753c51)
 
 
 
-<a id="org0973c02"></a>
+<a id="org14b1961"></a>
 
 # Regular Expression Basics
 
@@ -94,7 +99,7 @@ That&rsquo;s a lot of code for a relatively simple task. If we want to find phon
     Phone number found
 
 
-<a id="org8ba097a"></a>
+<a id="orgca44558"></a>
 
 ## The re Module
 
@@ -119,7 +124,7 @@ We can write the previous code much faster using regular expressions.
     ['415-555-1011', '415-555-9999']
 
 
-<a id="orgc0b31cf"></a>
+<a id="org5256dd8"></a>
 
 # Regex Groups and the Pipe Character
 
@@ -137,7 +142,7 @@ Let&rsquo;s say we want to seperate the area code from a phone number.
     415-555-4242
 
 
-<a id="orgffd8a61"></a>
+<a id="org102a360"></a>
 
 ## Groups
 
@@ -169,7 +174,7 @@ The parentheses there can be useful syntax when we want to find specific parts o
     (415) 555-4242
 
 
-<a id="orgd7e5477"></a>
+<a id="org15fca93"></a>
 
 ## Pipe Character |
 
@@ -191,14 +196,14 @@ Let&rsquo;s say we wanted to match any of the strings &ldquo;Batman&rdquo;, &ldq
 If the search method can&rsquo;t find the regular expression pattern, it will return None. In that case, we can risk running into errors.
 
 
-<a id="orgd29d47c"></a>
+<a id="org0bd92be"></a>
 
 # Repetition in Regex Patterns and Greedy/Nongreedy Matching
 
 How can we match a certain number of repetitions of a group? For example, one or more repitions, between 7 and 10 repitions, etc.
 
 
-<a id="orgcb1a6a7"></a>
+<a id="org09b4700"></a>
 
 ## ? (zero or one)
 
@@ -252,7 +257,7 @@ Using our earlier phone number example, we can make a regular expression that lo
 If we need to match a question mark as part of the expression, we can simply escape it by doing \\?.
 
 
-<a id="orgd3957bf"></a>
+<a id="orgc5f6b89"></a>
 
 ## \* (zero or more)
 
@@ -278,7 +283,7 @@ The asterisk means match 0 or more times.
 If you need to match an \* that appears in the pattern, you can escape it by doing \\\*.
 
 
-<a id="org547d915"></a>
+<a id="org593e443"></a>
 
 ## + (one or more)
 
@@ -304,7 +309,7 @@ Unlike the star, the group preceding a + must appear in the pattern.
 If you need to match a + that appears in the pattern, you can escape it by doing \\+.
 
 
-<a id="orgf5f63b5"></a>
+<a id="org88d0f20"></a>
 
 ## Escaping ?, \*, and +
 
@@ -329,7 +334,7 @@ We could also put the above +\*? into a group and then putting a + after it to s
     +*?+*?+*?
 
 
-<a id="orgd69210c"></a>
+<a id="orge5cb75a"></a>
 
 ## {x} (exactly x)
 
@@ -356,7 +361,7 @@ While the above is a simple example, we could do it for many other, more complex
     415-555-1234,555-4242,212-555-0000
 
 
-<a id="org11a5935"></a>
+<a id="org97a541f"></a>
 
 ## {x,y} (at least x, at most y)
 
@@ -401,7 +406,7 @@ In order to do a nongreedy match, we can specify a question mark following the c
     123
 
 
-<a id="orgd398087"></a>
+<a id="orgbda9478"></a>
 
 # Regex Character Classes and the findall() Method
 
@@ -514,7 +519,7 @@ However, with regex objects that have 2 or more groups, the following occurs.
 Now, instead of returning a list of strings, a list of tuples containing strings is returned. Each string in the tuple is the contents of each group.
 
 
-<a id="org706e31d"></a>
+<a id="orga9132bc"></a>
 
 ## Character Classes
 
@@ -574,7 +579,7 @@ We&rsquo;ve already looked at one character class (\d). It represents any numeri
 </table>
 
 
-<a id="org47c973b"></a>
+<a id="orgc3dd193"></a>
 
 ## 12 Days of Christmas Example
 
@@ -592,7 +597,7 @@ We can use regular expressions to find patterns where we have some number follow
     ['12 drummers', '11 pipers', '10 lords', '9 ladies', '7 swans', '6 geese', '5 golden', '4 calling', '3 french', '2 turtle', '1 partridge']
 
 
-<a id="org882677e"></a>
+<a id="orgbc81bbe"></a>
 
 ## Making Your Own Character Classes
 
@@ -617,7 +622,7 @@ Above we showed the existing shorthand character classes, but we can create our 
     ['R', 'b', 'c', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ' ', 'f', 'd', '.']
 
 
-<a id="org75cc9d8"></a>
+<a id="orgb98ce3e"></a>
 
 # Regex Dot-Star and the Caret/Dollar Characters
 
@@ -651,4 +656,130 @@ If we use both ^ at the beginning and $ at the end of our regex then that must i
 
     
     import re
+    
+    allDigitsRegex= re.compile(r"^\d+$")
+    
+    mo=allDigitsRegex.search("251681684168465161816")
+    print(mo.group())
+    
+    mo=allDigitsRegex.search("25168168x4168465161816")
+    print(mo)
+
+    251681684168465161816
+    None
+
+
+<a id="orgee3e17c"></a>
+
+## . (anything except newline)
+
+Having a period in your regex stands for any character except for newline.
+
+    
+    import re
+    
+    atRegex=re.compile(r".at")
+    mo=atRegex.findall("The cat in the hat sat on the flat mat")
+    print(mo)
+
+    ['cat', 'hat', 'sat', 'lat', 'mat']
+
+We can see above that the regex did not match &ldquo;flat&rdquo; since the . character is only looking for a single character before the &ldquo;at&rdquo;. That&rsquo;s why we instaed have &ldquo;lat&rdquo; get matched.
+
+    
+    import re
+    
+    atRegex=re.compile(r".{1,2}at")
+    mo=atRegex.findall("The cat in the hat sat on the flat mat")
+    print(mo)
+
+    [' cat', ' hat', ' sat', 'flat', ' mat']
+
+
+<a id="orga73c915"></a>
+
+## Dot-Star to Match Anything
+
+A common thing that is done is a .\* pattern to match anything, any pattern whatsoever.
+
+    
+    import re
+    
+    
+    nameRegex=re.compile(r"First Name: (.*) Last Name: (.*)")
+    
+    mo=nameRegex.findall("First Name: Al Last Name: Sweigart")
+    
+    print(mo)
+
+    [('Al', 'Sweigart')]
+
+
+<a id="org25d07e0"></a>
+
+## (.\*) is greedy, (.\*?) is non-greedy
+
+By default, dot-star uses greedy mode. We need to add the ? in order to make it not greedy.
+
+    
+    import re
+    
+    serve = "<To serve humans> for dinner.>"
+    
+    nongreedy=re.compile(r"<(.*?)>")
+    
+    print(nongreedy.findall(serve))
+    
+    greedy=re.compile(r"<(.*)>")
+    
+    print(greedy.findall(serve))
+
+    ['To serve humans']
+    ['To serve humans> for dinner.']
+
+
+<a id="orge9240ea"></a>
+
+## Making Dot Match Newlines Too (with re.DOTALL)
+
+Earlier, we mentioned that the dot character matches everything except for the newline character. How can we change that?
+
+    
+    import re
+    
+    prime="Serve the public trust. \nProtect the innocent. \nUphold the law."
+    print(prime)
+    
+    dotStar=re.compile(r".*")
+    
+    print(dotStar.search(prime))
+    
+    dotStar=re.compile(r".*", re.DOTALL)
+    
+    print(dotStar.search(prime))
+
+    Serve the public trust. 
+    Protect the innocent. 
+    Uphold the law.
+    <re.Match object; span=(0, 24), match='Serve the public trust. '>
+    <re.Match object; span=(0, 63), match='Serve the public trust. \nProtect the innocent. \>
+
+
+<a id="org5753c51"></a>
+
+## re.IGNORECASE
+
+Have second arguments to the compile function can be pretty useful. We can also have it do a case insensitive regex match.
+
+    
+    import re
+    
+    vowelRegex=re.compile(r"[aeiou]")
+    print(vowelRegex.findall("Al, why does your programming book talk about RoboCop so much?"))
+    
+    vowelRegex=re.compile(r"[aeiou]", re.I)
+    print(vowelRegex.findall("Al, why does your programming book talk about RoboCop so much?"))
+
+    ['o', 'e', 'o', 'u', 'o', 'a', 'i', 'o', 'o', 'a', 'a', 'o', 'u', 'o', 'o', 'o', 'o', 'u']
+    ['A', 'o', 'e', 'o', 'u', 'o', 'a', 'i', 'o', 'o', 'a', 'a', 'o', 'u', 'o', 'o', 'o', 'o', 'u']
 

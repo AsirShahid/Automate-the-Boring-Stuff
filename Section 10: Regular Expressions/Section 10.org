@@ -646,7 +646,142 @@ If we use both ^ at the beginning and $ at the end of our regex then that must i
 
 import re
 
+allDigitsRegex= re.compile(r"^\d+$")
+
+mo=allDigitsRegex.search("251681684168465161816")
+print(mo.group())
+
+mo=allDigitsRegex.search("25168168x4168465161816")
+print(mo)
 
 #+end_src
 
 #+RESULTS:
+: 251681684168465161816
+: None
+
+** . (anything except newline)
+
+Having a period in your regex stands for any character except for newline.
+
+#+begin_src python :results output :exports both
+
+import re
+
+atRegex=re.compile(r".at")
+mo=atRegex.findall("The cat in the hat sat on the flat mat")
+print(mo)
+
+#+end_src
+
+#+RESULTS:
+: ['cat', 'hat', 'sat', 'lat', 'mat']
+
+
+We can see above that the regex did not match "flat" since the . character is only looking for a single character before the "at". That's why we instaed have "lat" get matched.
+
+#+begin_src python :results output :exports both
+
+import re
+
+atRegex=re.compile(r".{1,2}at")
+mo=atRegex.findall("The cat in the hat sat on the flat mat")
+print(mo)
+
+#+end_src
+
+#+RESULTS:
+: [' cat', ' hat', ' sat', 'flat', ' mat']
+
+** Dot-Star to Match Anything
+
+A common thing that is done is a .* pattern to match anything, any pattern whatsoever.
+
+#+begin_src python :results output :exports both
+
+import re
+
+
+nameRegex=re.compile(r"First Name: (.*) Last Name: (.*)")
+
+mo=nameRegex.findall("First Name: Al Last Name: Sweigart")
+
+print(mo)
+
+#+end_src
+
+#+RESULTS:
+: [('Al', 'Sweigart')]
+
+** (.*) is greedy, (.*?) is non-greedy
+
+By default, dot-star uses greedy mode. We need to add the ? in order to make it not greedy.
+
+#+begin_src python :results output :exports both
+
+import re
+
+serve = "<To serve humans> for dinner.>"
+
+nongreedy=re.compile(r"<(.*?)>")
+
+print(nongreedy.findall(serve))
+
+greedy=re.compile(r"<(.*)>")
+
+print(greedy.findall(serve))
+
+#+end_src
+
+#+RESULTS:
+: ['To serve humans']
+: ['To serve humans> for dinner.']
+
+** Making Dot Match Newlines Too (with re.DOTALL)
+
+Earlier, we mentioned that the dot character matches everything except for the newline character. How can we change that?
+
+#+begin_src python :results output :exports both
+
+import re
+
+prime="Serve the public trust. \nProtect the innocent. \nUphold the law."
+print(prime)
+
+dotStar=re.compile(r".*")
+
+print(dotStar.search(prime))
+
+dotStar=re.compile(r".*", re.DOTALL)
+
+print(dotStar.search(prime))
+
+#+end_src
+
+#+RESULTS:
+: Serve the public trust.
+: Protect the innocent.
+: Uphold the law.
+: <re.Match object; span=(0, 24), match='Serve the public trust. '>
+: <re.Match object; span=(0, 63), match='Serve the public trust. \nProtect the innocent. \>
+
+** re.IGNORECASE
+
+Have second arguments to the compile function can be pretty useful. We can also have it do a case insensitive regex match.
+
+#+begin_src python :results output :exports both
+
+import re
+
+vowelRegex=re.compile(r"[aeiou]")
+print(vowelRegex.findall("Al, why does your programming book talk about RoboCop so much?"))
+
+vowelRegex=re.compile(r"[aeiou]", re.I)
+print(vowelRegex.findall("Al, why does your programming book talk about RoboCop so much?"))
+
+
+#+end_src
+
+#+RESULTS:
+: ['o', 'e', 'o', 'u', 'o', 'a', 'i', 'o', 'o', 'a', 'a', 'o', 'u', 'o', 'o', 'o', 'o', 'u']
+: ['A', 'o', 'e', 'o', 'u', 'o', 'a', 'i', 'o', 'o', 'a', 'a', 'o', 'u', 'o', 'o', 'o', 'o', 'u']
