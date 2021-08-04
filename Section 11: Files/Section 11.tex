@@ -1,4 +1,4 @@
-% Created 2021-08-04 Wed 17:47
+% Created 2021-08-04 Wed 17:48
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,24 +32,24 @@
 
 
 \section{Filenames and Absolute/Relative File Paths}
-\label{sec:org94ec709}
+\label{sec:orgd447ee9}
 
 We'll learn about files, folders, and how Python can work with them.
 
 If we want our data to persist after our program is finished, we need to save it to a file.
 
 \subsection{Fileames and File Paths}
-\label{sec:orge38d7e2}
+\label{sec:org9eb6bd6}
 
 Each of our files has 2 key properties. The file name and the file path.
 
 \subsection{os module}
-\label{sec:org54a8f2a}
+\label{sec:org43bf4be}
 
 The os module contains numerous file path related functions that we can use.
 
 \subsubsection{os.getcwd()}
-\label{sec:orgef71552}
+\label{sec:org89c5d04}
 
 Every program has a setting called the current working directory, this tells us the directory that we are currently in. We can use the getcwd() function in order to find our current working directory.
 
@@ -66,7 +66,7 @@ print(os.getcwd())
 \end{verbatim}
 
 \subsubsection{os.chdir()}
-\label{sec:org7ffe334}
+\label{sec:org42019a9}
 
 We can also change the current working directory using this chdir() function.
 
@@ -88,19 +88,19 @@ print(os.getcwd())
 \end{verbatim}
 
 \subsection{Absolute and Relative Paths}
-\label{sec:orgea60a18}
+\label{sec:org1c3b7d6}
 
 There are two kinds of file paths, relative and absolute. The absolute file path begins with the root directory and gives you the complete location of the file. A relative file path is relative to the current working directory.
 
 \subsection{. and .. Folders}
-\label{sec:orgd1dd876}
+\label{sec:orgfd4f38f}
 
 These are not real directories, but they can be used with relative paths. The single dot stands for this directory while two dots stands for the paret directory, the directory that your current working directory is in.
 
 \subsection{os.path module}
-\label{sec:org754f887}
+\label{sec:orgc5fa1f4}
 \subsubsection{os.path.join()}
-\label{sec:org315320c}
+\label{sec:orgc8e6bfe}
 
 This is a join function inside of a path module inside of an os module. It takes several string arguments and returns a string value of a path for the os that you are using.
 
@@ -116,7 +116,7 @@ folder1/folder2/folder3/file.png
 \end{verbatim}
 
 \subsubsection{os.path.abspath()}
-\label{sec:org2ca0a1c}
+\label{sec:org4c6b12f}
 
 The abspath() function will return the absolute path of the path that you pass it.
 
@@ -134,7 +134,7 @@ print(os.path.abspath("Section 11.org"))
 \end{verbatim}
 
 \subsubsection{os.path.isabs()}
-\label{sec:org271e440}
+\label{sec:org29017e6}
 
 The isabs() function is a way to determine if a given path is absolute.
 
@@ -160,7 +160,7 @@ True
 \end{verbatim}
 
 \subsubsection{os.path.relpath()}
-\label{sec:orgbf80838}
+\label{sec:orgf2d5b5f}
 
 This function will give you the relative path between two paths. The first argument is the file/directory we want to get to and the second is the directory we are already in.
 
@@ -183,7 +183,7 @@ Documents/Automate the Boring Stuff/Section 11: Files/Section 11.org
 \end{verbatim}
 
 \subsubsection{os.path.dirname()}
-\label{sec:orgd5de146}
+\label{sec:org984e377}
 
 This function pulls out just the directory part of the path.
 
@@ -200,7 +200,7 @@ print(os.path.dirname("/home/mohammeds/Documents/Automate the Boring Stuff/Secti
 \end{verbatim}
 
 \subsubsection{os.path.basename()}
-\label{sec:org2f82f79}
+\label{sec:org3ce8e23}
 
 This function pulls out just the last part of the path. Either the filename or just the directory itself if there is no file in the path.
 
@@ -217,7 +217,7 @@ Section 11.org
 \end{verbatim}
 
 \subsubsection{os.path.exists()}
-\label{sec:org6ce6218}
+\label{sec:orgcdeead9}
 
 This function can check and see if the path you are passing actually exists.
 
@@ -237,7 +237,7 @@ False
 \end{verbatim}
 
 \subsubsection{os.path.isfile()}
-\label{sec:org416b1dd}
+\label{sec:org3798f9a}
 
 We can use this function to see if what we pass to it is a file or not.
 
@@ -257,7 +257,7 @@ False
 \end{verbatim}
 
 \subsubsection{os.path.isdir()}
-\label{sec:orgc0c13fc}
+\label{sec:org0f57eca}
 
 We can use this function to see if what we pass to it is a directory or not.
 
@@ -277,7 +277,7 @@ True
 \end{verbatim}
 
 \subsubsection{os.path.getsize()}
-\label{sec:orgf150393}
+\label{sec:org7f276eb}
 
 This function gives us the size of the file in bytes.
 
@@ -294,7 +294,7 @@ print(os.path.getsize("/home/mohammeds/Documents/Automate the Boring Stuff/Secti
 \end{verbatim}
 
 \subsection{os.listdir()}
-\label{sec:org94bb7c3}
+\label{sec:org9fa0b84}
 
 This function isn't in the path module. It can be passed a file path of a folder and then it'll return a list of strings of the filenames and folder names that it contains.
 
@@ -311,7 +311,7 @@ print(os.listdir("/home/mohammeds/Documents"))
 \end{verbatim}
 
 \subsection{Example Code: Finding the total size of all files in a folder.}
-\label{sec:orgffac252}
+\label{sec:org6725d8b}
 
 \begin{verbatim}
 
@@ -333,7 +333,7 @@ print(totalSize)
 \end{verbatim}
 
 \subsection{os.makedirs()}
-\label{sec:org886ec0f}
+\label{sec:orge3a212f}
 
 This function can create directories for you.
 
@@ -352,12 +352,12 @@ print(os.listdir())
 \end{verbatim}
 
 \section{Reading and Writing Plaintext Files}
-\label{sec:org28e6b5a}
+\label{sec:orgf572b40}
 
 We can start writing strings to files that we create in order to save information. We can then read this data with Python.
 
 \subsection{Plaintext and Binary Files}
-\label{sec:org0e0fec2}
+\label{sec:org162a967}
 
 Plaintext files only contain basic text characters and don't include information about color or font. Often times they have .txt extensions. Python scripts are also plain text files, except they use the .py file extension.
 
@@ -366,12 +366,12 @@ They can be opened with text editors such as Emacs.
 Binary files are all other types of files. PDF, JPG, PNG, etc. When you open these with a text editor, it will be impossible to understand.
 
 \subsection{Reading or Writing Files in Python}
-\label{sec:org9d09c74}
+\label{sec:orgaabdee8}
 
 There are three main steps for reading and writing files in Python.
 
 \subsubsection{The open() Function}
-\label{sec:org833ccd3}
+\label{sec:orgc7a4ee1}
 
 This function opens files.
 
@@ -382,17 +382,17 @@ open("hello.txt")
 \end{verbatim}
 
 \subsubsection{Read Mode}
-\label{sec:orgfecdd7b}
+\label{sec:orgada0c51}
 
 The open() function opens the file in read mode. This only lets you read the data, it does not let you modify it.
 
 \subsubsection{The read() method}
-\label{sec:orgfe24515}
+\label{sec:orgddb356e}
 
 This method lets you read the opened file.
 
 \subsubsection{The close() method}
-\label{sec:orgf52691f}
+\label{sec:org80fb651}
 
 This method closes the opened file. If you want to continue accessing it, you should save it to a variable.
 
@@ -411,11 +411,11 @@ helloFile.close()
 
 \begin{verbatim}
 Hello!
-How are you?How are you?How are you?How are you?How are you?How are you?How are you?
+How are you?How are you?How are you?How are you?How are you?How are you?How are you?How are you?How are you?
 \end{verbatim}
 
 \subsubsection{The readlines() Method}
-\label{sec:orgb74e124}
+\label{sec:org7121d86}
 
 This method returns all of the lines as strings within a list.
 
@@ -429,11 +429,11 @@ print(content)
 \end{verbatim}
 
 \begin{verbatim}
-['Hello!\n', 'How are you?How are you?How are you?How are you?How are you?How are you?How are you?']
+['Hello!\n', 'How are you?How are you?How are you?How are you?How are you?How are you?How are you?How are you?How are you?']
 \end{verbatim}
 
 \subsubsection{Write mode}
-\label{sec:org6bfedf8}
+\label{sec:org6edfab4}
 
 In order to write to a file, it needs to be opened in write or append mode. This can overwrite existing files. For write mode, you can pass in a ``w'' argument to the open() function.
 
@@ -445,7 +445,7 @@ helloFile.write("Hello!!!!")
 \end{verbatim}
 
 \subsubsection{Append mode}
-\label{sec:org3556497}
+\label{sec:orgb725f9b}
 
 In order to write to a file, it needs to be opened in write or append mode. This can overwrite existing files. For append mode, you can pass in a ``a'' argument to the open() function.
 
@@ -457,7 +457,7 @@ helloFile.write("How are you?")
 \end{verbatim}
 
 \subsubsection{Example}
-\label{sec:org2fdab0c}
+\label{sec:org602cc91}
 
 \begin{verbatim}
 
@@ -478,12 +478,12 @@ Bacon is not a vegetable
 \end{verbatim}
 
 \subsection{The shelve Module}
-\label{sec:orgb615e04}
+\label{sec:orgb4a675a}
 
 Writing and reading text files is a good way to store single long strings, but if we want to save more complex data structures like lists and dictionaries, then we can save Python programs to binary shelve files.
 
 \subsubsection{The shelve.open() Method}
-\label{sec:org57474f7}
+\label{sec:org3518d60}
 
 This method can open shelve files.
 
@@ -508,7 +508,7 @@ print(shelfFile["cats"])
 The benefit of using the shelve module is that you can store lists, dictionaries, and non text data and then reopen them in the future.
 
 \subsubsection{The keys() and values() Shelf Methods}
-\label{sec:orga1d9307}
+\label{sec:org0095e3f}
 
 Shelf file objects are very similar to dictionaries in the sense that they have keys and values.
 
@@ -529,24 +529,24 @@ shelfFile.close()
 \end{verbatim}
 
 \begin{verbatim}
-KeysView(<shelve.DbfilenameShelf object at 0x7f2f62606130>)
-ValuesView(<shelve.DbfilenameShelf object at 0x7f2f62606130>)
+KeysView(<shelve.DbfilenameShelf object at 0x7fa06027f130>)
+ValuesView(<shelve.DbfilenameShelf object at 0x7fa06027f130>)
 ['cats']
 [['Zophie', 'Pooka', 'Simon', 'Fat-tail', 'Cleo']]
 \end{verbatim}
 
 \section{Copying and Moving Files and Folders}
-\label{sec:org9688e03}
+\label{sec:org8c32959}
 
 We can also organize files on our drive using Python.
 
 \subsection{Shell Utilities Module}
-\label{sec:org9ae6c38}
+\label{sec:org5e8b2af}
 
 This module has functions that let us copy, rename, and delete files in Python programs.
 
 \subsubsection{shutil.copy() Function}
-\label{sec:orga7d3bb9}
+\label{sec:orgde7134e}
 
 This function lets us copy files in Python. We can either copy and leave the filename or copy and give a new file name.
 
@@ -567,7 +567,7 @@ print(os.listdir("TestDir"))
 \end{verbatim}
 
 \subsubsection{shutil.copytree() Function}
-\label{sec:org7596aa4}
+\label{sec:org6bfdc8b}
 
 The copy function works for single files, but what if we want to copy an entire folder? Then we can use the copytree function.
 
@@ -593,7 +593,7 @@ print(os.listdir("TestDirBackup"))
 \end{verbatim}
 
 \subsubsection{shutil.move() function}
-\label{sec:orga3aff51}
+\label{sec:org061bd6c}
 
 This can be used for moving and renaming files. If you want to rename a file, you can move it to the same directory using the move() function and then change the filename.
 
@@ -608,15 +608,15 @@ print(os.listdir("TestDirBackup"))
 \end{verbatim}
 
 \section{Deleting Files}
-\label{sec:org6acc0a5}
+\label{sec:org0a43f89}
 
 There are three functions that we can use for deleting files.
 
 \subsection{Deleting Functions}
-\label{sec:org25cbd04}
+\label{sec:org7305855}
 
 \subsubsection{os.unlink() (Deletes a single file.)}
-\label{sec:orgca8b764}
+\label{sec:orgbe2fb31}
 
 \begin{verbatim}
 
@@ -640,12 +640,12 @@ print(os.listdir())
 \end{verbatim}
 
 \subsubsection{os.rmdir() (Delete an empty folder)}
-\label{sec:orga76852f}
+\label{sec:org3d27d38}
 
 This function only removes directories that are completely empty. If the directory you try to delete has data, Python will return an error.
 
 \subsubsection{shutil.rmtree() (Deletes a folder and its entire contents)}
-\label{sec:org3447d11}
+\label{sec:org802caf5}
 
 This is the delete analog of the copytree() function.
 
@@ -664,7 +664,7 @@ print(os.listdir())
 \end{verbatim}
 
 \subsection{Dry Run}
-\label{sec:org3426e47}
+\label{sec:orgeb144a9}
 
 These deleting functions can be dangerous, so in order to make sure nothing goes wrong, we should do a dry run when using them.
 
@@ -684,7 +684,7 @@ for filename in os.listdir():
 \end{verbatim}
 
 \subsection{The send2trash Module}
-\label{sec:org9d24fbf}
+\label{sec:org5570b74}
 
 These deleting functions are still dangerous, even when doing a dry run since they will be deleted permanently. Instead, we can use the send2trash module's functions which sends the files to the recycling bin.
 
@@ -702,12 +702,12 @@ send2trash.send2trash("bacon.txt")
 
 \end{verbatim}
 \section{Walking a Directory Tree}
-\label{sec:orgb305243}
+\label{sec:orga1e0552}
 
 How can we write a program that applies to all of the directories and files inside of a particular directory.
 
 \subsection{The os.walk() Function}
-\label{sec:org79fabf1}
+\label{sec:orgf7958bd}
 
 This function is passed a root folder that we want to check and the return value is used in for loops. It returns 3 values on each iteration of the for loop.
 
