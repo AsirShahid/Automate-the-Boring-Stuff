@@ -5,13 +5,13 @@
                      '(("article" "11pt")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("inputenc" "utf8") ("fontenc" "T1") ("ulem" "normalem")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -31,31 +31,32 @@
     "capt-of"
     "hyperref")
    (LaTeX-add-labels
-    "sec:orgf5db76f"
-    "sec:org7f28667"
-    "sec:org296ae8a"
-    "sec:org498c1f4"
-    "sec:org0344841"
-    "sec:orgdfd5c9c"
-    "sec:orgb501a44"
-    "sec:orgd6721c6"
-    "sec:org1441938"
-    "sec:org1a55f99"
-    "sec:org359776c"
-    "sec:org2547e04"
-    "sec:orgafac397"
-    "sec:orgab7dd62"
-    "sec:orgaeede3c"
-    "sec:org3f88512"
-    "sec:orgbab3799"
-    "sec:org4680e7e"
-    "sec:org144a546"
-    "sec:orga8abf36"
-    "sec:orgecf8c08"
-    "sec:org5313bb0"
-    "sec:orgeda9acb"
-    "sec:org64232c6"
-    "sec:org2af474c"
-    "sec:org78cbe6d"))
+    "sec:org54c94d1"
+    "sec:org427929d"
+    "sec:org3d955ff"
+    "sec:org5202842"
+    "sec:orgd1ae650"
+    "sec:orga6e4dfd"
+    "sec:orgc4697d4"
+    "sec:org2c0115e"
+    "sec:org5bdd47b"
+    "sec:org79ee805"
+    "sec:org55fe202"
+    "sec:orgffe973b"
+    "sec:orgb3bfc05"
+    "sec:org1ef7702"
+    "sec:org39b5520"
+    "sec:org058a993"
+    "sec:orgfa408f6"
+    "sec:org76703ec"
+    "sec:orgf2a1666"
+    "sec:org51d6abc"
+    "sec:org3b5ab90"
+    "sec:orge45ce6c"
+    "sec:org0446b50"
+    "sec:org19bf05b"
+    "sec:orgfb10a38"
+    "sec:orga4185c0"
+    "sec:org4742743"))
  :latex)
 

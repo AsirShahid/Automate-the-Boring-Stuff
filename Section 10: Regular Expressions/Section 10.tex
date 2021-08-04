@@ -1,4 +1,4 @@
-% Created 2021-08-04 Wed 12:03
+% Created 2021-08-04 Wed 12:56
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{Regular Expression Basics}
-\label{sec:orgf5db76f}
+\label{sec:org54c94d1}
 
 In this lesson, we will be working with pattern matching and regular expressions. Regular expressions allow you to specify a pattern of text to search for.
 
@@ -114,7 +114,7 @@ Phone number found
 \end{verbatim}
 
 \subsection{The re Module}
-\label{sec:org7f28667}
+\label{sec:org427929d}
 
 We can write the previous code much faster using regular expressions.
 
@@ -143,7 +143,7 @@ print(phoneNumRegex.findall(message))
 \end{verbatim}
 
 \section{Regex Groups and the Pipe Character}
-\label{sec:org296ae8a}
+\label{sec:org3d955ff}
 
 We can try some more of Python's more powerful pattern matching capabilities.
 
@@ -166,7 +166,7 @@ print(mo.group())
 \end{verbatim}
 
 \subsection{Groups}
-\label{sec:org498c1f4}
+\label{sec:org5202842}
 
 Let's say we only want the phone number or only the phone number portion of the number. We can do this sing parentheses to mark out groups in the string.
 
@@ -207,7 +207,7 @@ print(mo.group())
 \end{verbatim}
 
 \subsection{Pipe Character |}
-\label{sec:org0344841}
+\label{sec:orgd1ae650}
 
 Pipes can be used to match one of several patterns as part of the regular expression.
 
@@ -234,12 +234,12 @@ mobile
 If the search method can't find the regular expression pattern, it will return None. In that case, we can risk running into errors.
 
 \section{Repetition in Regex Patterns and Greedy/Nongreedy Matching}
-\label{sec:orgdfd5c9c}
+\label{sec:orga6e4dfd}
 
 How can we match a certain number of repetitions of a group? For example, one or more repitions, between 7 and 10 repitions, etc.
 
 \subsection{? (zero or one)}
-\label{sec:orgb501a44}
+\label{sec:orgc4697d4}
 This says match the preceding group either 0 or 1 times.
 
 \begin{verbatim}
@@ -303,7 +303,7 @@ None
 If we need to match a question mark as part of the expression, we can simply escape it by doing $\backslash$?.
 
 \subsection{* (zero or more)}
-\label{sec:orgd6721c6}
+\label{sec:org2c0115e}
 
 The asterisk means match 0 or more times.
 
@@ -334,7 +334,7 @@ Batwowowoman
 If you need to match an * that appears in the pattern, you can escape it by doing $\backslash$*.
 
 \subsection{+ (one or more)}
-\label{sec:org1441938}
+\label{sec:org5bdd47b}
 
 Unlike the star, the group preceding a + must appear in the pattern.
 
@@ -364,7 +364,7 @@ Batwowowoman
 If you need to match a + that appears in the pattern, you can escape it by doing $\backslash$+.
 
 \subsection{Escaping ?, *, and +}
-\label{sec:org1a55f99}
+\label{sec:org79ee805}
 
 
 \begin{verbatim}
@@ -399,7 +399,7 @@ print(mo.group())
 \end{verbatim}
 
 \subsection{\{x\} (exactly x)}
-\label{sec:org359776c}
+\label{sec:org55fe202}
 
 This can be used if you wanted to match a specific number of repetitions of a group.
 
@@ -436,7 +436,7 @@ print(mo.group())
 \end{verbatim}
 
 \subsection{\{x,y\} (at least x, at most y)}
-\label{sec:org2547e04}
+\label{sec:orgffe973b}
 
 
 \begin{verbatim}
@@ -497,7 +497,7 @@ print(mo.group())
 \end{verbatim}
 
 \section{Regex Character Classes and the findall() Method}
-\label{sec:orgafac397}
+\label{sec:orgb3bfc05}
 
 In this lesson, we'll talk about the findall() method with regular expressions.
 
@@ -621,7 +621,7 @@ print(mo)
 Now, instead of returning a list of strings, a list of tuples containing strings is returned. Each string in the tuple is the contents of each group.
 
 \subsection{Character Classes}
-\label{sec:orgab7dd62}
+\label{sec:org1ef7702}
 
 We've already looked at one character class (\d). It represents any numeric digit between 0 and 9. Character classes are shortcuts that make our code easier to read and write.
 
@@ -639,7 +639,7 @@ Shorthand character class & Represents\\
 \end{center}
 
 \subsection{12 Days of Christmas Example}
-\label{sec:orgaeede3c}
+\label{sec:org39b5520}
 
 We can use regular expressions to find patterns where we have some number followed by some words.
 
@@ -660,7 +660,7 @@ print(xmasRegex.findall(lyrics))
 \end{verbatim}
 
 \subsection{Making Your Own Character Classes}
-\label{sec:org3f88512}
+\label{sec:org058a993}
 
 Above we showed the existing shorthand character classes, but we can create our own character classes as well. Let's say we want to create a shorthand for vowels, then we can use r``[aeiouAEIOU]'' for our Regex. If we want to make a negative character class, we can put in a \^{} at the start of the square brackets.
 
@@ -687,7 +687,7 @@ print(consonantsRegex.findall("Robocop eats baby food."))
 \end{verbatim}
 
 \section{Regex Dot-Star and the Caret/Dollar Characters}
-\label{sec:orgbab3799}
+\label{sec:orgfa408f6}
 
 In our last lesson, we learned that we can use a \^{} at the start of the square brackets in order to create a negative character class. We can also use a carrot at the start of a regular expression to indicate that the match needs to occur at the beginning of the text. We can also put a dollar sign at the end of the regular expression to indicate that the string has to match at the end with the regex pattern.
 
@@ -743,7 +743,7 @@ None
 \end{verbatim}
 
 \subsection{. (anything except newline)}
-\label{sec:org4680e7e}
+\label{sec:org76703ec}
 
 Having a period in your regex stands for any character except for newline.
 
@@ -780,7 +780,7 @@ print(mo)
 \end{verbatim}
 
 \subsection{Dot-Star to Match Anything}
-\label{sec:org144a546}
+\label{sec:orgf2a1666}
 
 A common thing that is done is a .* pattern to match anything, any pattern whatsoever.
 
@@ -802,7 +802,7 @@ print(mo)
 \end{verbatim}
 
 \subsection{(.*) is greedy, (.*?) is non-greedy}
-\label{sec:orga8abf36}
+\label{sec:org51d6abc}
 
 By default, dot-star uses greedy mode. We need to add the ? in order to make it not greedy.
 
@@ -828,7 +828,7 @@ print(greedy.findall(serve))
 \end{verbatim}
 
 \subsection{Making Dot Match Newlines Too (with re.DOTALL)}
-\label{sec:orgecf8c08}
+\label{sec:org3b5ab90}
 
 Earlier, we mentioned that the dot character matches everything except for the newline character. How can we change that?
 
@@ -858,7 +858,7 @@ Uphold the law.
 \end{verbatim}
 
 \subsection{re.IGNORECASE}
-\label{sec:org5313bb0}
+\label{sec:orge45ce6c}
 
 Have second arguments to the compile function can be pretty useful. We can also have it do a case insensitive regex match.
 
@@ -881,12 +881,12 @@ print(vowelRegex.findall("Al, why does your programming book talk about RoboCop 
 \end{verbatim}
 
 \section{Regex sub() Method and Verbose Mode}
-\label{sec:orgeda9acb}
+\label{sec:org0446b50}
 
 Previously we called the re.compile function to create regular expression objects. These objects had search and findall methods. There are like the search features in word processors.
 
 \subsection{The sub() method}
-\label{sec:org64232c6}
+\label{sec:org19bf05b}
 
 The sub() method is like the replace feature in word processors. Let's see how to use it.
 
@@ -932,7 +932,7 @@ Agent A****** gave the secret documents to Agent B******.
 \end{verbatim}
 
 \subsection{Verbose Mode with re.VERBOSE}
-\label{sec:org2af474c}
+\label{sec:orgfb10a38}
 
 Regex strings can look awkward and difficult to parse, particularly when they get too long. We can use the verbose format in order to fix this.
 
@@ -952,7 +952,7 @@ re.compile(r"""
 \end{verbatim}
 
 \subsection{Using Multiple Options (re.I, re.DOTALL, re.VERBOSE)}
-\label{sec:org78cbe6d}
+\label{sec:orga4185c0}
 
 We have learned about 3 different options for our re.compile function. What if we want to use several of these for the same regex? We can combine them using pipe symbols.
 
@@ -970,4 +970,11 @@ re.compile(r"""
 \sx\d{2,4} # extension like x1234""", re.VERBOSE | re.DOTALL | re.I)
 
 \end{verbatim}
+
+\section{Regex Example Program: A Phone and Email Scraper}
+\label{sec:org4742743}
+
+Using what we have learned, we will create a scraper that takes out all the emails and phone numbers from a PDF.
+
+We can create the phoneAndEmail.py script for this.
 \end{document}

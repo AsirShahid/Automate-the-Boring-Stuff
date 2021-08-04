@@ -873,3 +873,9 @@ re.compile(r"""
 #+end_src
 
 #+RESULTS:
+
+*  Regex Example Program: A Phone and Email Scraper
+
+Using what we have learned, we will create a scraper that takes out all the emails and phone numbers from a PDF.
+
+We can create the phoneAndEmail.py script for this.
