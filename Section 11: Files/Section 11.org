@@ -289,3 +289,168 @@ os.makedirs("TestDir")
 print(os.listdir())
 
 #+end_src
+
+* Reading and Writing Plaintext Files
+
+We can start writing strings to files that we create in order to save information. We can then read this data with Python.
+
+** Plaintext and Binary Files
+
+Plaintext files only contain basic text characters and don't include information about color or font. Often times they have .txt extensions. Python scripts are also plain text files, except they use the .py file extension.
+
+They can be opened with text editors such as Emacs.
+
+Binary files are all other types of files. PDF, JPG, PNG, etc. When you open these with a text editor, it will be impossible to understand.
+
+** Reading or Writing Files in Python
+
+There are three main steps for reading and writing files in Python.
+
+*** The open() Function
+
+This function opens files.
+
+#+begin_src python :results output :exports both
+
+open("hello.txt")
+
+#+end_src
+
+#+RESULTS:
+
+***  Read Mode
+
+The open() function opens the file in read mode. This only lets you read the data, it does not let you modify it.
+
+***  The read() method
+
+This method lets you read the opened file.
+
+***  The close() method
+
+This method closes the opened file. If you want to continue accessing it, you should save it to a variable.
+
+#+begin_src python :results output :exports both
+
+helloFile=open("hello.txt")
+
+
+content=helloFile.read()
+
+print(content)
+
+helloFile.close()
+
+#+end_src
+
+#+RESULTS:
+: Hello!
+:
+
+*** The readlines() Method
+
+This method returns all of the lines as strings within a list.
+
+#+begin_src python :results output :exports both
+
+helloFile=open("hello.txt")
+content=helloFile.readlines()
+
+print(content)
+
+#+end_src
+
+#+RESULTS:
+: ['Hello!\n']
+
+*** Write mode
+
+In order to write to a file, it needs to be opened in write or append mode. This can overwrite existing files. For write mode, you can pass in a "w" argument to the open() function.
+
+#+begin_src python :results output :exports both
+
+helloFile=open("hello2.txt","w")
+helloFile.write("Hello!!!!")
+
+#+end_src
+
+#+RESULTS:
+
+*** Append mode
+
+In order to write to a file, it needs to be opened in write or append mode. This can overwrite existing files. For append mode, you can pass in a "a" argument to the open() function.
+
+#+begin_src python :results output :exports both
+
+helloFile=open("hello.txt", "a")
+helloFile.write("How are you?")
+
+#+end_src
+
+#+RESULTS:
+
+*** Example
+
+#+begin_src python :results output :exports both
+
+
+baconFile=open("bacon.txt", "w")
+
+baconFile.write("Bacon is not a vegetable")
+baconFile.close()
+
+baconFile=open("bacon.txt")
+
+print(baconFile.read())
+
+#+end_src
+
+#+RESULTS:
+: Bacon is not a vegetable
+
+
+** The shelve Module
+
+Writing and reading text files is a good way to store single long strings, but if we want to save more complex data structures like lists and dictionaries, then we can save Python programs to binary shelve files.
+
+*** The shelve.open() Method
+
+This method can open shelve files.
+
+#+begin_src python :results output :exports both
+
+import shelve
+
+shelfFile=shelve.open("mydata")
+shelfFile["cats"]=["Zophie","Pooka","Simon","Fat-tail","Cleo"]
+shelfFile.close()
+
+shelfFile=shelve.open("mydata")
+print(shelfFile["cats"])
+
+#+end_src
+
+#+RESULTS:
+: ['Zophie', 'Pooka', 'Simon', 'Fat-tail', 'Cleo']
+
+The benefit of using the shelve module is that you can store lists, dictionaries, and non text data and then reopen them in the future.
+
+*** The keys() and values() Shelf Methods
+
+Shelf file objects are very similar to dictionaries in the sense that they have keys and values.
+
+#+begin_src python :results output :exports both
+
+import shelve
+
+shelfFile=shelve.open("mydata")
+
+print(shelfFile.keys())
+print(shelfFile.values())
+
+
+print(list(shelfFile.keys()))
+print(list(shelfFile.values()))
+
+shelfFile.close()
+#+end_src
