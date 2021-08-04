@@ -1,24 +1,26 @@
 
 # Table of Contents
 
-1.  [Regular Expression Basics](#orgef05d77)
-    1.  [The re Module](#org5ec8a56)
-2.  [Regex Groups and the Pipe Character](#org7f896c9)
-    1.  [Groups](#org69120c5)
-    2.  [Pipe Character |](#org9d9a3b5)
-3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#orgd0f7a24)
-    1.  [? (zero or one)](#orgfe766b6)
-    2.  [\* (zero or more)](#orgfb3b821)
-    3.  [+ (one or more)](#org236f472)
-    4.  [Escaping ?, \*, and +](#orgdbce0e4)
-    5.  [{x} (exactly x)](#orgafd3a22)
-    6.  [{x,y} (at least x, at most y)](#orgd7f857b)
-4.  [Regex Character Classes and the findall() Method](#org8f3b124)
-    1.  [Character Classes](#org4949b7c)
+1.  [Regular Expression Basics](#org9294414)
+    1.  [The re Module](#org064f117)
+2.  [Regex Groups and the Pipe Character](#org4717194)
+    1.  [Groups](#org5b8fc3f)
+    2.  [Pipe Character |](#org46a41dc)
+3.  [Repetition in Regex Patterns and Greedy/Nongreedy Matching](#orgb5a532d)
+    1.  [? (zero or one)](#org19346b6)
+    2.  [\* (zero or more)](#org5e747be)
+    3.  [+ (one or more)](#org68cc154)
+    4.  [Escaping ?, \*, and +](#org734675e)
+    5.  [{x} (exactly x)](#org273a439)
+    6.  [{x,y} (at least x, at most y)](#orgab85591)
+4.  [Regex Character Classes and the findall() Method](#orge9db759)
+    1.  [Character Classes](#org117cd28)
+    2.  [12 Days of Christmas Example](#orga4c0df5)
+    3.  [Making Your Own Character Classes](#org76f6f59)
 
 
 
-<a id="orgef05d77"></a>
+<a id="org9294414"></a>
 
 # Regular Expression Basics
 
@@ -91,7 +93,7 @@ That&rsquo;s a lot of code for a relatively simple task. If we want to find phon
     Phone number found
 
 
-<a id="org5ec8a56"></a>
+<a id="org064f117"></a>
 
 ## The re Module
 
@@ -116,7 +118,7 @@ We can write the previous code much faster using regular expressions.
     ['415-555-1011', '415-555-9999']
 
 
-<a id="org7f896c9"></a>
+<a id="org4717194"></a>
 
 # Regex Groups and the Pipe Character
 
@@ -134,7 +136,7 @@ Let&rsquo;s say we want to seperate the area code from a phone number.
     415-555-4242
 
 
-<a id="org69120c5"></a>
+<a id="org5b8fc3f"></a>
 
 ## Groups
 
@@ -166,7 +168,7 @@ The parentheses there can be useful syntax when we want to find specific parts o
     (415) 555-4242
 
 
-<a id="org9d9a3b5"></a>
+<a id="org46a41dc"></a>
 
 ## Pipe Character |
 
@@ -188,14 +190,14 @@ Let&rsquo;s say we wanted to match any of the strings &ldquo;Batman&rdquo;, &ldq
 If the search method can&rsquo;t find the regular expression pattern, it will return None. In that case, we can risk running into errors.
 
 
-<a id="orgd0f7a24"></a>
+<a id="orgb5a532d"></a>
 
 # Repetition in Regex Patterns and Greedy/Nongreedy Matching
 
 How can we match a certain number of repetitions of a group? For example, one or more repitions, between 7 and 10 repitions, etc.
 
 
-<a id="orgfe766b6"></a>
+<a id="org19346b6"></a>
 
 ## ? (zero or one)
 
@@ -249,7 +251,7 @@ Using our earlier phone number example, we can make a regular expression that lo
 If we need to match a question mark as part of the expression, we can simply escape it by doing \\?.
 
 
-<a id="orgfb3b821"></a>
+<a id="org5e747be"></a>
 
 ## \* (zero or more)
 
@@ -275,7 +277,7 @@ The asterisk means match 0 or more times.
 If you need to match an \* that appears in the pattern, you can escape it by doing \\\*.
 
 
-<a id="org236f472"></a>
+<a id="org68cc154"></a>
 
 ## + (one or more)
 
@@ -301,7 +303,7 @@ Unlike the star, the group preceding a + must appear in the pattern.
 If you need to match a + that appears in the pattern, you can escape it by doing \\+.
 
 
-<a id="orgdbce0e4"></a>
+<a id="org734675e"></a>
 
 ## Escaping ?, \*, and +
 
@@ -326,7 +328,7 @@ We could also put the above +\*? into a group and then putting a + after it to s
     +*?+*?+*?
 
 
-<a id="orgafd3a22"></a>
+<a id="org273a439"></a>
 
 ## {x} (exactly x)
 
@@ -353,7 +355,7 @@ While the above is a simple example, we could do it for many other, more complex
     415-555-1234,555-4242,212-555-0000
 
 
-<a id="orgd7f857b"></a>
+<a id="orgab85591"></a>
 
 ## {x,y} (at least x, at most y)
 
@@ -398,7 +400,7 @@ In order to do a nongreedy match, we can specify a question mark following the c
     123
 
 
-<a id="org8f3b124"></a>
+<a id="orge9db759"></a>
 
 # Regex Character Classes and the findall() Method
 
@@ -511,33 +513,105 @@ However, with regex objects that have 2 or more groups, the following occurs.
 Now, instead of returning a list of strings, a list of tuples containing strings is returned. Each string in the tuple is the contents of each group.
 
 
-<a id="org4949b7c"></a>
+<a id="org117cd28"></a>
 
 ## Character Classes
 
 We&rsquo;ve already looked at one character class (\d). It represents any numeric digit between 0 and 9. Character classes are shortcuts that make our code easier to read and write.
 
-1.  \d
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-Any numeric digit from 0 to 9.
 
-\D
+<colgroup>
+<col  class="org-left" />
 
-Any character that is not a numeric digit from 0 to 9.
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Shorthand character class</th>
+<th scope="col" class="org-left">Represents</th>
+</tr>
+</thead>
 
-\w
+<tbody>
+<tr>
+<td class="org-left">\d</td>
+<td class="org-left">Any numeric digit from 0 to 9.</td>
+</tr>
 
-Any letter, numeric digit, or the underscore character. (Think of this as matching “word” characters.)
 
-\W
+<tr>
+<td class="org-left">\D</td>
+<td class="org-left">Any character that is not a numeric digit from 0 to 9.</td>
+</tr>
 
-Any character that is not a letter, numeric digit, or the underscore character.
 
-\s
+<tr>
+<td class="org-left">\w</td>
+<td class="org-left">Any letter, numeric digit, or the underscore character. (Think of this as matching “word” characters.)</td>
+</tr>
 
-Any space, tab, or newline character. (Think of this as matching “space” characters.)
 
-&sect;
+<tr>
+<td class="org-left">\W</td>
+<td class="org-left">Any character that is not a letter, numeric digit, or the underscore character.</td>
+</tr>
 
-Any character that is not a space, tab, or newline.
+
+<tr>
+<td class="org-left">\s</td>
+<td class="org-left">Any space, tab, or newline character. (Think of this as matching “space” characters.)</td>
+</tr>
+
+
+<tr>
+<td class="org-left">&sect;</td>
+<td class="org-left">Any character that is not a space, tab, or newline.</td>
+</tr>
+</tbody>
+</table>
+
+
+<a id="orga4c0df5"></a>
+
+## 12 Days of Christmas Example
+
+We can use regular expressions to find patterns where we have some number followed by some words.
+
+    
+    import re
+    
+    lyrics= "12 drummers drumming, 11 pipers piping, 10 lords a leaping, 9 ladies dancing,  maids a milking, 7 swans a swimming, 6 geese a laying, 5 golden rings, 4 calling birds, 3 french hens, 2 turtle doves, and 1 partridge in a pear tree."
+    
+    xmasRegex=re.compile(r"\d+\s\w+")
+    
+    print(xmasRegex.findall(lyrics))
+
+    ['12 drummers', '11 pipers', '10 lords', '9 ladies', '7 swans', '6 geese', '5 golden', '4 calling', '3 french', '2 turtle', '1 partridge']
+
+
+<a id="org76f6f59"></a>
+
+## Making Your Own Character Classes
+
+Above we showed the existing shorthand character classes, but we can create our own character classes as well. Let&rsquo;s say we want to create a shorthand for vowels, then we can use r&ldquo;[aeiouAEIOU]&rdquo; for our Regex. If we want to make a negative character class, we can put in a ^ at the start of the square brackets.
+
+    
+    import re
+    vowelRegex=re.compile(r"[aeiouAEIOU]")
+    
+    print(vowelRegex.findall("Robocop eats baby food."))
+    
+    doublevowelRegex=re.compile(r"[aeiouAEIOU]{2}")
+    
+    print(doublevowelRegex.findall("Robocop eats baby food."))
+    
+    consonantsRegex=re.compile(r"[^aeiouAEIOU]")
+    
+    print(consonantsRegex.findall("Robocop eats baby food."))
+
+    ['o', 'o', 'o', 'e', 'a', 'a', 'o', 'o']
+    ['ea', 'oo']
+    ['R', 'b', 'c', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ' ', 'f', 'd', '.']
 
