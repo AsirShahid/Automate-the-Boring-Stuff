@@ -1,4 +1,4 @@
-% Created 2021-08-03 Tue 20:35
+% Created 2021-08-03 Tue 20:56
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{Regular Expression Basics}
-\label{sec:org2d2c63c}
+\label{sec:org7901a6f}
 
 In this lesson, we will be working with pattern matching and regular expressions. Regular expressions allow you to specify a pattern of text to search for.
 
@@ -103,7 +103,7 @@ for i in range(len(message)):
         foundNumber=True
 if not foundNumber:
     print("Could not find any phone numbers")
-    
+
 \end{verbatim}
 
 \begin{verbatim}
@@ -114,7 +114,7 @@ Phone number found
 \end{verbatim}
 
 \subsection{The re Module}
-\label{sec:org33c94d6}
+\label{sec:org2546724}
 
 We can write the previous code much faster using regular expressions.
 
@@ -141,4 +141,95 @@ print(phoneNumRegex.findall(message))
 415-555-1011
 ['415-555-1011', '415-555-9999']
 \end{verbatim}
+
+\section{Regex Groups and the Pipe Character}
+\label{sec:org86f14e2}
+
+We can try some more of Python's more powerful pattern matching capabilities.
+
+Let's say we want to seperate the area code from a phone number.
+
+
+\begin{verbatim}
+
+import re
+
+phoneNumRegex = re.compile(r"\d\d\d-\d\d\d-\d\d\d\d")
+mo=phoneNumRegex.search("My number is 415-555-4242")
+print(mo.group())
+
+
+\end{verbatim}
+
+\begin{verbatim}
+415-555-4242
+\end{verbatim}
+
+\subsection{Groups}
+\label{sec:org997af89}
+
+Let's say we only want the phone number or only the phone number portion of the number. We can do this sing parentheses to mark out groups in the string.
+
+\begin{verbatim}
+
+import re
+
+phoneNumRegex = re.compile(r"(\d\d\d)-(\d\d\d-\d\d\d\d)")
+mo=phoneNumRegex.search("My number is 415-555-4242")
+print(mo.group())
+
+print(mo.group(1))
+print(mo.group(2))
+
+\end{verbatim}
+
+\begin{verbatim}
+415-555-4242
+415
+555-4242
+\end{verbatim}
+
+
+The parentheses there can be useful syntax when we want to find specific parts of something. However, what can we do when we want to find literal parentheses? We would escape them using parentheses.
+
+\begin{verbatim}
+
+import re
+
+phoneNumRegex = re.compile(r"\(\d\d\d\) \d\d\d-\d\d\d\d")
+mo=phoneNumRegex.search("My number is (415) 555-4242")
+print(mo.group())
+
+\end{verbatim}
+
+\begin{verbatim}
+(415) 555-4242
+\end{verbatim}
+
+\subsection{Pipe Character |}
+\label{sec:org7ca0222}
+
+Pipes can be used to match one of several patterns as part of the regular expression.
+
+Let's say we wanted to match any of the strings ``Batman'', ``Batmobile'', ``Batcopter'', or ``Batbat''
+
+
+\begin{verbatim}
+
+import re
+
+batRegex = re.compile(r"Bat(man|mobile|copter|bat)")
+mo=batRegex.search("Batmobile lost a wheel.")
+print(mo.group())
+print(mo.group(1))
+
+\end{verbatim}
+
+\begin{verbatim}
+Batmobile
+mobile
+\end{verbatim}
+
+
+If the search method can't find the regular expression pattern, it will return None. In that case, we can risk running into errors.
 \end{document}

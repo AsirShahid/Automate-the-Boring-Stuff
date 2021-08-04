@@ -11,49 +11,182 @@ In this lesson, we will be working with pattern matching and regular expressions
 An example of a text pattern would be a phone number. 415-555-0000. In the US, this is the standard way of writing up phone numbers. If we had that same number but without the hyphens, we would not recognize it as a phone number.
 
 #+begin_src python :results output :exports both
-
 def isPhoneNumber(text):
-    if len(text) !=12:
-        return false
-    for i in range(0,3):
-        if not text(i).isdecimal():
-            return False
-    if text[3]!="-":
+    if len(text) != 12:
         return False
-    for i in range(4,7):
+    for i in range(0, 3):
         if not text[i].isdecimal():
             return False
-    if text[7]!="-":
+    if text[3] != '-':
         return False
-    for i in range(8,12):
+    for i in range(4, 7):
+        if not text[i].isdecimal():
+            return False
+    if text[7] != '-':
+        return False
+    for i in range(8, 12):
         if not text[i].isdecimal():
             return False
     return True
 
-isPhoneNumber("415-555-1234")
+print(isPhoneNumber("415-555-1234"))
+print(isPhoneNumber("My Phone Number"))
 
 #+end_src
 
 #+RESULTS:
+: True
+: False
 
-#+begin_src python :results outpt :exports both
+That's a lot of code for a relatively simple task. If we want to find phone numbers in large strings, we'd need to write some more code.
+
+#+begin_src python :results output :exports both
 def isPhoneNumber(text):
-if len(text) != 12:
-         return False
-     for i in range(0, 3):
-      ➋ if not text[i].isdecimal():
-             return False
-  ➌ if text[3] != '-':
-         return False
-     for i in range(4, 7):
-if not text[i].isdecimal():
-return False
-if text[7] != '-':
-return False
-for i in range(8, 12):
-if not text[i].isdecimal():
-return False
-return True
+    if len(text) != 12:
+        return False
+    for i in range(0, 3):
+        if not text[i].isdecimal():
+            return False
+    if text[3] != '-':
+        return False
+    for i in range(4, 7):
+        if not text[i].isdecimal():
+            return False
+    if text[7] != '-':
+        return False
+    for i in range(8, 12):
+        if not text[i].isdecimal():
+            return False
+    return True
+
+print(isPhoneNumber("415-555-1234"))
+print(isPhoneNumber("My Phone Number"))
+
+message="Call me at 415-555-1011 tomorrow, or 415-555-9999 for my office line"
+
+foundNuumber=False
+
+for i in range(len(message)):
+    chunk=message[i:i+12]
+    if isPhoneNumber(chunk) == True:
+        print("Phone number found")
+        foundNumber=True
+if not foundNumber:
+    print("Could not find any phone numbers")
+
+#+end_src
+
+#+RESULTS:
+: True
+: False
+: Phone number found
+: Phone number found
+
+** The re Module
+
+We can write the previous code much faster using regular expressions.
+
+#+begin_src python :results output :exports both
+
+import re
+
+message="Call me at 415-555-1011 tomorrow, or 415-555-9999 for my office line"
+
+phoneNumRegex=re.compile(r"\d\d\d-\d\d\d-\d\d\d\d")
+
+mo=phoneNumRegex.search(message)
+
+print(type(mo))
+print(mo.group())
+
+print(phoneNumRegex.findall(message))
 
 
 #+end_src
+
+#+RESULTS:
+: <class 're.Match'>
+: 415-555-1011
+: ['415-555-1011', '415-555-9999']
+
+* Regex Groups and the Pipe Character
+
+We can try some more of Python's more powerful pattern matching capabilities.
+
+Let's say we want to seperate the area code from a phone number.
+
+
+#+begin_src python :results output :exports both
+
+import re
+
+phoneNumRegex = re.compile(r"\d\d\d-\d\d\d-\d\d\d\d")
+mo=phoneNumRegex.search("My number is 415-555-4242")
+print(mo.group())
+
+
+#+end_src
+
+#+RESULTS:
+: 415-555-4242
+
+** Groups
+
+Let's say we only want the phone number or only the phone number portion of the number. We can do this sing parentheses to mark out groups in the string.
+
+#+begin_src python :results output :exports both
+
+import re
+
+phoneNumRegex = re.compile(r"(\d\d\d)-(\d\d\d-\d\d\d\d)")
+mo=phoneNumRegex.search("My number is 415-555-4242")
+print(mo.group())
+
+print(mo.group(1))
+print(mo.group(2))
+
+#+end_src
+
+#+RESULTS:
+: 415-555-4242
+: 415
+: 555-4242
+
+The parentheses there can be useful syntax when we want to find specific parts of something. However, what can we do when we want to find literal parentheses? We would escape them using parentheses.
+
+#+begin_src python :results output :exports both
+
+import re
+
+phoneNumRegex = re.compile(r"\(\d\d\d\) \d\d\d-\d\d\d\d")
+mo=phoneNumRegex.search("My number is (415) 555-4242")
+print(mo.group())
+
+#+end_src
+
+#+RESULTS:
+: (415) 555-4242
+
+** Pipe Character |
+
+Pipes can be used to match one of several patterns as part of the regular expression.
+
+Let's say we wanted to match any of the strings "Batman", "Batmobile", "Batcopter", or "Batbat"
+
+
+#+begin_src python :results output :exports both
+
+import re
+
+batRegex = re.compile(r"Bat(man|mobile|copter|bat)")
+mo=batRegex.search("Batmobile lost a wheel.")
+print(mo.group())
+print(mo.group(1))
+
+#+end_src
+
+#+RESULTS:
+: Batmobile
+: mobile
+
+If the search method can't find the regular expression pattern, it will return None. In that case, we can risk running into errors.

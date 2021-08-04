@@ -1,12 +1,15 @@
 
 # Table of Contents
 
-1.  [Regular Expression Basics](#org33a4cde)
-    1.  [The re Module](#org38706c6)
+1.  [Regular Expression Basics](#org59a2787)
+    1.  [The re Module](#org76572f5)
+2.  [Regex Groups and the Pipe Character](#org8f22b29)
+    1.  [Groups](#org448a46a)
+    2.  [Pipe Character |](#org3bb6ea9)
 
 
 
-<a id="org33a4cde"></a>
+<a id="org59a2787"></a>
 
 # Regular Expression Basics
 
@@ -79,7 +82,7 @@ That&rsquo;s a lot of code for a relatively simple task. If we want to find phon
     Phone number found
 
 
-<a id="org38706c6"></a>
+<a id="org76572f5"></a>
 
 ## The re Module
 
@@ -102,4 +105,76 @@ We can write the previous code much faster using regular expressions.
     <class 're.Match'>
     415-555-1011
     ['415-555-1011', '415-555-9999']
+
+
+<a id="org8f22b29"></a>
+
+# Regex Groups and the Pipe Character
+
+We can try some more of Python&rsquo;s more powerful pattern matching capabilities.
+
+Let&rsquo;s say we want to seperate the area code from a phone number.
+
+    
+    import re
+    
+    phoneNumRegex = re.compile(r"\d\d\d-\d\d\d-\d\d\d\d")
+    mo=phoneNumRegex.search("My number is 415-555-4242")
+    print(mo.group())
+
+    415-555-4242
+
+
+<a id="org448a46a"></a>
+
+## Groups
+
+Let&rsquo;s say we only want the phone number or only the phone number portion of the number. We can do this sing parentheses to mark out groups in the string.
+
+    
+    import re
+    
+    phoneNumRegex = re.compile(r"(\d\d\d)-(\d\d\d-\d\d\d\d)")
+    mo=phoneNumRegex.search("My number is 415-555-4242")
+    print(mo.group())
+    
+    print(mo.group(1))
+    print(mo.group(2))
+
+    415-555-4242
+    415
+    555-4242
+
+The parentheses there can be useful syntax when we want to find specific parts of something. However, what can we do when we want to find literal parentheses? We would escape them using parentheses.
+
+    
+    import re
+    
+    phoneNumRegex = re.compile(r"\(\d\d\d\) \d\d\d-\d\d\d\d")
+    mo=phoneNumRegex.search("My number is (415) 555-4242")
+    print(mo.group())
+
+    (415) 555-4242
+
+
+<a id="org3bb6ea9"></a>
+
+## Pipe Character |
+
+Pipes can be used to match one of several patterns as part of the regular expression.
+
+Let&rsquo;s say we wanted to match any of the strings &ldquo;Batman&rdquo;, &ldquo;Batmobile&rdquo;, &ldquo;Batcopter&rdquo;, or &ldquo;Batbat&rdquo;
+
+    
+    import re
+    
+    batRegex = re.compile(r"Bat(man|mobile|copter|bat)")
+    mo=batRegex.search("Batmobile lost a wheel.")
+    print(mo.group())
+    print(mo.group(1))
+
+    Batmobile
+    mobile
+
+If the search method can&rsquo;t find the regular expression pattern, it will return None. In that case, we can risk running into errors.
 
