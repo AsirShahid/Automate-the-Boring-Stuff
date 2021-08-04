@@ -3,3 +3,21 @@
 #+AUTHOR: Mohammed Asir Shahid
 #+EMAIL: MohammedShahid@protonmail.com
 #+DATE: 2021-08-04
+
+* The raise and assert Statements
+
+Now we might start finding some more complicated bugs. Debugging is a tool that we need to learn in order to find what we did wrong.
+
+For example, a zero divide error occurs when we try to divide a number by 0. We learned how to handle exceptions with try and except statements to deal with expected errors.
+
+** Raising Your Own Exceptions
+
+We can also raise our own exceptions in our code. This is a way of saying that Python should stop running the code in this function and move to the except statement.
+
+We can raise exceptions using the raise statement.
+
+#+begin_src python :results output :exports both
+
+raise Exception()
+
+#+end_src
