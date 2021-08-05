@@ -1,4 +1,4 @@
-% Created 2021-08-05 Thu 12:32
+% Created 2021-08-05 Thu 12:35
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,14 +32,14 @@
 
 
 \section{The raise and assert Statements}
-\label{sec:org897fb3c}
+\label{sec:org7fd73b9}
 
 Now we might start finding some more complicated bugs. Debugging is a tool that we need to learn in order to find what we did wrong.
 
 For example, a zero divide error occurs when we try to divide a number by 0. We learned how to handle exceptions with try and except statements to deal with expected errors.
 
 \subsection{Raising Your Own Exceptions}
-\label{sec:orga8cc578}
+\label{sec:org3c3d3e0}
 
 We can also raise our own exceptions in our code. This is a way of saying that Python should stop running the code in this function and move to the except statement.
 
@@ -52,7 +52,7 @@ raise Exception("This is the error message.")
 \end{verbatim}
 
 \subsection{Box Example}
-\label{sec:org541e405}
+\label{sec:orgdda16eb}
 
 We want to create a function that creates a box using some supplied characters.
 
@@ -110,7 +110,7 @@ OOOOO
 Our error message is called a traceback. This is because it shows information showing where the error occurred.
 
 \section{The traceback.format\textsubscript{exc}() Function}
-\label{sec:org42ee19c}
+\label{sec:orgce6c1a3}
 
 We can get the traceback error text as a string vale using this function.
 
@@ -149,11 +149,17 @@ Exception: This is the error message.
 Traceback (most recent call last):
   File "<stdin>", line 5, in <module>
 Exception: This is the error message.
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+Exception: This is the error message.
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+Exception: This is the error message.
 
 \end{verbatim}
 
 \subsection{Assertions and the assert Statement}
-\label{sec:orge8d8ec7}
+\label{sec:orgb318a36}
 
 An assertion is a sanity check that makes sure the code isn't doing something really wrong. These are performed by assert statements. If the sanity check fails, then an assertion error exception is raised. These assertions are for programmer errors and the program should not run after an assertion is raised.
 
@@ -187,14 +193,14 @@ print(market_2nd)
 \end{verbatim}
 
 \section{Logging}
-\label{sec:org9ecb1d4}
+\label{sec:orgb47db0e}
 
 Logging is similar to putting a print function in your code to output variables values while the program is running to debug.
 
 Python has a logging module to make debugging like this and creating a record of custom messages that you write easier.
 
 \subsection{The logging.basicConfig() Function}
-\label{sec:orge98a65c}
+\label{sec:orgd104dfe}
 
 \begin{verbatim}
 
@@ -205,7 +211,7 @@ logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %
 \end{verbatim}
 
 \subsection{logging.debug() Function}
-\label{sec:org2a139fb}
+\label{sec:orgc4d86ca}
 
 \begin{verbatim}
 
@@ -242,7 +248,7 @@ Using debugging, we can see that since range begins at 0, we do 0*1 and make the
 Why should we use this instead of print? If we were doing this with the print function, we'd have to find all the print statements and then delete them manually. That can be time consuming and we might accidentally delete a print call that we want to keep. Instead if we use the debug function in the logging module, we can simply turn off the logging message by calling logging.disable.
 
 \subsection{Log Levels}
-\label{sec:org5319db8}
+\label{sec:org9cba08d}
 
 We have five different log levels. In order of ascension, they are:
 
@@ -259,7 +265,7 @@ When we call logging.debug(), we are creating a logging message at the debug lev
 When debugging our program, we can call different logging functions based on their priority. If something is not that important, then we can keep it at debug, but if there is something more important then we can do warning, error, or critical.
 
 \subsection{Logging to a Text File}
-\label{sec:org9613b06}
+\label{sec:orgddce001}
 
 If we want to write the logging messages to a file, then we can change the basicConfig that we used in the beginning. We can add a filename argument and set it equal to the name of the file we want to write to. Then there will be no logging messages on the screen, just in the file.
 
@@ -270,4 +276,9 @@ import logging
 logging.basicConfig(filename="myProgrammingLog.txt",level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 
 \end{verbatim}
+
+\section{Using the Debugger}
+\label{sec:org67a656d}
+
+Debuggers are features that let you examine your code one line at a time. The debugger will run a single line of code and then wait for you to tell it to continue. The debugger works differently on all text editors/IDEs.
 \end{document}

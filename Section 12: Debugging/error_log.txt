@@ -16,3 +16,9 @@ Exception: This is the error message.
 Traceback (most recent call last):
   File "<stdin>", line 5, in <module>
 Exception: This is the error message.
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+Exception: This is the error message.
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+Exception: This is the error message.

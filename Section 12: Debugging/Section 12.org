@@ -214,7 +214,7 @@ When we call logging.debug(), we are creating a logging message at the debug lev
 
 When debugging our program, we can call different logging functions based on their priority. If something is not that important, then we can keep it at debug, but if there is something more important then we can do warning, error, or critical.
 
-**  Logging to a Text File
+** Logging to a Text File
 
 If we want to write the logging messages to a file, then we can change the basicConfig that we used in the beginning. We can add a filename argument and set it equal to the name of the file we want to write to. Then there will be no logging messages on the screen, just in the file.
 
@@ -227,3 +227,7 @@ logging.basicConfig(filename="myProgrammingLog.txt",level=logging.DEBUG, format=
 #+end_src
 
 #+RESULTS:
+
+* Using the Debugger
+
+Debuggers are features that let you examine your code one line at a time. The debugger will run a single line of code and then wait for you to tell it to continue. The debugger works differently on all text editors/IDEs.
