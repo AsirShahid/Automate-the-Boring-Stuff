@@ -1,11 +1,12 @@
 
 # Table of Contents
 
-1.  [Reading Excel Spreadsheets](#orgd995961)
+1.  [Reading Excel Spreadsheets](#org064ece8)
+2.  [Editing Excel Spreadsheets](#org66c1f13)
 
 
 
-<a id="orgd995961"></a>
+<a id="org064ece8"></a>
 
 # Reading Excel Spreadsheets
 
@@ -67,4 +68,53 @@ The Excel document is called a workbook that is saved by .xlsx file extension. E
     5 Apples
     6 Bananas
     7 Strawberries
+
+
+<a id="org66c1f13"></a>
+
+# Editing Excel Spreadsheets
+
+In the last lesson, we learned how to read .xlsx files. Now we will learn to create and modify them.
+
+    
+    import openpyxl,os
+    
+    wb=openpyxl.Workbook()
+    
+    print(type(wb))
+    
+    print(wb.get_sheet_names())
+    
+    sheet=wb.get_sheet_by_name("Sheet")
+    
+    print(sheet)
+    print(sheet["A1"].value)
+    sheet["A1"]=42
+    sheet["A2"]="Hello"
+    print(sheet["A1"].value)
+    
+    wb.save("example1.xlsx")
+    
+    sheet2=wb.create_sheet()
+    
+    print(wb.get_sheet_names())
+    
+    sheet2.title="My New Sheet Name"
+    
+    print(wb.get_sheet_names())
+    
+    wb.save("example2.xlsx")
+    
+    wb.create_sheet(index=0, title="My Other Sheet")
+    # This changes the position of the new sheet
+    
+    wb.save("example3.xlsx")
+
+    <class 'openpyxl.workbook.workbook.Workbook'>
+    ['Sheet']
+    <Worksheet "Sheet">
+    None
+    42
+    ['Sheet', 'Sheet1']
+    ['Sheet', 'My New Sheet Name']
 
