@@ -1,4 +1,4 @@
-% Created 2021-08-05 Thu 19:28
+% Created 2021-08-05 Thu 19:53
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{Reading Excel Spreadsheets}
-\label{sec:orgd93e1c4}
+\label{sec:orge87a86b}
 
 The openpyxl module lets us modify Excel files using Python. It is a third party module that we'll need to install ourselves.
 
@@ -101,7 +101,7 @@ Apples
 7 Strawberries
 \end{verbatim}
 \section{Editing Excel Spreadsheets}
-\label{sec:org995b376}
+\label{sec:org19903a4}
 
 In the last lesson, we learned how to read .xlsx files. Now we will learn to create and modify them.
 
@@ -150,5 +150,90 @@ None
 42
 ['Sheet', 'Sheet1']
 ['Sheet', 'My New Sheet Name']
+\end{verbatim}
+
+\section{Reading and Editing PDFs}
+\label{sec:org75aa3c8}
+
+PDF files are binary files which make them far more complicated than plain text files such as .org or .py files. They store far more information than plain text files.
+
+There are some Python modules we can use to interact with PDFs, however it isn't that straightforward. We will be looking at a third party module called PyPDF2.
+
+\begin{verbatim}
+pip install PyPDF2
+\end{verbatim}
+
+\begin{verbatim}
+
+import PyPDF2, os
+
+pdfFile=open("meetingminutes1.pdf", "rb")
+# The "rb" is since this is a binary file
+
+PyPDF2.PdfFileReader(pdfFile)
+
+reader=PyPDF2.PdfFileReader(pdfFile)
+
+print(reader.numPages)
+
+page=reader.getPage(0)
+
+print(page.extractText())
+
+#for pageNum in range(reader.numPages):
+#    print(reader.getPage(pageNum).extractText())
+
+
+
+\end{verbatim}
+
+\begin{verbatim}
+19
+OOFFFFIICCIIAALL  BBOOAARRDD  MMIINNUUTTEESS   Meeting of 
+March 7
+, 2014
+        
+     The Board of Elementary and Secondary Education shall provide leadership and 
+create policies for education that expand opportunities for children, empower 
+families and communities, and advance Louisiana in an increasingly 
+competitive glob
+al market.
+ BOARD 
+ of ELEMENTARY
+ and 
+ SECONDARY
+ EDUCATION
+  
+\end{verbatim}
+
+Due to the complexity of PDF documents, Python can't add text arbitrarily. PDF Writer's functionality is limited to editing at the page level. So lets say we want to combine our two meeting minute fies
+
+\begin{verbatim}
+
+import PyPDF2, os
+
+pdf1File=open("meetingminutes1.pdf", "rb")
+pdf2File=open("meetingminutes2.pdf", "rb")
+# The "rb" is since this is a binary file
+
+reader1=PyPDF2.PdfFileReader(pdf1File)
+reader2=PyPDF2.PdfFileReader(pdf2File)
+
+writer=PyPDF2.PdfFileWriter()
+
+for pageNum in range(reader1.numPages):
+    page=reader1.getPage(pageNum)
+    writer.addPage(page)
+
+for pageNum in range(reader2.numPages):
+    page=reader2.getPage(pageNum)
+    writer.addPage(page)
+
+outputFile=open("combinedminutes.pdf","wb")
+writer.write(outputFile)
+outputFile.close()
+pdf1File.close()
+pdf2File.close()
+
 \end{verbatim}
 \end{document}

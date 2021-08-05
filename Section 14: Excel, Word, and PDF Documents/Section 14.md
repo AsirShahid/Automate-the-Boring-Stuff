@@ -1,12 +1,13 @@
 
 # Table of Contents
 
-1.  [Reading Excel Spreadsheets](#org064ece8)
-2.  [Editing Excel Spreadsheets](#org66c1f13)
+1.  [Reading Excel Spreadsheets](#org46c4059)
+2.  [Editing Excel Spreadsheets](#org033273f)
+3.  [Reading and Editing PDFs](#org3ab36b6)
 
 
 
-<a id="org064ece8"></a>
+<a id="org46c4059"></a>
 
 # Reading Excel Spreadsheets
 
@@ -70,7 +71,7 @@ The Excel document is called a workbook that is saved by .xlsx file extension. E
     7 Strawberries
 
 
-<a id="org66c1f13"></a>
+<a id="org033273f"></a>
 
 # Editing Excel Spreadsheets
 
@@ -117,4 +118,78 @@ In the last lesson, we learned how to read .xlsx files. Now we will learn to cre
     42
     ['Sheet', 'Sheet1']
     ['Sheet', 'My New Sheet Name']
+
+
+<a id="org3ab36b6"></a>
+
+# Reading and Editing PDFs
+
+PDF files are binary files which make them far more complicated than plain text files such as .org or .py files. They store far more information than plain text files.
+
+There are some Python modules we can use to interact with PDFs, however it isn&rsquo;t that straightforward. We will be looking at a third party module called PyPDF2.
+
+    pip install PyPDF2
+
+    
+    import PyPDF2, os
+    
+    pdfFile=open("meetingminutes1.pdf", "rb")
+    # The "rb" is since this is a binary file
+    
+    PyPDF2.PdfFileReader(pdfFile)
+    
+    reader=PyPDF2.PdfFileReader(pdfFile)
+    
+    print(reader.numPages)
+    
+    page=reader.getPage(0)
+    
+    print(page.extractText())
+    
+    #for pageNum in range(reader.numPages):
+    #    print(reader.getPage(pageNum).extractText())
+
+    19
+    OOFFFFIICCIIAALL  BBOOAARRDD  MMIINNUUTTEESS   Meeting of 
+    March 7
+    , 2014
+            
+         The Board of Elementary and Secondary Education shall provide leadership and 
+    create policies for education that expand opportunities for children, empower 
+    families and communities, and advance Louisiana in an increasingly 
+    competitive glob
+    al market.
+     BOARD 
+     of ELEMENTARY
+     and 
+     SECONDARY
+     EDUCATION
+
+Due to the complexity of PDF documents, Python can&rsquo;t add text arbitrarily. PDF Writer&rsquo;s functionality is limited to editing at the page level. So lets say we want to combine our two meeting minute fies
+
+    
+    import PyPDF2, os
+    
+    pdf1File=open("meetingminutes1.pdf", "rb")
+    pdf2File=open("meetingminutes2.pdf", "rb")
+    # The "rb" is since this is a binary file
+    
+    reader1=PyPDF2.PdfFileReader(pdf1File)
+    reader2=PyPDF2.PdfFileReader(pdf2File)
+    
+    writer=PyPDF2.PdfFileWriter()
+    
+    for pageNum in range(reader1.numPages):
+        page=reader1.getPage(pageNum)
+        writer.addPage(page)
+    
+    for pageNum in range(reader2.numPages):
+        page=reader2.getPage(pageNum)
+        writer.addPage(page)
+    
+    outputFile=open("combinedminutes.pdf","wb")
+    writer.write(outputFile)
+    outputFile.close()
+    pdf1File.close()
+    pdf2File.close()
 
