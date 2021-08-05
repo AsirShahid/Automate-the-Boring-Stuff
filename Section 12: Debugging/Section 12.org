@@ -147,3 +147,83 @@ print(market_2nd)
 #+end_src
 
 #+RESULTS:
+
+* Logging
+
+Logging is similar to putting a print function in your code to output variables values while the program is running to debug.
+
+Python has a logging module to make debugging like this and creating a record of custom messages that you write easier.
+
+** The logging.basicConfig() Function
+
+#+begin_src python :results output :exports both
+
+import logging
+
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+
+#+end_src
+
+#+RESULTS:
+
+** logging.debug() Function
+
+#+begin_src python :results output :exports both :session *my-python*
+
+import logging
+
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.disable(logging.CRITICAL)
+
+logging.debug("Start of program")
+
+def factorial(n):
+    logging.debug("Start of factorial (%s)" % (n))
+    total=1
+#    for i in range(0,n+1):
+    for i in range(1,n+1):
+        total*=i
+        logging.debug("i is %s, total is %s" % (i,total))
+    logging.debug("Return value is %s" % (total))
+    return total
+
+print(factorial(5))
+
+logging.debug("End of program")
+
+#+end_src
+
+#+RESULTS:
+: 120
+
+Using debugging, we can see that since range begins at 0, we do 0*1 and make the total 0. Then anything we multiply by 0 and get 0 for the rest.
+
+Why should we use this instead of print? If we were doing this with the print function, we'd have to find all the print statements and then delete them manually. That can be time consuming and we might accidentally delete a print call that we want to keep. Instead if we use the debug function in the logging module, we can simply turn off the logging message by calling logging.disable.
+
+** Log Levels
+
+We have five different log levels. In order of ascension, they are:
+
+1. debug
+2. info
+3. warning
+4. error
+5. critical
+
+When we call logging.debug(), we are creating a logging message at the debug level. There is also logging.info, warning, error, and critical. Since we passed in logging.CRITICAL into the above logging.disable() function, it disabled all logging messages at the critical level or lower.
+
+When debugging our program, we can call different logging functions based on their priority. If something is not that important, then we can keep it at debug, but if there is something more important then we can do warning, error, or critical.
+
+**  Logging to a Text File
+
+If we want to write the logging messages to a file, then we can change the basicConfig that we used in the beginning. We can add a filename argument and set it equal to the name of the file we want to write to. Then there will be no logging messages on the screen, just in the file.
+
+#+begin_src python :results output :exports both :session *my-python*
+
+import logging
+
+logging.basicConfig(filename="myProgrammingLog.txt",level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+
+#+end_src
+
+#+RESULTS:

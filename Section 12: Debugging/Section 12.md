@@ -1,15 +1,20 @@
 
 # Table of Contents
 
-1.  [The raise and assert Statements](#org5a76b46)
-    1.  [Raising Your Own Exceptions](#orgdf31d7f)
-    2.  [Box Example](#orgbe59e81)
-2.  [The traceback.format<sub>exc</sub>() Function](#org9992be6)
-    1.  [Assertions and the assert Statement](#org8981f1e)
+1.  [The raise and assert Statements](#orgb5ab419)
+    1.  [Raising Your Own Exceptions](#orgb142494)
+    2.  [Box Example](#org4c65059)
+2.  [The traceback.format<sub>exc</sub>() Function](#orga1eabad)
+    1.  [Assertions and the assert Statement](#orgd353e1d)
+3.  [Logging](#org12c86ec)
+    1.  [The logging.basicConfig() Function](#orgccedbe8)
+    2.  [logging.debug() Function](#org241655b)
+    3.  [Log Levels](#org170874e)
+    4.  [Logging to a Text File](#org3645f00)
 
 
 
-<a id="org5a76b46"></a>
+<a id="orgb5ab419"></a>
 
 # The raise and assert Statements
 
@@ -18,7 +23,7 @@ Now we might start finding some more complicated bugs. Debugging is a tool that 
 For example, a zero divide error occurs when we try to divide a number by 0. We learned how to handle exceptions with try and except statements to deal with expected errors.
 
 
-<a id="orgdf31d7f"></a>
+<a id="orgb142494"></a>
 
 ## Raising Your Own Exceptions
 
@@ -30,7 +35,7 @@ We can raise exceptions using the raise statement.
     raise Exception("This is the error message.")
 
 
-<a id="orgbe59e81"></a>
+<a id="org4c65059"></a>
 
 ## Box Example
 
@@ -84,7 +89,7 @@ We want to create a function that creates a box using some supplied characters.
 Our error message is called a traceback. This is because it shows information showing where the error occurred.
 
 
-<a id="org9992be6"></a>
+<a id="orga1eabad"></a>
 
 # The traceback.format<sub>exc</sub>() Function
 
@@ -117,9 +122,15 @@ We can get the traceback error text as a string vale using this function.
     Traceback (most recent call last):
       File "<stdin>", line 5, in <module>
     Exception: This is the error message.
+    Traceback (most recent call last):
+      File "<stdin>", line 5, in <module>
+    Exception: This is the error message.
+    Traceback (most recent call last):
+      File "<stdin>", line 5, in <module>
+    Exception: This is the error message.
 
 
-<a id="org8981f1e"></a>
+<a id="orgd353e1d"></a>
 
 ## Assertions and the assert Statement
 
@@ -147,4 +158,85 @@ Let&rsquo;s try to create a simple traffic simulator program with intersections 
     print(market_2nd)
     switchLights(market_2nd)
     print(market_2nd)
+
+
+<a id="org12c86ec"></a>
+
+# Logging
+
+Logging is similar to putting a print function in your code to output variables values while the program is running to debug.
+
+Python has a logging module to make debugging like this and creating a record of custom messages that you write easier.
+
+
+<a id="orgccedbe8"></a>
+
+## The logging.basicConfig() Function
+
+    
+    import logging
+    
+    logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+
+
+<a id="org241655b"></a>
+
+## logging.debug() Function
+
+    
+    import logging
+    
+    logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+    logging.disable(logging.CRITICAL)
+    
+    logging.debug("Start of program")
+    
+    def factorial(n):
+        logging.debug("Start of factorial (%s)" % (n))
+        total=1
+    #    for i in range(0,n+1):
+        for i in range(1,n+1):
+            total*=i
+            logging.debug("i is %s, total is %s" % (i,total))
+        logging.debug("Return value is %s" % (total))
+        return total
+    
+    print(factorial(5))
+    
+    logging.debug("End of program")
+
+    120
+
+Using debugging, we can see that since range begins at 0, we do 0\*1 and make the total 0. Then anything we multiply by 0 and get 0 for the rest.
+
+Why should we use this instead of print? If we were doing this with the print function, we&rsquo;d have to find all the print statements and then delete them manually. That can be time consuming and we might accidentally delete a print call that we want to keep. Instead if we use the debug function in the logging module, we can simply turn off the logging message by calling logging.disable.
+
+
+<a id="org170874e"></a>
+
+## Log Levels
+
+We have five different log levels. In order of ascension, they are:
+
+1.  debug
+2.  info
+3.  warning
+4.  error
+5.  critical
+
+When we call logging.debug(), we are creating a logging message at the debug level. There is also logging.info, warning, error, and critical. Since we passed in logging.CRITICAL into the above logging.disable() function, it disabled all logging messages at the critical level or lower.
+
+When debugging our program, we can call different logging functions based on their priority. If something is not that important, then we can keep it at debug, but if there is something more important then we can do warning, error, or critical.
+
+
+<a id="org3645f00"></a>
+
+## Logging to a Text File
+
+If we want to write the logging messages to a file, then we can change the basicConfig that we used in the beginning. We can add a filename argument and set it equal to the name of the file we want to write to. Then there will be no logging messages on the screen, just in the file.
+
+    
+    import logging
+    
+    logging.basicConfig(filename="myProgrammingLog.txt",level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 
