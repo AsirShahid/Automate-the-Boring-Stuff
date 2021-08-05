@@ -1,13 +1,14 @@
 
 # Table of Contents
 
-1.  [The webbrowser Module](#orgb2f1b8e)
-2.  [Downloading from the Web with the Requests Module](#org8190140)
-    1.  [Write-binary mode: open(filename, &ldquo;wb&rdquo;)](#org5b77233)
+1.  [The webbrowser Module](#org8024029)
+2.  [Downloading from the Web with the Requests Module](#org1ca82c7)
+    1.  [Write-binary mode: open(filename, &ldquo;wb&rdquo;)](#orgfe81f9a)
+3.  [Parsing HTML with the Beautiful Soup Module](#orgb7a5b0e)
 
 
 
-<a id="orgb2f1b8e"></a>
+<a id="org8024029"></a>
 
 # The webbrowser Module
 
@@ -34,7 +35,7 @@ Let&rsquo;s create a program that can open a given address on maps.
     webbrowser.open("https://www.google.com/maps/place/%s" % (address))
 
 
-<a id="org8190140"></a>
+<a id="org1ca82c7"></a>
 
 # Downloading from the Web with the Requests Module
 
@@ -61,7 +62,7 @@ We can pass a URL to the requests.get() function in order to get the file. We ca
     print(badRes.raise_for_status())
 
 
-<a id="org5b77233"></a>
+<a id="orgfe81f9a"></a>
 
 ## Write-binary mode: open(filename, &ldquo;wb&rdquo;)
 
@@ -79,4 +80,31 @@ We can save a web page to a file using the open function. However, we must do so
     playFile.close()
 
 Request module functions can be useful, but they are somewhat limited. You can only use it when you have the exact URL that you need to download. Selenium lets your Python scripts control the web browser directly.
+
+
+<a id="orgb7a5b0e"></a>
+
+# Parsing HTML with the Beautiful Soup Module
+
+Here we will learn how to write programs that pull information off of web pages. This is known as web scraping. We have a third party module called beautifulsoup which makes parsing through websites HTML much easier.
+
+    pip install beautifulsoup4
+
+    
+    import bs4
+
+Let&rsquo;s try to parse through an Amazon page and scrape the price information from that page.
+
+    
+    import bs4,requests
+    
+    url='https://www.amazon.in/Automate-Boring-Stuff-Python-2nd/dp/1593279922/ref=dp_ob_title_bk'
+    
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'}
+    
+    response = requests.get(url, headers=headers)
+    
+    print(response.raise_for_status())
+
+    None
 

@@ -1,4 +1,4 @@
-% Created 2021-08-05 Thu 13:45
+% Created 2021-08-05 Thu 14:02
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{The webbrowser Module}
-\label{sec:org115535d}
+\label{sec:org64515f0}
 
 \begin{verbatim}
 
@@ -63,7 +63,7 @@ webbrowser.open("https://www.google.com/maps/place/%s" % (address))
 \end{verbatim}
 
 \section{Downloading from the Web with the Requests Module}
-\label{sec:org7649adf}
+\label{sec:org1887920}
 
 The requests module lets you easily download files from the web without having to worry about complicated network issues. The requests module is a third party module which we'll need to install on our own.
 
@@ -93,7 +93,7 @@ print(badRes.raise_for_status())
 \end{verbatim}
 
 \subsection{Write-binary mode: open(filename, ``wb'')}
-\label{sec:org8dfd6ab}
+\label{sec:org4595e3f}
 
 We can save a web page to a file using the open function. However, we must do somethings differently.
 
@@ -112,4 +112,38 @@ playFile.close()
 \end{verbatim}
 
 Request module functions can be useful, but they are somewhat limited. You can only use it when you have the exact URL that you need to download. Selenium lets your Python scripts control the web browser directly.
+\section{Parsing HTML with the Beautiful Soup Module}
+\label{sec:orgf711129}
+
+Here we will learn how to write programs that pull information off of web pages. This is known as web scraping. We have a third party module called beautifulsoup which makes parsing through websites HTML much easier.
+
+\begin{verbatim}
+pip install beautifulsoup4
+\end{verbatim}
+
+\begin{verbatim}
+
+import bs4
+
+\end{verbatim}
+
+Let's try to parse through an Amazon page and scrape the price information from that page.
+
+\begin{verbatim}
+
+import bs4,requests
+
+url='https://www.amazon.in/Automate-Boring-Stuff-Python-2nd/dp/1593279922/ref=dp_ob_title_bk'
+
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'}
+
+response = requests.get(url, headers=headers)
+
+print(response.raise_for_status())
+
+\end{verbatim}
+
+\begin{verbatim}
+None
+\end{verbatim}
 \end{document}

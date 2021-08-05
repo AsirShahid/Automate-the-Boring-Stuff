@@ -95,3 +95,41 @@ playFile.close()
 #+RESULTS:
 
 Request module functions can be useful, but they are somewhat limited. You can only use it when you have the exact URL that you need to download. Selenium lets your Python scripts control the web browser directly.
+* Parsing HTML with the Beautiful Soup Module
+
+Here we will learn how to write programs that pull information off of web pages. This is known as web scraping. We have a third party module called beautifulsoup which makes parsing through websites HTML much easier.
+
+#+begin_src bash
+pip install beautifulsoup4
+#+end_src
+
+#+RESULTS:
+| Defaulting  | to      | user       | installation   | because | normal                           | site-packages | is              | not     | writeable |
+| Requirement | already | satisfied: | beautifulsoup4 | in      | /usr/lib/python3.9/site-packages | (4.9.3)       |                 |         |           |
+| Requirement | already | satisfied: | soupsieve>1.2  | in      | /usr/lib/python3.9/site-packages | (from         | beautifulsoup4) | (2.0.1) |           |
+
+#+begin_src python :results output :exports both
+
+import bs4
+
+#+end_src
+
+#+RESULTS:
+
+Let's try to parse through an Amazon page and scrape the price information from that page.
+
+#+begin_src python :results output :exports both
+
+import bs4,requests
+
+url='https://www.amazon.in/Automate-Boring-Stuff-Python-2nd/dp/1593279922/ref=dp_ob_title_bk'
+
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'}
+
+response = requests.get(url, headers=headers)
+
+print(response.raise_for_status())
+
+#+end_src
+
+#+RESULTS:
