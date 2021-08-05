@@ -1,4 +1,4 @@
-% Created 2021-08-05 Thu 14:02
+% Created 2021-08-05 Thu 18:07
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{The webbrowser Module}
-\label{sec:org64515f0}
+\label{sec:orga489da7}
 
 \begin{verbatim}
 
@@ -63,7 +63,7 @@ webbrowser.open("https://www.google.com/maps/place/%s" % (address))
 \end{verbatim}
 
 \section{Downloading from the Web with the Requests Module}
-\label{sec:org1887920}
+\label{sec:org5b35070}
 
 The requests module lets you easily download files from the web without having to worry about complicated network issues. The requests module is a third party module which we'll need to install on our own.
 
@@ -93,7 +93,7 @@ print(badRes.raise_for_status())
 \end{verbatim}
 
 \subsection{Write-binary mode: open(filename, ``wb'')}
-\label{sec:org4595e3f}
+\label{sec:org9fe0318}
 
 We can save a web page to a file using the open function. However, we must do somethings differently.
 
@@ -113,7 +113,7 @@ playFile.close()
 
 Request module functions can be useful, but they are somewhat limited. You can only use it when you have the exact URL that you need to download. Selenium lets your Python scripts control the web browser directly.
 \section{Parsing HTML with the Beautiful Soup Module}
-\label{sec:orgf711129}
+\label{sec:orgbd74c86}
 
 Here we will learn how to write programs that pull information off of web pages. This is known as web scraping. We have a third party module called beautifulsoup which makes parsing through websites HTML much easier.
 
@@ -127,23 +127,68 @@ import bs4
 
 \end{verbatim}
 
-Let's try to parse through an Amazon page and scrape the price information from that page.
+Let's try to parse through an eBay page and scrape the price information from that page.
 
 \begin{verbatim}
 
 import bs4,requests
 
-url='https://www.amazon.in/Automate-Boring-Stuff-Python-2nd/dp/1593279922/ref=dp_ob_title_bk'
+url="https://www.ebay.com/itm/313628358864"
 
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'}
+def geteBayPrice(productURL):
+    response = requests.get(url)
 
-response = requests.get(url, headers=headers)
+    response.raise_for_status()
 
-print(response.raise_for_status())
+    soup=bs4.BeautifulSoup(response.text,"html.parser")
 
+    elems=soup.select("#prcIsum")
+
+    return elems[0].text.strip("US").strip()
+
+url="https://www.ebay.com/itm/313628358864"
+
+price=geteBayPrice(url)
+
+print("The price is %s" % (price))
+    
 \end{verbatim}
 
 \begin{verbatim}
-None
+The price is $20.51
+\end{verbatim}
+
+
+This code is pretty reliant on the website's CSS staying the same.
+
+\begin{verbatim}
+
+import bs4,requests
+
+
+def getTemperature(url):
+    response = requests.get(url)
+
+    response.raise_for_status()
+
+    soup=bs4.BeautifulSoup(response.text,"html.parser")
+
+    elems=soup.select("#current_conditions-summary > p.myforecast-current-lrg")
+    
+
+    return elems[0].text.strip()
+
+url="https://forecast.weather.gov/MapClick.php?lat=40.8667&lon=-73.0343"
+
+
+
+temp=getTemperature(url)
+
+print("The temperature is %s" % (temp))
+    
+\end{verbatim}
+
+\begin{verbatim}
+The temperature is 76°F
 \end{verbatim}
 \end{document}

@@ -116,20 +116,64 @@ import bs4
 
 #+RESULTS:
 
-Let's try to parse through an Amazon page and scrape the price information from that page.
+Let's try to parse through an eBay page and scrape the price information from that page.
 
-#+begin_src python :results output :exports both
+#+begin_src python :results output :exports both :tangle ebay.py
 
 import bs4,requests
 
-url='https://www.amazon.in/Automate-Boring-Stuff-Python-2nd/dp/1593279922/ref=dp_ob_title_bk'
+url="https://www.ebay.com/itm/313628358864"
 
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'}
+def geteBayPrice(productURL):
+    response = requests.get(url)
 
-response = requests.get(url, headers=headers)
+    response.raise_for_status()
 
-print(response.raise_for_status())
+    soup=bs4.BeautifulSoup(response.text,"html.parser")
 
+    elems=soup.select("#prcIsum")
+
+    return elems[0].text.strip("US").strip()
+
+url="https://www.ebay.com/itm/313628358864"
+
+price=geteBayPrice(url)
+
+print("The price is %s" % (price))
+    
 #+end_src
 
 #+RESULTS:
+: The price is $20.51
+
+This code is pretty reliant on the website's CSS staying the same.
+
+#+begin_src python :results output :exports both :tangle weather.py
+
+import bs4,requests
+
+
+def getTemperature(url):
+    response = requests.get(url)
+
+    response.raise_for_status()
+
+    soup=bs4.BeautifulSoup(response.text,"html.parser")
+
+    elems=soup.select("#current_conditions-summary > p.myforecast-current-lrg")
+    
+
+    return elems[0].text.strip()
+
+url="https://forecast.weather.gov/MapClick.php?lat=40.8667&lon=-73.0343"
+
+
+
+temp=getTemperature(url)
+
+print("The temperature is %s" % (temp))
+    
+#+end_src
+
+#+RESULTS:
+: The temperature is 76°F

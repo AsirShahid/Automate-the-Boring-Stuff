@@ -1,14 +1,14 @@
 
 # Table of Contents
 
-1.  [The webbrowser Module](#org8024029)
-2.  [Downloading from the Web with the Requests Module](#org1ca82c7)
-    1.  [Write-binary mode: open(filename, &ldquo;wb&rdquo;)](#orgfe81f9a)
-3.  [Parsing HTML with the Beautiful Soup Module](#orgb7a5b0e)
+1.  [The webbrowser Module](#orgfe0079a)
+2.  [Downloading from the Web with the Requests Module](#orgcf15640)
+    1.  [Write-binary mode: open(filename, &ldquo;wb&rdquo;)](#org399722e)
+3.  [Parsing HTML with the Beautiful Soup Module](#orgc419d9f)
 
 
 
-<a id="org8024029"></a>
+<a id="orgfe0079a"></a>
 
 # The webbrowser Module
 
@@ -35,7 +35,7 @@ Let&rsquo;s create a program that can open a given address on maps.
     webbrowser.open("https://www.google.com/maps/place/%s" % (address))
 
 
-<a id="org1ca82c7"></a>
+<a id="orgcf15640"></a>
 
 # Downloading from the Web with the Requests Module
 
@@ -62,7 +62,7 @@ We can pass a URL to the requests.get() function in order to get the file. We ca
     print(badRes.raise_for_status())
 
 
-<a id="orgfe81f9a"></a>
+<a id="org399722e"></a>
 
 ## Write-binary mode: open(filename, &ldquo;wb&rdquo;)
 
@@ -82,7 +82,7 @@ We can save a web page to a file using the open function. However, we must do so
 Request module functions can be useful, but they are somewhat limited. You can only use it when you have the exact URL that you need to download. Selenium lets your Python scripts control the web browser directly.
 
 
-<a id="orgb7a5b0e"></a>
+<a id="orgc419d9f"></a>
 
 # Parsing HTML with the Beautiful Soup Module
 
@@ -93,18 +93,57 @@ Here we will learn how to write programs that pull information off of web pages.
     
     import bs4
 
-Let&rsquo;s try to parse through an Amazon page and scrape the price information from that page.
+Let&rsquo;s try to parse through an eBay page and scrape the price information from that page.
 
     
     import bs4,requests
     
-    url='https://www.amazon.in/Automate-Boring-Stuff-Python-2nd/dp/1593279922/ref=dp_ob_title_bk'
+    url="https://www.ebay.com/itm/313628358864"
     
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'}
+    def geteBayPrice(productURL):
+        response = requests.get(url)
     
-    response = requests.get(url, headers=headers)
+        response.raise_for_status()
     
-    print(response.raise_for_status())
+        soup=bs4.BeautifulSoup(response.text,"html.parser")
+    
+        elems=soup.select("#prcIsum")
+    
+        return elems[0].text.strip("US").strip()
+    
+    url="https://www.ebay.com/itm/313628358864"
+    
+    price=geteBayPrice(url)
+    
+    print("The price is %s" % (price))
 
-    None
+    The price is $20.51
+
+This code is pretty reliant on the website&rsquo;s CSS staying the same.
+
+    
+    import bs4,requests
+    
+    
+    def getTemperature(url):
+        response = requests.get(url)
+    
+        response.raise_for_status()
+    
+        soup=bs4.BeautifulSoup(response.text,"html.parser")
+    
+        elems=soup.select("#current_conditions-summary > p.myforecast-current-lrg")
+        
+    
+        return elems[0].text.strip()
+    
+    url="https://forecast.weather.gov/MapClick.php?lat=40.8667&lon=-73.0343"
+    
+    
+    
+    temp=getTemperature(url)
+    
+    print("The temperature is %s" % (temp))
+
+    The temperature is 76°F
 
