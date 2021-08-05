@@ -371,3 +371,470 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 	Using the fallback 'C' locale.
 1628202449991	Marionette	WARN	TLS certificate errors will be ignored for this session
 1628202451496	Marionette	INFO	Stopped listening on port 46595
+1628202786984	geckodriver	INFO	Listening on 127.0.0.1:51735
+1628202786993	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile0wsnNw"
+
+(firefox:2315596): Gtk-WARNING **: 18:33:07.010: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.230412) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.230412) |[1][GFX1-]: glxtest: libEGL no display (t=0.230442) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.230412) |[1][GFX1-]: glxtest: libEGL no display (t=0.230442) |[2][GFX1-]: glxtest: No visuals found (t=0.230449) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.230412) |[1][GFX1-]: glxtest: libEGL no display (t=0.230442) |[2][GFX1-]: glxtest: No visuals found (t=0.230449) |[3][GFX1-]: glxtest: libEGL no display (t=0.230455) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.230412) |[1][GFX1-]: glxtest: libEGL no display (t=0.230442) |[2][GFX1-]: glxtest: No visuals found (t=0.230449) |[3][GFX1-]: glxtest: libEGL no display (t=0.230455) |[4][GFX1-]: No GPUs detected via PCI (t=0.230466) [GFX1-]: No GPUs detected via PCI
+1628202787624	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2315681): Gtk-WARNING **: 18:33:07.904: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2315705): Gtk-WARNING **: 18:33:08.530: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile0wsnNw/search.json.mozlz4", (void 0)))
+1628202789007	Marionette	INFO	Listening on port 37829
+
+(/usr/lib/firefox/firefox:2315776): Gtk-WARNING **: 18:33:09.026: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628202789118	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 108: Error: Got a request https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600 without a browsingContextID set
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 108: Error: Got a request https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css without a browsingContextID set
+
+(/usr/lib/firefox/firefox:2315888): Gtk-WARNING **: 18:33:30.499: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.error: "Error writing request: getGrids"
+1628202871125	geckodriver	INFO	Listening on 127.0.0.1:38195
+1628202871134	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileln6g65"
+
+(firefox:2316287): Gtk-WARNING **: 18:34:31.152: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.224796) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.224796) |[1][GFX1-]: glxtest: libEGL no display (t=0.224828) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.224796) |[1][GFX1-]: glxtest: libEGL no display (t=0.224828) |[2][GFX1-]: glxtest: No visuals found (t=0.224834) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.224796) |[1][GFX1-]: glxtest: libEGL no display (t=0.224828) |[2][GFX1-]: glxtest: No visuals found (t=0.224834) |[3][GFX1-]: glxtest: libEGL no display (t=0.22484) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.224796) |[1][GFX1-]: glxtest: libEGL no display (t=0.224828) |[2][GFX1-]: glxtest: No visuals found (t=0.224834) |[3][GFX1-]: glxtest: libEGL no display (t=0.22484) |[4][GFX1-]: No GPUs detected via PCI (t=0.22485) [GFX1-]: No GPUs detected via PCI
+1628202871803	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2316370): Gtk-WARNING **: 18:34:32.112: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2316389): Gtk-WARNING **: 18:34:32.185: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileln6g65/search.json.mozlz4", (void 0)))
+1628202872722	Marionette	INFO	Listening on port 44011
+1628202872748	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib/firefox/firefox:2316489): Gtk-WARNING **: 18:34:33.101: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628202876633	Marionette	INFO	Stopped listening on port 44011
+
+(/usr/lib/firefox/firefox:2316541): Gtk-WARNING **: 18:34:41.349: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2316701): Gtk-WARNING **: 18:35:30.458: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628202996644	geckodriver	INFO	Listening on 127.0.0.1:54521
+1628202996654	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileVEMcO3"
+
+(firefox:2317120): Gtk-WARNING **: 18:36:36.682: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.221657) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.221657) |[1][GFX1-]: glxtest: libEGL no display (t=0.221688) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.221657) |[1][GFX1-]: glxtest: libEGL no display (t=0.221688) |[2][GFX1-]: glxtest: No visuals found (t=0.221694) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.221657) |[1][GFX1-]: glxtest: libEGL no display (t=0.221688) |[2][GFX1-]: glxtest: No visuals found (t=0.221694) |[3][GFX1-]: glxtest: libEGL no display (t=0.2217) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.221657) |[1][GFX1-]: glxtest: libEGL no display (t=0.221688) |[2][GFX1-]: glxtest: No visuals found (t=0.221694) |[3][GFX1-]: glxtest: libEGL no display (t=0.2217) |[4][GFX1-]: No GPUs detected via PCI (t=0.221709) [GFX1-]: No GPUs detected via PCI
+1628202997317	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2317206): Gtk-WARNING **: 18:36:37.632: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2317230): Gtk-WARNING **: 18:36:38.220: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileVEMcO3/search.json.mozlz4", (void 0)))
+
+(/usr/lib/firefox/firefox:2317302): Gtk-WARNING **: 18:36:38.762: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628202998780	Marionette	INFO	Listening on port 45589
+1628202998881	Marionette	WARN	TLS certificate errors will be ignored for this session
+1628203009461	Marionette	INFO	Stopped listening on port 45589
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+1628203209427	geckodriver	INFO	Listening on 127.0.0.1:39487
+1628203209436	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileNduwuH"
+
+(firefox:2318041): Gtk-WARNING **: 18:40:09.466: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.236589) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.236589) |[1][GFX1-]: glxtest: libEGL no display (t=0.236623) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.236589) |[1][GFX1-]: glxtest: libEGL no display (t=0.236623) |[2][GFX1-]: glxtest: No visuals found (t=0.236629) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.236589) |[1][GFX1-]: glxtest: libEGL no display (t=0.236623) |[2][GFX1-]: glxtest: No visuals found (t=0.236629) |[3][GFX1-]: glxtest: libEGL no display (t=0.236635) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.236589) |[1][GFX1-]: glxtest: libEGL no display (t=0.236623) |[2][GFX1-]: glxtest: No visuals found (t=0.236629) |[3][GFX1-]: glxtest: libEGL no display (t=0.236635) |[4][GFX1-]: No GPUs detected via PCI (t=0.236648) [GFX1-]: No GPUs detected via PCI
+1628203210136	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2318126): Gtk-WARNING **: 18:40:10.424: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2318151): Gtk-WARNING **: 18:40:11.062: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileNduwuH/search.json.mozlz4", (void 0)))
+
+(/usr/lib/firefox/firefox:2318226): Gtk-WARNING **: 18:40:11.616: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628203211651	Marionette	INFO	Listening on port 33619
+1628203211761	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 108: Error: Got a request https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600 without a browsingContextID set
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 108: Error: Got a request https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css without a browsingContextID set
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://asir.dev"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 126: TypeError: gRecipeManager is null
+
+(/usr/lib/firefox/firefox:2318717): Gtk-WARNING **: 18:43:42.954: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628203446166	geckodriver	INFO	Listening on 127.0.0.1:41191
+1628203446175	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileq0nFyX"
+
+(firefox:2318997): Gtk-WARNING **: 18:44:06.192: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.224281) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.224281) |[1][GFX1-]: glxtest: libEGL no display (t=0.224311) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.224281) |[1][GFX1-]: glxtest: libEGL no display (t=0.224311) |[2][GFX1-]: glxtest: No visuals found (t=0.224317) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.224281) |[1][GFX1-]: glxtest: libEGL no display (t=0.224311) |[2][GFX1-]: glxtest: No visuals found (t=0.224317) |[3][GFX1-]: glxtest: libEGL no display (t=0.224323) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.224281) |[1][GFX1-]: glxtest: libEGL no display (t=0.224311) |[2][GFX1-]: glxtest: No visuals found (t=0.224317) |[3][GFX1-]: glxtest: libEGL no display (t=0.224323) |[4][GFX1-]: No GPUs detected via PCI (t=0.224336) [GFX1-]: No GPUs detected via PCI
+1628203446860	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2319081): Gtk-WARNING **: 18:44:07.164: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2319099): Gtk-WARNING **: 18:44:07.212: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileq0nFyX/search.json.mozlz4", (void 0)))
+1628203448292	Marionette	INFO	Listening on port 40273
+
+(/usr/lib/firefox/firefox:2319190): Gtk-WARNING **: 18:44:08.309: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628203448416	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib/firefox/firefox:2319261): Gtk-WARNING **: 18:44:14.206: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2319290): Gtk-WARNING **: 18:44:14.556: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628203458408	Marionette	INFO	Stopped listening on port 40273
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+1628203459899	Marionette	INFO	Stopped listening on port 33619
+1628203547980	geckodriver	INFO	Listening on 127.0.0.1:36317
+1628203547989	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileiLjOdV"
+
+(firefox:2319835): Gtk-WARNING **: 18:45:48.007: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.234431) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.234431) |[1][GFX1-]: glxtest: libEGL no display (t=0.234463) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.234431) |[1][GFX1-]: glxtest: libEGL no display (t=0.234463) |[2][GFX1-]: glxtest: No visuals found (t=0.234469) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.234431) |[1][GFX1-]: glxtest: libEGL no display (t=0.234463) |[2][GFX1-]: glxtest: No visuals found (t=0.234469) |[3][GFX1-]: glxtest: libEGL no display (t=0.234476) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.234431) |[1][GFX1-]: glxtest: libEGL no display (t=0.234463) |[2][GFX1-]: glxtest: No visuals found (t=0.234469) |[3][GFX1-]: glxtest: libEGL no display (t=0.234476) |[4][GFX1-]: No GPUs detected via PCI (t=0.234488) [GFX1-]: No GPUs detected via PCI
+1628203548580	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2319918): Gtk-WARNING **: 18:45:48.869: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2319938): Gtk-WARNING **: 18:45:48.938: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileiLjOdV/search.json.mozlz4", (void 0)))
+1628203550016	Marionette	INFO	Listening on port 45519
+
+(/usr/lib/firefox/firefox:2320012): Gtk-WARNING **: 18:45:50.023: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628203550106	Marionette	WARN	TLS certificate errors will be ignored for this session
+1628203554233	Marionette	INFO	Stopped listening on port 45519
+1628203674014	geckodriver	INFO	Listening on 127.0.0.1:53611
+1628203674024	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilelqlLPa"
+
+(firefox:2320593): Gtk-WARNING **: 18:47:54.042: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.212803) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.212803) |[1][GFX1-]: glxtest: libEGL no display (t=0.212836) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.212803) |[1][GFX1-]: glxtest: libEGL no display (t=0.212836) |[2][GFX1-]: glxtest: No visuals found (t=0.212842) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.212803) |[1][GFX1-]: glxtest: libEGL no display (t=0.212836) |[2][GFX1-]: glxtest: No visuals found (t=0.212842) |[3][GFX1-]: glxtest: libEGL no display (t=0.212849) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.212803) |[1][GFX1-]: glxtest: libEGL no display (t=0.212836) |[2][GFX1-]: glxtest: No visuals found (t=0.212842) |[3][GFX1-]: glxtest: libEGL no display (t=0.212849) |[4][GFX1-]: No GPUs detected via PCI (t=0.212862) [GFX1-]: No GPUs detected via PCI
+1628203674674	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2320677): Gtk-WARNING **: 18:47:54.968: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2320701): Gtk-WARNING **: 18:47:55.581: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilelqlLPa/search.json.mozlz4", (void 0)))
+
+(/usr/lib/firefox/firefox:2320771): Gtk-WARNING **: 18:47:56.203: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628203676248	Marionette	INFO	Listening on port 33431
+1628203676360	Marionette	WARN	TLS certificate errors will be ignored for this session
+1628203678087	Marionette	INFO	Stopped listening on port 33431
+
+(/usr/lib/firefox/firefox:2321184): Gtk-WARNING **: 18:49:57.839: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628203952876	geckodriver	INFO	Listening on 127.0.0.1:36327
+1628203952885	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofiletOR9fz"
+
+(firefox:2321812): Gtk-WARNING **: 18:52:32.915: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.242179) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.242179) |[1][GFX1-]: glxtest: libEGL no display (t=0.242218) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.242179) |[1][GFX1-]: glxtest: libEGL no display (t=0.242218) |[2][GFX1-]: glxtest: No visuals found (t=0.242224) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.242179) |[1][GFX1-]: glxtest: libEGL no display (t=0.242218) |[2][GFX1-]: glxtest: No visuals found (t=0.242224) |[3][GFX1-]: glxtest: libEGL no display (t=0.242231) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.242179) |[1][GFX1-]: glxtest: libEGL no display (t=0.242218) |[2][GFX1-]: glxtest: No visuals found (t=0.242224) |[3][GFX1-]: glxtest: libEGL no display (t=0.242231) |[4][GFX1-]: No GPUs detected via PCI (t=0.242242) [GFX1-]: No GPUs detected via PCI
+1628203953579	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2321896): Gtk-WARNING **: 18:52:33.877: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2321915): Gtk-WARNING **: 18:52:33.972: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofiletOR9fz/search.json.mozlz4", (void 0)))
+1628203954496	Marionette	INFO	Listening on port 37271
+1628203954632	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib/firefox/firefox:2322028): Gtk-WARNING **: 18:52:34.888: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628203958444	Marionette	INFO	Stopped listening on port 37271
+
+(/usr/lib/firefox/firefox:2322091): Gtk-WARNING **: 18:52:58.616: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204115480	geckodriver	INFO	Listening on 127.0.0.1:50205
+1628204115490	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileSIthyl"
+
+(firefox:2323384): Gtk-WARNING **: 18:55:15.507: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.235553) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.235553) |[1][GFX1-]: glxtest: libEGL no display (t=0.23559) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.235553) |[1][GFX1-]: glxtest: libEGL no display (t=0.23559) |[2][GFX1-]: glxtest: No visuals found (t=0.235596) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.235553) |[1][GFX1-]: glxtest: libEGL no display (t=0.23559) |[2][GFX1-]: glxtest: No visuals found (t=0.235596) |[3][GFX1-]: glxtest: libEGL no display (t=0.235603) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.235553) |[1][GFX1-]: glxtest: libEGL no display (t=0.23559) |[2][GFX1-]: glxtest: No visuals found (t=0.235596) |[3][GFX1-]: glxtest: libEGL no display (t=0.235603) |[4][GFX1-]: No GPUs detected via PCI (t=0.235614) [GFX1-]: No GPUs detected via PCI
+1628204116168	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2323469): Gtk-WARNING **: 18:55:16.478: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2323493): Gtk-WARNING **: 18:55:17.097: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileSIthyl/search.json.mozlz4", (void 0)))
+
+(/usr/lib/firefox/firefox:2323567): Gtk-WARNING **: 18:55:17.850: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204117853	Marionette	INFO	Listening on port 34179
+1628204117922	Marionette	WARN	TLS certificate errors will be ignored for this session
+1628204119465	Marionette	INFO	Stopped listening on port 34179
+1628204174302	geckodriver	INFO	Listening on 127.0.0.1:58855
+1628204174312	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileoZijYv"
+
+(firefox:2325440): Gtk-WARNING **: 18:56:14.341: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.24973) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.24973) |[1][GFX1-]: glxtest: libEGL no display (t=0.249788) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.24973) |[1][GFX1-]: glxtest: libEGL no display (t=0.249788) |[2][GFX1-]: glxtest: No visuals found (t=0.249794) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.24973) |[1][GFX1-]: glxtest: libEGL no display (t=0.249788) |[2][GFX1-]: glxtest: No visuals found (t=0.249794) |[3][GFX1-]: glxtest: libEGL no display (t=0.249815) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.24973) |[1][GFX1-]: glxtest: libEGL no display (t=0.249788) |[2][GFX1-]: glxtest: No visuals found (t=0.249794) |[3][GFX1-]: glxtest: libEGL no display (t=0.249815) |[4][GFX1-]: No GPUs detected via PCI (t=0.249827) [GFX1-]: No GPUs detected via PCI
+1628204175008	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2325528): Gtk-WARNING **: 18:56:15.304: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2325552): Gtk-WARNING **: 18:56:15.917: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileoZijYv/search.json.mozlz4", (void 0)))
+1628204176456	Marionette	INFO	Listening on port 38295
+
+(/usr/lib/firefox/firefox:2325628): Gtk-WARNING **: 18:56:16.464: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204176527	Marionette	WARN	TLS certificate errors will be ignored for this session
+1628204177606	geckodriver	INFO	Listening on 127.0.0.1:50395
+1628204177614	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile7Jv6nm"
+
+(firefox:2325895): Gtk-WARNING **: 18:56:17.632: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.247791) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.247791) |[1][GFX1-]: glxtest: libEGL no display (t=0.247825) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.247791) |[1][GFX1-]: glxtest: libEGL no display (t=0.247825) |[2][GFX1-]: glxtest: No visuals found (t=0.247832) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.247791) |[1][GFX1-]: glxtest: libEGL no display (t=0.247825) |[2][GFX1-]: glxtest: No visuals found (t=0.247832) |[3][GFX1-]: glxtest: libEGL no display (t=0.247839) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.247791) |[1][GFX1-]: glxtest: libEGL no display (t=0.247825) |[2][GFX1-]: glxtest: No visuals found (t=0.247832) |[3][GFX1-]: glxtest: libEGL no display (t=0.247839) |[4][GFX1-]: No GPUs detected via PCI (t=0.247851) [GFX1-]: No GPUs detected via PCI
+1628204178227	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2325979): Gtk-WARNING **: 18:56:18.547: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2326003): Gtk-WARNING **: 18:56:19.171: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile7Jv6nm/search.json.mozlz4", (void 0)))
+1628204179719	Marionette	INFO	Listening on port 39147
+
+(/usr/lib/firefox/firefox:2326073): Gtk-WARNING **: 18:56:19.734: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204179830	Marionette	WARN	TLS certificate errors will be ignored for this session
+1628204180940	geckodriver	INFO	Listening on 127.0.0.1:51209
+1628204180948	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilefZ2IU2"
+
+(firefox:2326367): Gtk-WARNING **: 18:56:20.966: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.234948) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.234948) |[1][GFX1-]: glxtest: libEGL no display (t=0.234995) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.234948) |[1][GFX1-]: glxtest: libEGL no display (t=0.234995) |[2][GFX1-]: glxtest: No visuals found (t=0.235003) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.234948) |[1][GFX1-]: glxtest: libEGL no display (t=0.234995) |[2][GFX1-]: glxtest: No visuals found (t=0.235003) |[3][GFX1-]: glxtest: libEGL no display (t=0.235009) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.234948) |[1][GFX1-]: glxtest: libEGL no display (t=0.234995) |[2][GFX1-]: glxtest: No visuals found (t=0.235003) |[3][GFX1-]: glxtest: libEGL no display (t=0.235009) |[4][GFX1-]: No GPUs detected via PCI (t=0.235021) [GFX1-]: No GPUs detected via PCI
+1628204181522	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2326459): Gtk-WARNING **: 18:56:21.860: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204181995	Marionette	INFO	Stopped listening on port 39147
+
+(/usr/lib/firefox/firefox:2326486): Gtk-WARNING **: 18:56:22.470: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilefZ2IU2/search.json.mozlz4", (void 0)))
+1628204183002	Marionette	INFO	Listening on port 42303
+
+(/usr/lib/firefox/firefox:2326558): Gtk-WARNING **: 18:56:23.006: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204183063	Marionette	WARN	TLS certificate errors will be ignored for this session
+Marionette threw an error: TypeError: this.curBrowser.contentBrowser is null
+GeckoDriver.prototype.navigateTo@chrome://marionette/content/driver.js:918:3
+
+
+(/usr/lib/firefox/firefox:2326612): Gtk-WARNING **: 18:56:23.689: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204186656	Marionette	INFO	Stopped listening on port 42303
+1628204187206	Marionette	INFO	Stopped listening on port 38295
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1628204195181	geckodriver	INFO	Listening on 127.0.0.1:57015
+1628204195189	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileNjehIy"
+
+(firefox:2329039): Gtk-WARNING **: 18:56:35.207: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.217192) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.217192) |[1][GFX1-]: glxtest: libEGL no display (t=0.217226) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.217192) |[1][GFX1-]: glxtest: libEGL no display (t=0.217226) |[2][GFX1-]: glxtest: No visuals found (t=0.217232) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.217192) |[1][GFX1-]: glxtest: libEGL no display (t=0.217226) |[2][GFX1-]: glxtest: No visuals found (t=0.217232) |[3][GFX1-]: glxtest: libEGL no display (t=0.217239) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.217192) |[1][GFX1-]: glxtest: libEGL no display (t=0.217226) |[2][GFX1-]: glxtest: No visuals found (t=0.217232) |[3][GFX1-]: glxtest: libEGL no display (t=0.217239) |[4][GFX1-]: No GPUs detected via PCI (t=0.217251) [GFX1-]: No GPUs detected via PCI
+1628204195865	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2329127): Gtk-WARNING **: 18:56:36.182: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2329154): Gtk-WARNING **: 18:56:36.780: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileNjehIy/search.json.mozlz4", (void 0)))
+1628204197357	Marionette	INFO	Listening on port 42065
+
+(/usr/lib/firefox/firefox:2329239): Gtk-WARNING **: 18:56:37.363: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204197414	Marionette	WARN	TLS certificate errors will be ignored for this session
+1628204198421	geckodriver	INFO	Listening on 127.0.0.1:41295
+1628204198429	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile4rS6Yx"
+
+(firefox:2329497): Gtk-WARNING **: 18:56:38.447: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.24126) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.24126) |[1][GFX1-]: glxtest: libEGL no display (t=0.241295) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.24126) |[1][GFX1-]: glxtest: libEGL no display (t=0.241295) |[2][GFX1-]: glxtest: No visuals found (t=0.241302) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.24126) |[1][GFX1-]: glxtest: libEGL no display (t=0.241295) |[2][GFX1-]: glxtest: No visuals found (t=0.241302) |[3][GFX1-]: glxtest: libEGL no display (t=0.241309) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.24126) |[1][GFX1-]: glxtest: libEGL no display (t=0.241295) |[2][GFX1-]: glxtest: No visuals found (t=0.241302) |[3][GFX1-]: glxtest: libEGL no display (t=0.241309) |[4][GFX1-]: No GPUs detected via PCI (t=0.241321) [GFX1-]: No GPUs detected via PCI
+1628204199024	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2329584): Gtk-WARNING **: 18:56:39.321: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2329617): Gtk-WARNING **: 18:56:39.942: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile4rS6Yx/search.json.mozlz4", (void 0)))
+
+(/usr/lib/firefox/firefox:2329689): Gtk-WARNING **: 18:56:40.542: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204200565	Marionette	INFO	Listening on port 43661
+1628204200644	Marionette	WARN	TLS certificate errors will be ignored for this session
+1628204201536	geckodriver	INFO	Listening on 127.0.0.1:36481
+1628204201543	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile7SpeVS"
+
+(firefox:2329956): Gtk-WARNING **: 18:56:41.562: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.228257) [GFX1-]: glxtest: libpci missing
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.228257) |[1][GFX1-]: glxtest: libEGL no display (t=0.228289) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.228257) |[1][GFX1-]: glxtest: libEGL no display (t=0.228289) |[2][GFX1-]: glxtest: No visuals found (t=0.228298) [GFX1-]: glxtest: No visuals found
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.228257) |[1][GFX1-]: glxtest: libEGL no display (t=0.228289) |[2][GFX1-]: glxtest: No visuals found (t=0.228298) |[3][GFX1-]: glxtest: libEGL no display (t=0.228306) [GFX1-]: glxtest: libEGL no display
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: glxtest: libpci missing (t=0.228257) |[1][GFX1-]: glxtest: libEGL no display (t=0.228289) |[2][GFX1-]: glxtest: No visuals found (t=0.228298) |[3][GFX1-]: glxtest: libEGL no display (t=0.228306) |[4][GFX1-]: No GPUs detected via PCI (t=0.22832) [GFX1-]: No GPUs detected via PCI
+1628204202206	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:2330040): Gtk-WARNING **: 18:56:42.531: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2330066): Gtk-WARNING **: 18:56:43.143: Locale not supported by C library.
+	Using the fallback 'C' locale.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile7SpeVS/search.json.mozlz4", (void 0)))
+1628204203716	Marionette	INFO	Listening on port 44273
+
+(/usr/lib/firefox/firefox:2330138): Gtk-WARNING **: 18:56:43.717: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204203761	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x1F0011,name=PBackgroundStorage::Msg_Observe) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x1F0011,name=PBackgroundStorage::Msg_Observe) Channel error: cannot send/recv
+
+1628204205355	Marionette	INFO	Stopped listening on port 44273
+1628204206684	Marionette	INFO	Stopped listening on port 43661
+1628204207487	Marionette	INFO	Stopped listening on port 42065
+
+(/usr/lib/firefox/firefox:2330380): Gtk-WARNING **: 18:57:38.615: Locale not supported by C library.
+	Using the fallback 'C' locale.
+
+(/usr/lib/firefox/firefox:2330409): Gtk-WARNING **: 18:57:40.004: Locale not supported by C library.
+	Using the fallback 'C' locale.
+1628204261844	Marionette	INFO	Stopped listening on port 37829
