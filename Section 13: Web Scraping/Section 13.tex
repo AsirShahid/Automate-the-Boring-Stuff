@@ -1,4 +1,4 @@
-% Created 2021-08-05 Thu 12:42
+% Created 2021-08-05 Thu 13:45
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -30,4 +30,86 @@
 \maketitle
 \tableofcontents
 
+
+\section{The webbrowser Module}
+\label{sec:org115535d}
+
+\begin{verbatim}
+
+import webbrowser
+
+webbrowser.open("https://asir.dev")
+
+\end{verbatim}
+
+Let's create a program that can open a given address on maps.
+
+\begin{verbatim}
+
+import webbrowser, sys, pyperclip
+
+sys.argv # ["mapit.py", "870", "Valencia", "St."]
+
+# Check if command line arguments were passed
+
+if len(sys.argv) > 1:
+    # ["mapit.py", "870", "Valencia", "St."] -> 870 Valencia St.
+    address=" ".join(sys.argv[1:])
+else:
+    address=pyperclip.paste()
+
+webbrowser.open("https://www.google.com/maps/place/%s" % (address))
+
+\end{verbatim}
+
+\section{Downloading from the Web with the Requests Module}
+\label{sec:org7649adf}
+
+The requests module lets you easily download files from the web without having to worry about complicated network issues. The requests module is a third party module which we'll need to install on our own.
+
+\begin{verbatim}
+pip install requests
+\end{verbatim}
+
+We can pass a URL to the requests.get() function in order to get the file. We can check the status code to see if it downloaded properly, if so then we'll get the status code 200. We can print out the file using .text. We can also see if there is an issue by calling the raise\textsubscript{for}\textsubscript{status}() method which will raise an error if we ran into any problems.
+
+\begin{verbatim}
+
+import requests
+
+res=requests.get("http://automatetheboringstuff.com/files/rj.txt")
+
+print(res.status_code)
+
+print(len(res.text))
+print(res.text[:500])
+
+print(res.raise_for_status())
+
+badRes=requests.get("http://automatetheboringstuff.com/files/rjuliet.txt")
+
+print(badRes.raise_for_status())
+
+\end{verbatim}
+
+\subsection{Write-binary mode: open(filename, ``wb'')}
+\label{sec:org8dfd6ab}
+
+We can save a web page to a file using the open function. However, we must do somethings differently.
+
+\begin{verbatim}
+
+import requests
+
+res=requests.get("http://automatetheboringstuff.com/files/rj.txt")
+playFile=open("RomeoAndJuliet.txt","wb")
+
+for chunk in res.iter_content(100000):
+    playFile.write(chunk)
+
+playFile.close()
+
+\end{verbatim}
+
+Request module functions can be useful, but they are somewhat limited. You can only use it when you have the exact URL that you need to download. Selenium lets your Python scripts control the web browser directly.
 \end{document}
