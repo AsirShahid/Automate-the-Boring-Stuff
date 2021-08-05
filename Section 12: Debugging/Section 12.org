@@ -18,6 +18,132 @@ We can raise exceptions using the raise statement.
 
 #+begin_src python :results output :exports both
 
-raise Exception()
+raise Exception("This is the error message.")
 
 #+end_src
+
+#+RESULTS:
+
+** Box Example
+
+We want to create a function that creates a box using some supplied characters.
+
+
+#+begin_src python :results output :exports both
+
+def boxPrint(symbol, width, height):
+
+    if len(symbol)!=1:
+        raise Exception("symbol needs to be of length 1")
+
+    if width < 2 or height < 2:
+        raise Exception("width and height must be greater than or equal to 2")
+
+    print(symbol*width)
+
+    for i in range(height-2):
+        print(symbol + (" "*(width-2)) + symbol)
+
+    print(symbol*width)
+
+boxPrint("*", 15, 5)
+boxPrint("O", 5, 20)
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+,***************
+,*             *
+,*             *
+,*             *
+,***************
+OOOOO
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+O   O
+OOOOO
+#+end_example
+
+Our error message is called a traceback. This is because it shows information showing where the error occurred.
+
+* The traceback.format_exc() Function
+
+We can get the traceback error text as a string vale using this function.
+
+
+#+begin_src python :results output :exports both
+
+import traceback
+
+try:
+    raise Exception("This is the error message.")
+except:
+    errorFile=open("error_log.txt","a")
+    errorFile.write(traceback.format_exc())
+    errorFile.close()
+    print("The traceback info was written error_log.txt")
+
+error=open("error_log.txt")
+print(error.read())
+
+#+end_src
+
+#+RESULTS:
+: The traceback info was written error_log.txt
+: Traceback (most recent call last):
+:   File "<stdin>", line 5, in <module>
+: Exception: This is the error message.
+:
+
+** Assertions and the assert Statement
+
+An assertion is a sanity check that makes sure the code isn't doing something really wrong. These are performed by assert statements. If the sanity check fails, then an assertion error exception is raised. These assertions are for programmer errors and the program should not run after an assertion is raised.
+
+#+begin_src python :results output :exports both
+
+assert False, "This is the error message"
+
+#+end_src
+
+#+RESULTS:
+
+Let's try to create a simple traffic simulator program with intersections with stop lights.
+
+#+begin_src python :results output :exports both
+
+market_2nd={"ns": "green", "ew": "red"}
+
+def switchLights(intersection):
+    for key in intersection.keys():
+        print(intersection[key])
+        if intersection[key]=="green":
+            intersection[key]="yellow"
+        elif intersection[key]=="yellow":
+            intersection[key]="red"
+        elif intersection[key]=="red":
+            intersection[key]="green"
+    assert "red" in intersection.values(), "Neither light is red!"
+
+print(market_2nd)
+switchLights(market_2nd)
+print(market_2nd)
+
+#+end_src
+
+#+RESULTS:

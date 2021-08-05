@@ -29,6 +29,12 @@
     "textcomp"
     "amssymb"
     "capt-of"
-    "hyperref"))
+    "hyperref")
+   (LaTeX-add-labels
+    "sec:orgcac53c1"
+    "sec:org0ba8097"
+    "sec:org70b4ac5"
+    "sec:orgd53300c"
+    "sec:org48a4baf"))
  :latex)
 
