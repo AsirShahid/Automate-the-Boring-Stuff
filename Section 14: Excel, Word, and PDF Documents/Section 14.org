@@ -226,5 +226,156 @@ pdf1File.close()
 pdf2File.close()
 
 #+end_src
+* Reading and Editing Word Documents
+
+Python can also create and modify .docx documents. Python can do this by using the third party python-docx module
+
+#+begin_src bash
+pip install python-docx
+#+end_src
 
 #+RESULTS:
+| Defaulting   | to                        | user               | installation | because      | normal                             | site-packages | is           | not     | writeable |     |            |
+| Collecting   | python-docx               |                    |              |              |                                    |               |              |         |           |     |            |
+| Downloading  | python-docx-0.8.11.tar.gz | (5.6               | MB)          |              |                                    |               |              |         |           |     |            |
+| Requirement  | already                   | satisfied:         | lxml>=2.3.2  | in           | /usr/lib64/python3.9/site-packages | (from         | python-docx) | (4.5.1) |           |     |            |
+| Using        | legacy                    | 'setup.py          | install'     | for          | python-docx,                       | since         | package      | 'wheel' | is        | not | installed. |
+| Installing   | collected                 | packages:          | python-docx  |              |                                    |               |              |         |           |     |            |
+| Running      | setup.py                  | install            | for          | python-docx: | started                            |               |              |         |           |     |            |
+| Running      | setup.py                  | install            | for          | python-docx: | finished                           | with          | status       | 'done'  |           |     |            |
+| Successfully | installed                 | python-docx-0.8.11 |              |              |                                    |               |              |         |           |     |            |
+
+Compared to plain text files, .docx files have a lot of structure. This is represented by 3 different data types in python-docx.
+
+The document object contains paragraph objects. Each of these paragraph objects contains run objects.
+
+#+begin_src python :results output :exports both
+
+import docx
+
+d=docx.Document("demo.docx")
+
+print(d.paragraphs)
+
+print(d.paragraphs[0].text)
+print(d.paragraphs[1].text)
+
+p=d.paragraphs[1]
+
+print(p.runs)
+
+for i in range(4):
+    print(p.runs[i].text)
+
+for i in range(4):
+    print(p.runs[i].bold)
+
+for i in range(4):
+    p.runs[i].underline=True
+    print(p.runs[i].text)
+
+d.save("demo2.docx")
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[<docx.text.paragraph.Paragraph object at 0x7f8b9617e0d0>, <docx.text.paragraph.Paragraph object at 0x7f8b9617e2b0>, <docx.text.paragraph.Paragraph object at 0x7f8b9617e190>, <docx.text.paragraph.Paragraph object at 0x7f8b9617e370>, <docx.text.paragraph.Paragraph object at 0x7f8b9617e250>, <docx.text.paragraph.Paragraph object at 0x7f8b9617e430>, <docx.text.paragraph.Paragraph object at 0x7f8b9617e310>]
+Document Title
+A plain paragraph having some bold and some italic.
+[<docx.text.run.Run object at 0x7f8b9617e430>, <docx.text.run.Run object at 0x7f8b9617e310>, <docx.text.run.Run object at 0x7f8b9617e070>, <docx.text.run.Run object at 0x7f8b9617e100>]
+A plain paragraph having some
+bold
+ and some
+italic.
+None
+True
+None
+None
+A plain paragraph having some
+bold
+ and some
+italic.
+#+end_example
+
+In .docx documents, each paragrah and run has its own style. For example, Normal, Heading 1, Heading 2, Title, etc.
+
+#+begin_src python :results output :exports both
+
+import docx
+
+d=docx.Document("demo2.docx")
+
+p=d.paragraphs[1]
+
+print(p.runs)
+
+print(p.style)
+
+p.style="Title"
+
+print(p.style)
+
+d.save("demo3.docx")
+
+#+end_src
+
+#+RESULTS:
+: [<docx.text.run.Run object at 0x7f5d075f48e0>, <docx.text.run.Run object at 0x7f5d075f4820>, <docx.text.run.Run object at 0x7f5d075f4af0>, <docx.text.run.Run object at 0x7f5d075f4910>]
+: _ParagraphStyle('Normal') id: 140037532370976
+: _ParagraphStyle('Title') id: 140037532446288
+
+Now let's create a brand new word document.
+
+#+begin_src python :results output :exports both
+
+import docx
+
+d=docx.Document()
+
+d.add_paragraph("Hello this is a paragraph.")
+
+d.add_paragraph("This is another paragraph")
+
+d.save("demo4.docx")
+
+p=d.paragraphs[0]
+
+p.add_run("This is a new run")
+
+p.runs[1].bold=True
+
+d.save("demo5.docx")
+
+#+end_src
+
+#+RESULTS:
+
+There is now way to add paragraph and run objects anywhere except at the end. So if we want to add something in the middle, we will need to create a new .docx document and then copy over paragraphs and runs from the original document to the new document and then making changes along the way.
+
+How could we get all the text in a word document as a string?
+
+#+begin_src python :results output :exports both
+
+import docx
+
+def getText(filename):
+    doc=docx.Document(filename)
+    fullText=[]
+    for para in doc.paragraphs:
+        fullText.append(para.text)
+    return "\n".join(fullText)
+
+print(getText("demo.docx"))
+
+#+end_src
+
+#+RESULTS:
+: Document Title
+: A plain paragraph having some bold and some italic.
+: Heading, level 1
+: Intense quote
+: first item in unordered list
+: first item in ordered list
+:
+:

@@ -1,4 +1,4 @@
-% Created 2021-08-05 Thu 19:53
+% Created 2021-08-06 Fri 11:39
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section{Reading Excel Spreadsheets}
-\label{sec:orge87a86b}
+\label{sec:org2cfde94}
 
 The openpyxl module lets us modify Excel files using Python. It is a third party module that we'll need to install ourselves.
 
@@ -101,7 +101,7 @@ Apples
 7 Strawberries
 \end{verbatim}
 \section{Editing Excel Spreadsheets}
-\label{sec:org19903a4}
+\label{sec:org11159a3}
 
 In the last lesson, we learned how to read .xlsx files. Now we will learn to create and modify them.
 
@@ -153,7 +153,7 @@ None
 \end{verbatim}
 
 \section{Reading and Editing PDFs}
-\label{sec:org75aa3c8}
+\label{sec:org6017e98}
 
 PDF files are binary files which make them far more complicated than plain text files such as .org or .py files. They store far more information than plain text files.
 
@@ -234,6 +234,150 @@ writer.write(outputFile)
 outputFile.close()
 pdf1File.close()
 pdf2File.close()
+
+\end{verbatim}
+
+\section{Reading and Editing Word Documents}
+\label{sec:org8643190}
+
+Python can also create and modify .docx documents. Python can do this by using the third party python-docx module
+
+\begin{verbatim}
+pip install python-docx
+\end{verbatim}
+
+Compared to plain text files, .docx files have a lot of structure. This is represented by 3 different data types in python-docx.
+
+The document object contains paragraph objects. Each of these paragraph objects contains run objects.
+
+\begin{verbatim}
+
+import docx
+
+d=docx.Document("demo.docx")
+
+print(d.paragraphs)
+
+print(d.paragraphs[0].text)
+print(d.paragraphs[1].text)
+
+p=d.paragraphs[1]
+
+print(p.runs)
+
+for i in range(4):
+    print(p.runs[i].text)
+
+for i in range(4):
+    print(p.runs[i].bold)
+
+for i in range(4):
+    p.runs[i].underline=True
+    print(p.runs[i].text)
+
+d.save("demo2.docx")
+
+\end{verbatim}
+
+\begin{verbatim}
+[<docx.text.paragraph.Paragraph object at 0x7f6f203ea190>, <docx.text.paragraph.Paragraph object at 0x7f6f203ea130>, <docx.text.paragraph.Paragraph object at 0x7f6f203ea250>, <docx.text.paragraph.Paragraph object at 0x7f6f203ea1f0>, <docx.text.paragraph.Paragraph object at 0x7f6f203ea310>, <docx.text.paragraph.Paragraph object at 0x7f6f203ea2b0>, <docx.text.paragraph.Paragraph object at 0x7f6f203ea3d0>]
+Document Title
+A plain paragraph having some bold and some italic.
+[<docx.text.run.Run object at 0x7f6f203ea2b0>, <docx.text.run.Run object at 0x7f6f203ea3d0>, <docx.text.run.Run object at 0x7f6f203ea0d0>, <docx.text.run.Run object at 0x7f6f203ea100>]
+A plain paragraph having some 
+bold
+ and some 
+italic.
+None
+True
+None
+None
+A plain paragraph having some 
+bold
+ and some 
+italic.
+\end{verbatim}
+
+In .docx documents, each paragrah and run has its own style. For example, Normal, Heading 1, Heading 2, Title, etc.
+
+\begin{verbatim}
+
+import docx
+
+d=docx.Document("demo2.docx")
+
+p=d.paragraphs[1]
+
+print(p.runs)
+
+print(p.style)
+
+p.style="Title"
+
+print(p.style)
+
+d.save("demo3.docx")
+
+\end{verbatim}
+
+\begin{verbatim}
+[<docx.text.run.Run object at 0x7f495d4c0910>, <docx.text.run.Run object at 0x7f495d4c0850>, <docx.text.run.Run object at 0x7f495d4c0b20>, <docx.text.run.Run object at 0x7f495d4c0940>]
+_ParagraphStyle('Normal') id: 139953074604112
+_ParagraphStyle('Title') id: 139953074679424
+\end{verbatim}
+
+
+Now let's create a brand new word document.
+
+\begin{verbatim}
+
+import docx
+
+d=docx.Document()
+
+d.add_paragraph("Hello this is a paragraph.")
+
+d.add_paragraph("This is another paragraph")
+
+d.save("demo4.docx")
+
+p=d.paragraphs[0]
+
+p.add_run("This is a new run")
+
+p.runs[1].bold=True
+
+d.save("demo5.docx")
+
+\end{verbatim}
+
+There is now way to add paragraph and run objects anywhere except at the end. So if we want to add something in the middle, we will need to create a new .docx document and then copy over paragraphs and runs from the original document to the new document and then making changes along the way.
+
+How could we get all the text in a word document as a string?
+
+\begin{verbatim}
+
+import docx
+
+def getText(filename):
+    doc=docx.Document(filename)
+    fullText=[]
+    for para in doc.paragraphs:
+        fullText.append(para.text)
+    return "\n".join(fullText)
+
+print(getText("demo.docx"))
+
+\end{verbatim}
+
+\begin{verbatim}
+Document Title
+A plain paragraph having some bold and some italic.
+Heading, level 1
+Intense quote
+first item in unordered list
+first item in ordered list
+
 
 \end{verbatim}
 \end{document}

@@ -1,13 +1,14 @@
 
 # Table of Contents
 
-1.  [Reading Excel Spreadsheets](#org46c4059)
-2.  [Editing Excel Spreadsheets](#org033273f)
-3.  [Reading and Editing PDFs](#org3ab36b6)
+1.  [Reading Excel Spreadsheets](#org117e359)
+2.  [Editing Excel Spreadsheets](#orgba1eb56)
+3.  [Reading and Editing PDFs](#org6be5487)
+4.  [Reading and Editing Word Documents](#org5534179)
 
 
 
-<a id="org46c4059"></a>
+<a id="org117e359"></a>
 
 # Reading Excel Spreadsheets
 
@@ -71,7 +72,7 @@ The Excel document is called a workbook that is saved by .xlsx file extension. E
     7 Strawberries
 
 
-<a id="org033273f"></a>
+<a id="orgba1eb56"></a>
 
 # Editing Excel Spreadsheets
 
@@ -120,7 +121,7 @@ In the last lesson, we learned how to read .xlsx files. Now we will learn to cre
     ['Sheet', 'My New Sheet Name']
 
 
-<a id="org3ab36b6"></a>
+<a id="org6be5487"></a>
 
 # Reading and Editing PDFs
 
@@ -192,4 +193,127 @@ Due to the complexity of PDF documents, Python can&rsquo;t add text arbitrarily.
     outputFile.close()
     pdf1File.close()
     pdf2File.close()
+
+
+<a id="org5534179"></a>
+
+# Reading and Editing Word Documents
+
+Python can also create and modify .docx documents. Python can do this by using the third party python-docx module
+
+    pip install python-docx
+
+Compared to plain text files, .docx files have a lot of structure. This is represented by 3 different data types in python-docx.
+
+The document object contains paragraph objects. Each of these paragraph objects contains run objects.
+
+    
+    import docx
+    
+    d=docx.Document("demo.docx")
+    
+    print(d.paragraphs)
+    
+    print(d.paragraphs[0].text)
+    print(d.paragraphs[1].text)
+    
+    p=d.paragraphs[1]
+    
+    print(p.runs)
+    
+    for i in range(4):
+        print(p.runs[i].text)
+    
+    for i in range(4):
+        print(p.runs[i].bold)
+    
+    for i in range(4):
+        p.runs[i].underline=True
+        print(p.runs[i].text)
+    
+    d.save("demo2.docx")
+
+    [<docx.text.paragraph.Paragraph object at 0x7f4dc9bc0190>, <docx.text.paragraph.Paragraph object at 0x7f4dc9bc0130>, <docx.text.paragraph.Paragraph object at 0x7f4dc9bc0250>, <docx.text.paragraph.Paragraph object at 0x7f4dc9bc01f0>, <docx.text.paragraph.Paragraph object at 0x7f4dc9bc0310>, <docx.text.paragraph.Paragraph object at 0x7f4dc9bc02b0>, <docx.text.paragraph.Paragraph object at 0x7f4dc9bc03d0>]
+    Document Title
+    A plain paragraph having some bold and some italic.
+    [<docx.text.run.Run object at 0x7f4dc9bc02b0>, <docx.text.run.Run object at 0x7f4dc9bc03d0>, <docx.text.run.Run object at 0x7f4dc9bc00d0>, <docx.text.run.Run object at 0x7f4dc9bc0100>]
+    A plain paragraph having some 
+    bold
+     and some 
+    italic.
+    None
+    True
+    None
+    None
+    A plain paragraph having some 
+    bold
+     and some 
+    italic.
+
+In .docx documents, each paragrah and run has its own style. For example, Normal, Heading 1, Heading 2, Title, etc.
+
+    
+    import docx
+    
+    d=docx.Document("demo2.docx")
+    
+    p=d.paragraphs[1]
+    
+    print(p.runs)
+    
+    print(p.style)
+    
+    p.style="Title"
+    
+    print(p.style)
+    
+    d.save("demo3.docx")
+
+    [<docx.text.run.Run object at 0x7fd27cc29910>, <docx.text.run.Run object at 0x7fd27cc29850>, <docx.text.run.Run object at 0x7fd27cc29b20>, <docx.text.run.Run object at 0x7fd27cc29940>]
+    _ParagraphStyle('Normal') id: 140542012987472
+    _ParagraphStyle('Title') id: 140542013062784
+
+Now let&rsquo;s create a brand new word document.
+
+    
+    import docx
+    
+    d=docx.Document()
+    
+    d.add_paragraph("Hello this is a paragraph.")
+    
+    d.add_paragraph("This is another paragraph")
+    
+    d.save("demo4.docx")
+    
+    p=d.paragraphs[0]
+    
+    p.add_run("This is a new run")
+    
+    p.runs[1].bold=True
+    
+    d.save("demo5.docx")
+
+There is now way to add paragraph and run objects anywhere except at the end. So if we want to add something in the middle, we will need to create a new .docx document and then copy over paragraphs and runs from the original document to the new document and then making changes along the way.
+
+How could we get all the text in a word document as a string?
+
+    
+    import docx
+    
+    def getText(filename):
+        doc=docx.Document(filename)
+        fullText=[]
+        for para in doc.paragraphs:
+            fullText.append(para.text)
+        return "\n".join(fullText)
+    
+    print(getText("demo.docx"))
+
+    Document Title
+    A plain paragraph having some bold and some italic.
+    Heading, level 1
+    Intense quote
+    first item in unordered list
+    first item in ordered list
 
